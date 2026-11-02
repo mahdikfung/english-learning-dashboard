@@ -1,71 +1,812 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101827">
-<title>English Learning OS | برنامه ۱۲ هفته‌ای</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070b16">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>English Learning OS V7 | برنامه ۱۲ هفته‌ای</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f6fa;--panel:#fff;--panel2:#f8fafc;--text:#172033;--muted:#68758a;--line:#e5eaf1;--accent:#6558e8;--accent2:#8b82ff;--good:#15966b;--warn:#d68b22;--bad:#d45656;--shadow:0 10px 30px rgba(24,39,75,.06);--radius:18px}
-[data-theme=dark]{--bg:#0c1220;--panel:#141d2d;--panel2:#101827;--text:#e8edf7;--muted:#9aa8bd;--line:#263247;--accent:#9188ff;--accent2:#b0aaff;--good:#39c99a;--warn:#f0b34e;--bad:#fa7777;--shadow:0 10px 30px rgba(0,0,0,.18)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Vazirmatn,sans-serif;transition:.2s}button,input,select,textarea{font:inherit}button{cursor:pointer}
-h1,h2,h3,.brand{font-family:Lalezar,Vazirmatn,sans-serif;font-weight:400;letter-spacing:.1px;margin:0}
-.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.side{background:var(--panel);border-left:1px solid var(--line);padding:26px 18px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:24px}.brand{font-size:27px;line-height:1.2}.brand small{display:block;font:500 11px Vazirmatn;color:var(--muted);letter-spacing:1.8px;margin-top:5px}.nav{display:grid;gap:7px}.nav button{border:0;background:transparent;color:var(--muted);text-align:right;padding:12px 14px;border-radius:12px;display:flex;gap:12px;align-items:center}.nav button.active,.nav button:hover{background:color-mix(in srgb,var(--accent) 11%,transparent);color:var(--accent)}.nav .ico{width:22px;text-align:center}.side-foot{margin-top:auto;color:var(--muted);font-size:11px;line-height:1.9}
-.main{padding:28px clamp(16px,3vw,42px);max-width:1500px;width:100%;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:25px}.eyebrow{font-size:11px;color:var(--muted);letter-spacing:1.5px}.top h1{font-size:30px;margin-top:4px}.top-actions{display:flex;gap:8px;align-items:center}.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:9px 13px;border-radius:11px;font-size:12px}.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.btn.ghost{background:transparent}.iconbtn{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--text)}
-.view{display:none}.view.active{display:block}.hero{background:linear-gradient(115deg,#28234f,#5146a8 58%,#766ce0);color:white;border-radius:24px;padding:27px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:var(--shadow);margin-bottom:18px;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:250px;height:250px;border:1px solid #ffffff25;border-radius:50%;left:10%;top:-140px;box-shadow:0 0 0 35px #ffffff09,0 0 0 70px #ffffff06}.hero h2{font-size:28px}.hero p{margin:8px 0 0;color:#e1defe;font-size:13px;max-width:620px;line-height:1.9}.hero .big{font-size:42px;font-weight:800;white-space:nowrap}.hero .big small{font-size:12px;display:block;text-align:center;font-weight:400;color:#dedaff}
-.grid{display:grid;gap:15px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:19px;box-shadow:var(--shadow);min-width:0}.statlabel{color:var(--muted);font-size:11px}.statnum{font-size:27px;font-weight:800;margin:7px 0 3px;direction:ltr;text-align:right}.statnote{font-size:10px;color:var(--muted)}.section-head{display:flex;justify-content:space-between;align-items:center;margin:25px 0 12px;gap:10px}.section-head h2{font-size:21px}.section-head p{font-size:11px;color:var(--muted);margin:3px 0 0}.cols{grid-template-columns:1.35fr .85fr}.progressline{height:8px;background:var(--line);border-radius:20px;overflow:hidden;margin:10px 0}.progressline span{height:100%;display:block;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:20px}.muted{color:var(--muted)}.small{font-size:11px}.week-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}.week-row:last-child{border:0}.week-num{width:35px;height:35px;border-radius:11px;background:var(--panel2);display:grid;place-items:center;color:var(--accent);font-weight:800;font-size:12px;flex-shrink:0}.week-info{flex:1;min-width:0}.week-info strong{font-size:12px}.week-info small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.week-row .pct{font-size:11px;color:var(--muted);direction:ltr}
-.pill{display:inline-flex;align-items:center;padding:4px 8px;border-radius:20px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent);font-size:10px}.pill.green{background:color-mix(in srgb,var(--good) 12%,transparent);color:var(--good)}.pill.amber{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn)}
-.week-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:15px}.week-toolbar select,.field{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:10px 12px;border-radius:11px;min-width:150px}.week-layout{display:grid;grid-template-columns:280px 1fr;gap:15px}.week-list{max-height:720px;overflow:auto}.week-pick{width:100%;border:0;background:transparent;color:var(--text);text-align:right;padding:12px;border-radius:12px;display:flex;gap:10px;align-items:center}.week-pick.active{background:color-mix(in srgb,var(--accent) 11%,transparent)}.week-pick .wkbadge{width:30px;height:30px;border-radius:9px;background:var(--panel2);display:grid;place-items:center;font-size:11px;color:var(--accent)}.week-pick span:last-child{font-size:11px}.unit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.unit{background:var(--panel2);border:1px solid var(--line);padding:13px;border-radius:14px}.unit h3{font-size:17px;margin-bottom:6px}.unit p{font-size:10px;line-height:1.8;color:var(--muted);margin:0}.unit .unitno{font-size:10px;color:var(--accent);font-weight:700;direction:ltr;text-align:right}.plan-block{margin-top:18px}.plan-block h3{font-size:18px;margin-bottom:9px}.task{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12px;line-height:1.8}.task:last-child{border:0}.task input{accent-color:var(--accent);margin-top:5px;width:16px;height:16px;flex-shrink:0}.task.done .tasktext{text-decoration:line-through;color:var(--muted)}.tasktext{flex:1}.tasktext small{display:block;color:var(--muted);font-size:10px}.grammar-table{width:100%;border-collapse:collapse;font-size:11px}.grammar-table td,.grammar-table th{padding:10px 8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}.grammar-table th{color:var(--muted);font-weight:500}.tag-essential{color:var(--good);font-weight:700}.tag-optional{color:var(--warn);font-weight:700}.tag-reference{color:var(--muted)}
-.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.formgrid label{font-size:11px;color:var(--muted);display:grid;gap:6px}.formgrid input,.formgrid select,.formgrid textarea{width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--line);padding:10px;border-radius:10px}.formgrid textarea{min-height:75px;resize:vertical}.tablewrap{overflow:auto}.data-table{width:100%;border-collapse:collapse;font-size:11px}.data-table th,.data-table td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}.data-table th{color:var(--muted);font-weight:500}.empty{text-align:center;color:var(--muted);padding:25px;font-size:12px}.barrow{display:grid;grid-template-columns:95px 1fr 40px;gap:10px;align-items:center;margin:12px 0;font-size:11px}.bar{height:9px;background:var(--line);border-radius:20px;overflow:hidden}.bar span{display:block;height:100%;background:var(--accent);border-radius:20px}.notice{background:var(--panel2);border:1px dashed var(--line);padding:13px;border-radius:12px;font-size:11px;line-height:1.9;color:var(--muted)}
-.mobilebar{display:none}
-@media(max-width:1000px){.app{grid-template-columns:1fr}.side{height:auto;position:sticky;z-index:10;top:0;border-left:0;border-bottom:1px solid var(--line);padding:12px 15px;display:block}.brand{font-size:21px}.brand small{display:none}.nav{display:flex;overflow:auto;margin-top:10px}.nav button{white-space:nowrap;padding:8px 11px;font-size:11px}.nav .ico{display:none}.side-foot{display:none}.main{padding:20px 15px}.week-layout{grid-template-columns:1fr}.week-list{display:flex;overflow:auto;max-height:none;gap:5px}.week-pick{min-width:145px}.cols{grid-template-columns:1fr}}
-@media(max-width:650px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:22px;align-items:flex-start}.hero h2{font-size:22px}.hero .big{font-size:30px}.unit-grid{grid-template-columns:1fr}.top h1{font-size:24px}.formgrid{grid-template-columns:1fr}.top-actions .btn span{display:none}}
+:root{
+ --bg:#edf0f7;--panel:#ffffff;--panel2:#f4f6fc;--line:#dce2f0;--text:#0e1424;--muted:#5b6885;
+ --accent:#4357e6;--accent2:#2f43c8;--on-accent:#ffffff;--amber:#d98200;--good:#0f9b72;--bad:#d6455d;--warn:#d98200;
+ --grid:rgba(60,80,160,.07);--glow:rgba(67,87,230,.10);--shadow:0 1px 0 rgba(255,255,255,.6) inset,0 12px 32px -18px rgba(30,45,110,.25);
+ --radius:20px;--sb:env(safe-area-inset-bottom,0px);
+ --fb:Vazirmatn,Tahoma,"Segoe UI",system-ui,-apple-system,sans-serif;--fh:Lalezar,Vazirmatn,Tahoma,"Segoe UI",system-ui,sans-serif;--fm:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+[data-theme=dark]{
+ --bg:#070b16;--panel:#0d1426;--panel2:#111a31;--line:#1b2744;--text:#e8edfb;--muted:#8793b2;
+ --accent:#7b90ff;--accent2:#4d63ea;--on-accent:#050a18;--amber:#ffb547;--good:#3ee6b0;--bad:#ff6b81;--warn:#ffb547;
+ --grid:rgba(120,140,230,.055);--glow:rgba(100,125,255,.14);--shadow:0 1px 0 rgba(255,255,255,.03) inset,0 18px 40px -24px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;scrollbar-color:var(--line) transparent}
+body{margin:0;color:var(--text);font-family:var(--fb);background-color:var(--bg);
+ background-image:radial-gradient(900px 420px at 85% -80px,var(--glow),transparent 70%),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+ background-size:auto,44px 44px,44px 44px;background-attachment:fixed;transition:background-color .25s,color .25s}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3,.brand{font-family:var(--fh);font-weight:400;margin:0;letter-spacing:0}
+.i{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;vertical-align:-.22em}
+.app{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.side{background:color-mix(in srgb,var(--panel) 80%,transparent);backdrop-filter:blur(14px);border-left:1px solid var(--line);padding:24px 16px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:26px;overflow:auto}
+.brand{font-size:22px;line-height:1.15;display:flex;align-items:center;gap:11px;padding:0 6px}
+.brand svg{width:34px;height:34px;flex-shrink:0}
+.brand small{display:block;font:500 11px var(--fb);color:var(--muted);margin-top:3px}
+.nav{display:grid;gap:4px}
+.nav button{border:0;background:transparent;color:var(--muted);text-align:right;padding:11px 14px;border-radius:12px;display:flex;gap:12px;align-items:center;width:100%;position:relative;font-size:13px;transition:background .15s,color .15s}
+.nav button .i{font-size:19px}
+.nav button:hover{color:var(--text);background:var(--panel2)}
+.nav button.active{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.nav button.active::after{content:"";position:absolute;right:-16px;top:9px;bottom:9px;width:3px;border-radius:3px;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.side-foot{margin-top:auto;color:var(--muted);font-size:11px;line-height:1.9;padding:0 6px}
+.main{padding:26px clamp(16px,3vw,42px) 40px;max-width:1500px;width:100%;margin:auto;min-width:0}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+.top h1{font-size:34px;line-height:1.2}
+.top .sub{font-size:12px;color:var(--muted);margin-top:4px}
+.top-actions{display:flex;gap:10px;align-items:center}
+.themesw{position:relative;width:76px;height:40px;border-radius:22px;border:1px solid var(--line);background:var(--panel);padding:0;display:flex;align-items:center;justify-content:space-around;color:var(--muted);overflow:hidden}
+.themesw .thumb{position:absolute;top:4px;inset-inline-start:4px;width:30px;height:30px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px color-mix(in srgb,var(--accent) 55%,transparent);transition:transform .35s cubic-bezier(.5,1.4,.5,1)}
+[data-theme=dark] .themesw .thumb{transform:translateX(-36px)}
+.themesw .i{position:relative;z-index:1;width:18px;height:18px;transition:color .25s,transform .45s}
+.themesw .sun{color:var(--on-accent)}.themesw .moon{color:var(--muted)}
+[data-theme=dark] .themesw .sun{color:var(--muted);transform:rotate(-90deg)}
+[data-theme=dark] .themesw .moon{color:var(--on-accent);transform:rotate(0)}
+:root:not([data-theme=dark]) .themesw .moon{transform:rotate(90deg)}
+.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:9px 15px;border-radius:12px;font-size:12px;min-height:40px;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:border-color .15s,background .15s,transform .1s}
+.btn:hover{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600;box-shadow:0 8px 22px -10px var(--accent)}
+.btn.sm{min-height:34px;padding:5px 11px;font-size:11px;border-radius:10px}
+.btn.big{min-height:50px;font-size:14px;padding:10px 26px;border-radius:14px}
+.btn.danger{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 55%,var(--line))}
+.btn:disabled{opacity:.4;cursor:default}
+.view{display:none}.view.active{display:block}
+/* هیرو */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:28px;padding:28px 34px;border:1px solid var(--line);border-radius:26px;background:radial-gradient(520px 260px at 0% 100%,var(--glow),transparent 70%),var(--panel);box-shadow:var(--shadow);margin-bottom:16px}
+.hero h2{font-size:36px;line-height:1.25}
+.hero p{margin:10px 0 0;color:var(--muted);font-size:13px;max-width:560px;line-height:2}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:30px;border:1px solid var(--line);background:var(--panel2);font-size:12px}
+.chip b{font-weight:800}
+.chip.amber{color:var(--amber);border-color:color-mix(in srgb,var(--amber) 40%,var(--line));background:color-mix(in srgb,var(--amber) 10%,transparent)}
+.orbit{position:relative;flex-shrink:0}
+.orbit svg{width:100%;height:100%;display:block}
+.orbit-in{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.orbit-in b{font-family:var(--fh);font-weight:400;font-size:calc(var(--o,150px)*.34);line-height:1}
+.orbit-in small{font-size:calc(var(--o,150px)*.085);color:var(--muted);margin-top:4px}
+.o-track{fill:none;stroke:var(--line);stroke-width:10;stroke-linecap:round}
+.o-track.o-now{stroke:color-mix(in srgb,var(--amber) 55%,var(--line))}
+.o-fg{fill:none;stroke:var(--accent);stroke-width:10;stroke-linecap:round;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--accent) 55%,transparent))}
+.seg-in{animation:segin .6s calc(var(--i)*70ms) both}
+@keyframes segin{from{opacity:0}}
+/* نوار آمار */
+.statstrip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow)}
+.stat{background:var(--panel);padding:17px 20px;min-width:0}
+.statlabel{color:var(--muted);font-size:12px;display:flex;align-items:center;gap:7px}
+.statnum{font-size:30px;font-weight:800;margin:8px 0 2px;direction:ltr;text-align:right;font-variant-numeric:tabular-nums;line-height:1.1}
+.statnote{font-size:11px;color:var(--muted)}
+.grid{display:grid;gap:16px}
+.cols{grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);min-width:0}
+.card>h2{font-size:22px;margin-bottom:4px}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:26px 0 12px;gap:10px;flex-wrap:wrap}
+.section-head h2{font-size:24px}.section-head p{font-size:12px;color:var(--muted);margin:3px 0 0}
+.progressline{height:7px;background:var(--line);border-radius:20px;overflow:hidden;margin:10px 0}
+.progressline span{height:100%;display:block;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:20px}
+.muted{color:var(--muted)}.small{font-size:11px}
+.week-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.week-row:last-child{border:0}
+.week-num{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);display:grid;place-items:center;color:var(--accent);font-weight:800;font-size:12px;flex-shrink:0}
+.week-info{flex:1;min-width:0}.week-info strong{font-size:12px;font-weight:600}
+.week-info small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.week-row .pct{font-size:11px;color:var(--muted);direction:ltr;font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;padding:4px 10px;border-radius:20px;background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--accent);font-size:11px;white-space:nowrap}
+.pill.green{background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good)}
+.pill.amber{background:color-mix(in srgb,var(--amber) 15%,transparent);color:var(--amber)}
+.week-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+.week-toolbar select,.field{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:10px 12px;border-radius:12px;min-width:150px}
+.week-layout{display:grid;grid-template-columns:262px minmax(0,1fr);gap:16px}
+.week-list{max-height:720px;overflow:auto;padding:10px}
+.week-pick{width:100%;border:1px solid transparent;background:transparent;color:var(--text);text-align:right;padding:10px;border-radius:12px;display:flex;gap:10px;align-items:center}
+.week-pick:hover{background:var(--panel2)}
+.week-pick.active{background:color-mix(in srgb,var(--accent) 12%,transparent);border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
+.week-pick .wkbadge{width:30px;height:30px;border-radius:9px;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;font-size:11px;color:var(--accent);flex-shrink:0;font-weight:700}
+.week-pick span:last-child{font-size:12px}
+.unit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:6px}
+.unit{background:var(--panel2);border:1px solid var(--line);padding:14px;border-radius:14px}
+.unit h3{font-size:18px;margin-bottom:6px}
+.unit p{font-size:11px;line-height:1.9;color:var(--muted);margin:0}
+.unit .unitno{font-size:11px;color:var(--accent);font-weight:700;direction:ltr;text-align:right}
+.plan-block{margin-top:20px}.plan-block h3{font-size:20px;margin-bottom:9px}
+.task{display:flex;align-items:flex-start;gap:11px;padding:12px 0;border-bottom:1px solid var(--line);font-size:12px;line-height:1.9}
+.task:last-child{border:0}
+.task input[type=checkbox]{accent-color:var(--accent);margin-top:4px;width:20px;height:20px;flex-shrink:0}
+.task.done .tasktext b,.task.done .tasktext small{text-decoration:line-through;color:var(--muted)}
+.tasktext{flex:1;min-width:0}.tasktext small{display:block;color:var(--muted);font-size:11px}
+.tmeta{display:inline-flex;align-items:center;gap:5px;margin-top:3px;font-size:11px;color:var(--accent)}
+.grammar-table{width:100%;border-collapse:collapse;font-size:12px}
+.grammar-table td,.grammar-table th{padding:10px 8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+.grammar-table th{color:var(--muted);font-weight:500}
+.tag-essential{color:var(--good);font-weight:700}.tag-optional{color:var(--amber);font-weight:700}.tag-reference{color:var(--muted)}
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.formgrid label{font-size:12px;color:var(--muted);display:grid;gap:6px;align-content:start}
+.formgrid input,.formgrid select,.formgrid textarea{width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--line);padding:10px 12px;border-radius:12px;min-height:44px;transition:border-color .15s}
+.formgrid input:focus,.formgrid select:focus,.formgrid textarea:focus,.field:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.formgrid textarea{min-height:78px;resize:vertical}
+.formgrid .full{grid-column:1/-1}
+.jlabel{font-size:11px;color:var(--accent)}
+.tablewrap{overflow:auto}
+.data-table{width:100%;border-collapse:collapse;font-size:12px}
+.data-table th,.data-table td{padding:12px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.data-table th{color:var(--muted);font-weight:500}
+.data-table td.wrap{white-space:normal;min-width:140px}
+.empty{text-align:center;color:var(--muted);padding:26px;font-size:12px}
+.barrow{display:grid;grid-template-columns:100px 1fr 58px;gap:10px;align-items:center;margin:12px 0;font-size:12px}
+.barrow b{font-variant-numeric:tabular-nums;direction:ltr;text-align:right;font-size:11px}
+.bar{height:8px;background:var(--line);border-radius:20px;overflow:hidden}
+.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:20px}
+.notice{background:var(--panel2);border:1px dashed var(--line);padding:13px 14px;border-radius:12px;font-size:12px;line-height:2;color:var(--muted)}
+.links{display:grid;gap:8px;margin-top:10px}
+.links a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;text-decoration:none;font-size:13px;background:var(--panel2);color:var(--text)}
+.links a:hover{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.links a small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.links a .i{color:var(--accent)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.clock{font-family:var(--fm);font-size:54px;font-weight:600;direction:ltr;text-align:center;letter-spacing:1px;font-variant-numeric:tabular-nums;margin:8px 0;color:var(--text)}
+.clock.run{color:var(--amber);text-shadow:0 0 24px color-mix(in srgb,var(--amber) 45%,transparent)}
+.recdot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--amber);margin-inline-end:8px;animation:rec 1.4s infinite}
+@keyframes rec{50%{opacity:.25}}
+.task-card{border:1px solid var(--line);background:var(--panel2);border-radius:14px;padding:15px;margin-bottom:10px}
+.task-card b{font-size:14px;font-weight:700}.task-card p{margin:6px 0 0;font-size:12px;line-height:2;color:var(--muted)}
+.banner{display:none;background:color-mix(in srgb,var(--amber) 11%,var(--panel));border:1px solid color-mix(in srgb,var(--amber) 38%,var(--line));padding:12px 15px;border-radius:14px;margin-bottom:16px;font-size:12px;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.banner.show{display:flex}
+.banner .i{color:var(--amber)}
+.chartbox svg{width:100%;height:auto;display:block}
+.ch-bar{fill:url(#gBar)}.ch-bar.hi{fill:url(#gBarHi)}
+.ch-goal{stroke:var(--amber);stroke-dasharray:4 4;stroke-width:1.5}
+.ch-t{fill:var(--muted);font-size:11px;font-family:var(--fb)}
+.ch-v{fill:var(--text);font-size:10px;font-family:var(--fb)}
+.ch-line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 0 6px color-mix(in srgb,var(--accent) 55%,transparent))}
+.ch-dot{fill:var(--panel);stroke:var(--accent);stroke-width:2.5}
+.ch-axis{stroke:var(--line)}
+.delta{display:inline-flex;gap:4px;align-items:center;font-size:12px;margin-inline-end:10px}
+.delta.up{color:var(--good)}.delta.down{color:var(--bad)}
+.cpcard{border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--panel2);margin-bottom:14px}
+.cpcard h3{font-size:19px;margin-bottom:4px}
+/* نوار پایین موبایل */
+.bottomnav{display:none;position:fixed;left:10px;right:10px;bottom:calc(10px + var(--sb));z-index:30;background:color-mix(in srgb,var(--panel) 86%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:22px;padding:6px;justify-content:space-around;gap:2px;box-shadow:0 18px 40px -16px rgba(0,0,0,.55)}
+.bottomnav button{flex:1;border:0;background:transparent;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 2px;border-radius:16px;font-size:10px;min-height:54px}
+.bottomnav button .i{font-size:20px}
+.bottomnav button.active{color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.sheet{position:fixed;inset:0;z-index:40;background:#0009;display:none;align-items:flex-end}
+.sheet.open{display:flex}
+.sheet-body{background:var(--panel);width:100%;border-radius:24px 24px 0 0;border-top:1px solid var(--line);padding:16px 16px calc(16px + var(--sb));display:grid;gap:8px}
+.sheet-body button{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:14px;border-radius:14px;text-align:right;display:flex;gap:12px;align-items:center;min-height:52px;font-size:14px}
+.sheet-body button .i{color:var(--accent);font-size:20px}
+.mini{position:fixed;z-index:35;display:none;align-items:center;gap:10px;background:var(--panel);color:var(--text);border:1px solid color-mix(in srgb,var(--amber) 45%,var(--line));border-radius:18px;padding:9px 14px;box-shadow:0 14px 34px -12px rgba(0,0,0,.6);bottom:22px;left:22px}
+.mini.show{display:flex}
+.mini .t{font-family:var(--fm);font-weight:700;direction:ltr;font-variant-numeric:tabular-nums;font-size:17px;color:var(--amber)}
+.mini .l{font-size:11px;color:var(--muted);max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mini button{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:11px;min-width:38px;min-height:38px;display:grid;place-items:center}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + var(--sb));background:var(--text);color:var(--bg);padding:11px 18px;border-radius:14px;font-size:12px;z-index:60;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90vw;text-align:center}
+.toast.show{opacity:1}
+/* تبلت: ستون آیکونی */
+@media(max-width:1099px) and (min-width:720px){
+ .app{grid-template-columns:88px minmax(0,1fr)}
+ .side{padding:16px 6px;align-items:stretch;gap:16px}
+ .brand{justify-content:center;padding:0}.brand .bt{display:none}
+ .nav button{flex-direction:column;gap:5px;padding:11px 3px;font-size:10px;text-align:center;justify-content:center;line-height:1.5}
+ .nav button.active::after{right:-6px}
+ .side-foot{display:none}
+ .main{padding:22px 20px 40px}
+}
+@media(max-width:900px){
+ .cols{grid-template-columns:1fr}
+ .week-layout{grid-template-columns:1fr}
+ .week-list{display:flex;overflow:auto;max-height:none;gap:6px;padding:10px}
+ .week-pick{min-width:150px;width:auto;border-color:var(--line)}
+ .statstrip{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(min-width:901px) and (max-width:1099px){.statstrip{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* موبایل */
+@media(max-width:719px){
+ .app{grid-template-columns:1fr}
+ .side{display:none}
+ .bottomnav{display:flex}
+ .main{padding:16px 14px calc(104px + var(--sb))}
+ .top{margin-bottom:16px}.top h1{font-size:28px}
+ .top-actions .btn span{display:none}
+ .hero{padding:20px 18px;gap:14px}.hero h2{font-size:26px}.hero p{font-size:12px}
+ .statnum{font-size:25px}.stat{padding:14px 15px}
+ .formgrid{grid-template-columns:1fr}
+ .formgrid input,.formgrid select,.formgrid textarea,.field,.week-toolbar select{font-size:16px}
+ .card{padding:16px}
+ .clock{font-size:44px}
+ .mini{left:12px;right:12px;bottom:calc(86px + var(--sb));justify-content:space-between}
+ .btn{min-height:44px}.btn.sm{min-height:38px}
+ .barrow{grid-template-columns:82px 1fr 54px}
+ .card.tablewrap{background:transparent;border:0;box-shadow:none;padding:0;overflow:visible}
+ .data-table thead{display:none}
+ .data-table,.data-table tbody,.data-table tr,.data-table td{display:block;width:100%}
+ .data-table tr{border:1px solid var(--line);border-radius:14px;padding:8px 13px;margin-bottom:10px;background:var(--panel)}
+ .data-table td{display:flex;justify-content:space-between;align-items:center;gap:12px;border:0;padding:6px 0;white-space:normal;text-align:left;min-width:0!important}
+ .data-table td::before{content:attr(data-label);color:var(--muted);font-size:11px;flex-shrink:0}
+ .data-table td.empty{display:block;text-align:center}.data-table td.empty::before{content:none}
+ .data-table td.actions{justify-content:flex-end;flex-wrap:wrap}.data-table td.actions::before{content:none}
+}
+@media(pointer:coarse){.task input[type=checkbox]{width:24px;height:24px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* =========================
+   ENGLISH LEARNING OS · V7 MOTION REDESIGN
+   UI layer only — application logic and data model preserved
+   ========================= */
+:root{
+  --bg:#f4f6fb;
+  --panel:#ffffff;
+  --panel2:#f7f9fd;
+  --line:#e3e8f2;
+  --text:#182238;
+  --muted:#73809a;
+  --accent:#5268e8;
+  --accent2:#354bd0;
+  --on-accent:#ffffff;
+  --amber:#d9952b;
+  --good:#159b78;
+  --bad:#d9536b;
+  --warn:#d9952b;
+  --grid:rgba(70,92,170,.035);
+  --glow:rgba(82,104,232,.13);
+  --shadow:0 8px 30px -20px rgba(35,51,96,.22),0 1px 0 rgba(255,255,255,.85) inset;
+  --radius:22px;
+}
+[data-theme=dark]{
+  --bg:#080d19;
+  --panel:#101a2d;
+  --panel2:#142139;
+  --line:#24324d;
+  --text:#edf2ff;
+  --muted:#91a0bd;
+  --accent:#8b9cff;
+  --accent2:#6278f1;
+  --on-accent:#081020;
+  --amber:#ffc46b;
+  --good:#4bdcb0;
+  --bad:#ff8295;
+  --warn:#ffc46b;
+  --grid:rgba(130,151,220,.045);
+  --glow:rgba(100,124,255,.16);
+  --shadow:0 18px 44px -28px rgba(0,0,0,.8),0 1px 0 rgba(255,255,255,.025) inset;
+}
+html{scroll-behavior:smooth}
+body{
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(ellipse 780px 460px at 92% -12%,var(--glow),transparent 68%),
+    radial-gradient(ellipse 600px 380px at -15% 60%,rgba(30,190,190,.045),transparent 70%),
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:auto,auto,38px 38px,38px 38px;
+  background-attachment:fixed;
+}
+.app{grid-template-columns:264px minmax(0,1fr);gap:0}
+.side{
+  background:color-mix(in srgb,var(--panel) 90%,transparent);
+  border-left:1px solid var(--line);
+  padding:27px 17px 20px;
+  gap:28px;
+  box-shadow:8px 0 40px -35px rgba(20,35,75,.3);
+}
+.brand{padding:4px 8px;font-size:24px;gap:12px}
+.brand svg{width:39px;height:39px;filter:drop-shadow(0 4px 10px var(--glow))}
+.brand small{font-size:11px;letter-spacing:.1px}
+.nav{gap:6px}
+.nav button{
+  min-height:46px;
+  padding:12px 14px;
+  border:1px solid transparent;
+  border-radius:14px;
+  font-size:13px;
+  gap:13px;
+}
+.nav button .i{font-size:19px}
+.nav button:hover{transform:translateX(-2px);background:var(--panel2)}
+.nav button.active{
+  border-color:color-mix(in srgb,var(--accent) 24%,var(--line));
+  background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 13%,var(--panel)),color-mix(in srgb,var(--accent) 5%,var(--panel)));
+  box-shadow:0 5px 18px -14px var(--accent);
+}
+.nav button.active::after{right:-17px;width:3px;top:10px;bottom:10px}
+.side-foot{
+  border-top:1px solid var(--line);
+  padding:16px 8px 0;
+  line-height:2.1;
+}
+.main{max-width:1580px;padding:28px clamp(18px,3.2vw,48px) 48px}
+.top{
+  min-height:64px;
+  margin-bottom:25px;
+  padding-bottom:17px;
+  border-bottom:1px solid var(--line);
+}
+.top h1{font-size:36px;letter-spacing:-.3px}
+.top .sub{font-size:12px;margin-top:6px}
+.top-actions{gap:12px}
+.themesw{width:78px;height:42px;border-radius:14px}
+.themesw .thumb{border-radius:10px;width:32px;height:32px;top:4px}
+.themesw .i{width:17px;height:17px}
+.btn{
+  min-height:43px;
+  border-radius:13px;
+  padding:10px 16px;
+  font-size:12px;
+  font-weight:600;
+  box-shadow:0 2px 8px -7px var(--text);
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px -14px var(--accent)}
+.btn.primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 9px 22px -13px var(--accent);
+}
+.btn.primary:hover{box-shadow:0 12px 24px -12px var(--accent)}
+.btn.big{min-height:52px;border-radius:15px}
+.view.active{animation:viewEnter .34s ease both}
+@keyframes viewEnter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:34px 38px;
+  min-height:190px;
+  border-radius:26px;
+  border-color:color-mix(in srgb,var(--accent) 18%,var(--line));
+  background:
+    radial-gradient(ellipse 380px 240px at 5% 110%,color-mix(in srgb,var(--accent) 17%,transparent),transparent 72%),
+    radial-gradient(ellipse 300px 180px at 95% -20%,rgba(20,190,180,.08),transparent 70%),
+    var(--panel);
+  box-shadow:var(--shadow);
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.035) 50%,transparent 70%);
+  transform:translateX(-100%);
+  animation:heroSheen 9s ease-in-out infinite;
+}
+@keyframes heroSheen{0%,65%{transform:translateX(-100%)}90%,100%{transform:translateX(100%)}}
+.hero h2{font-size:39px;line-height:1.25;position:relative;z-index:1}
+.hero p{font-size:13px;line-height:2.1;max-width:620px;position:relative;z-index:1}
+.chips{gap:9px}
+.chip{border-radius:11px;padding:7px 12px;font-size:11px}
+.orbit{filter:drop-shadow(0 8px 16px var(--glow))}
+.statstrip{
+  border-radius:20px;
+  gap:1px;
+  box-shadow:var(--shadow);
+}
+.stat{padding:19px 21px;transition:background .2s}
+.stat:hover{background:var(--panel2)}
+.statlabel{font-size:12px;font-weight:500}
+.statlabel .i{color:var(--accent)}
+.statnum{font-size:32px;letter-spacing:-.8px;margin:10px 0 4px}
+.statnote{font-size:11px}
+.grid{gap:18px}
+.cols{grid-template-columns:minmax(0,1.25fr) minmax(300px,.85fr)}
+.card{
+  padding:22px;
+  border-radius:21px;
+  box-shadow:var(--shadow);
+  transition:border-color .2s,transform .2s,box-shadow .2s;
+}
+.card>h2{font-size:23px;margin-bottom:8px}
+.section-head{margin:28px 0 14px}
+.section-head h2{font-size:25px}
+.section-head p{font-size:12px;line-height:1.8}
+.progressline{height:8px;background:color-mix(in srgb,var(--line) 75%,var(--panel));margin:12px 0;border-radius:30px}
+.progressline span{background:linear-gradient(90deg,#20b8a4,var(--accent));box-shadow:0 0 12px var(--glow)}
+.week-row{padding:13px 2px}
+.week-num{width:38px;height:38px;border-radius:12px}
+.week-info strong{font-size:13px}
+.week-info small{font-size:11px;line-height:1.8}
+.week-pick{padding:11px;border-radius:13px}
+.week-pick.active{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 10%,transparent)}
+.week-pick .wkbadge{width:34px;height:34px;border-radius:11px}
+.unit-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
+.unit{
+  border-radius:16px;
+  padding:16px;
+  transition:transform .2s,border-color .2s,background .2s;
+}
+.unit:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 35%,var(--line));background:color-mix(in srgb,var(--accent) 4%,var(--panel2))}
+.unit h3{font-size:19px}
+.unit p{font-size:12px;line-height:2}
+.task{padding:14px 0;font-size:13px;line-height:2}
+.task input[type=checkbox]{width:19px;height:19px;accent-color:var(--accent)}
+.tasktext small{font-size:11px;line-height:1.8}
+.pill{padding:5px 10px;border-radius:9px;font-weight:600}
+.week-toolbar{gap:10px;margin-bottom:18px}
+.week-toolbar select,.field{border-radius:13px;min-height:44px}
+.formgrid{gap:14px}
+.formgrid label{font-size:12px;gap:7px}
+.formgrid input,.formgrid select,.formgrid textarea{
+  border-radius:13px;
+  min-height:46px;
+  padding:11px 13px;
+  background:var(--panel2);
+}
+.formgrid textarea{min-height:92px}
+.formgrid input:hover,.formgrid select:hover,.formgrid textarea:hover{border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.tablewrap{border-radius:18px}
+.data-table{font-size:12px}
+.data-table th{font-size:11px;letter-spacing:.1px}
+.data-table th,.data-table td{padding:14px 10px}
+.data-table tbody tr{transition:background .15s}
+.data-table tbody tr:hover{background:color-mix(in srgb,var(--accent) 4%,transparent)}
+.notice{border-radius:15px;line-height:2.1;padding:15px 16px}
+.links a{border-radius:14px;padding:13px 15px;transition:transform .15s,border-color .15s}
+.links a:hover{transform:translateX(-2px)}
+.clock{font-size:58px;letter-spacing:2px}
+.task-card{border-radius:16px;padding:17px}
+.task-card b{font-size:14px}
+.banner{border-radius:15px;padding:14px 17px}
+.chartbox{min-width:0}
+.chartbox svg{overflow:visible}
+.cpcard{border-radius:17px;padding:18px}
+.bottomnav{
+  background:color-mix(in srgb,var(--panel) 91%,transparent);
+  border-color:color-mix(in srgb,var(--line) 90%,transparent);
+  box-shadow:0 18px 50px -22px rgba(0,0,0,.45);
+}
+.bottomnav button{font-weight:600}
+.bottomnav button.active{border:1px solid color-mix(in srgb,var(--accent) 20%,transparent)}
+.sheet-body{gap:9px}
+.sheet-body button{border-radius:15px}
+.toast{border:1px solid var(--line);box-shadow:0 12px 30px -15px rgba(0,0,0,.5)}
+/* Responsive refinement */
+@media(max-width:1099px) and (min-width:720px){
+  .app{grid-template-columns:82px minmax(0,1fr)}
+  .side{padding:18px 7px;gap:19px}
+  .brand svg{width:36px;height:36px}
+  .nav button{min-height:62px;border-radius:13px}
+  .main{padding:24px 22px 42px}
+  .hero{padding:28px}
+}
+@media(max-width:900px){
+  .cols{grid-template-columns:1fr}
+  .week-layout{grid-template-columns:1fr}
+  .week-list{display:flex;gap:8px;padding:10px;scroll-snap-type:x proximity}
+  .week-pick{min-width:165px;scroll-snap-align:start}
+}
+@media(max-width:719px){
+  body{background-size:auto,auto,30px 30px,30px 30px}
+  .app{grid-template-columns:1fr}
+  .main{padding:15px 13px calc(112px + var(--sb))}
+  .top{align-items:flex-start;gap:10px;padding-bottom:14px;margin-bottom:17px}
+  .top h1{font-size:29px}
+  .top .sub{font-size:11px}
+  .top-actions{gap:7px}
+  .themesw{width:66px;height:39px;border-radius:12px;flex-shrink:0}
+  .themesw .thumb{width:29px;height:29px}
+  .top-actions .btn{width:44px;min-width:44px;padding:0;border-radius:12px}
+  .top-actions .btn span{display:none}
+  .hero{
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:10px;
+    padding:21px 17px;
+    min-height:155px;
+    border-radius:21px;
+  }
+  .hero h2{font-size:27px}
+  .hero p{font-size:11px;line-height:2;margin-top:7px}
+  .hero .chips{margin-top:11px;gap:6px}
+  .chip{font-size:10px;padding:6px 9px}
+  .orbit{max-width:104px}
+  .statstrip{grid-template-columns:repeat(2,minmax(0,1fr));border-radius:17px}
+  .stat{padding:14px 13px}
+  .statnum{font-size:25px;margin:8px 0 3px}
+  .statlabel{font-size:11px;gap:5px}
+  .statnote{font-size:10px}
+  .grid{gap:13px}
+  .card{padding:16px;border-radius:18px}
+  .card>h2{font-size:21px}
+  .section-head{margin:21px 0 11px}
+  .section-head h2{font-size:22px}
+  .section-head p{font-size:11px}
+  .formgrid{grid-template-columns:1fr;gap:12px}
+  .formgrid .full{grid-column:auto}
+  .formgrid input,.formgrid select,.formgrid textarea,.field,.week-toolbar select{font-size:16px}
+  .formgrid label{font-size:12px}
+  .week-toolbar{align-items:stretch}
+  .week-toolbar select{width:100%;min-width:0}
+  .week-toolbar .pill{align-self:flex-start}
+  .week-layout{gap:12px}
+  .week-list{margin:0 -2px}
+  .week-pick{min-width:148px;padding:9px}
+  .unit-grid{grid-template-columns:1fr}
+  .unit{padding:14px}
+  .task{font-size:12px;gap:9px}
+  .task input[type=checkbox]{width:22px;height:22px}
+  .clock{font-size:46px}
+  .barrow{grid-template-columns:78px minmax(0,1fr) 48px;gap:7px}
+  .data-table th,.data-table td{padding:9px 0}
+  .data-table tr{padding:10px 12px}
+  .data-table td{font-size:12px;line-height:1.7}
+  .data-table td::before{max-width:38%;white-space:normal;text-align:right}
+  .data-table td.actions{gap:6px}
+  .btn{min-height:44px}
+  .btn.sm{min-height:39px}
+  .bottomnav{left:8px;right:8px;bottom:calc(8px + var(--sb));border-radius:19px;padding:5px}
+  .bottomnav button{min-height:53px;font-size:9px;padding:6px 1px}
+  .bottomnav button .i{font-size:19px}
+  .mini{left:10px;right:10px;bottom:calc(83px + var(--sb))}
+  .toast{bottom:calc(90px + var(--sb));font-size:11px}
+  .banner{font-size:11px}
+  .grammar-table{font-size:11px}
+  .grammar-table td,.grammar-table th{padding:9px 5px}
+}
+@media(max-width:380px){
+  .main{padding-inline:10px}
+  .hero{grid-template-columns:minmax(0,1fr) 82px;padding:17px 13px}
+  .hero h2{font-size:24px}
+  .orbit{max-width:82px}
+  .stat{padding:12px 10px}
+  .statnum{font-size:23px}
+  .top h1{font-size:26px}
+  .bottomnav button{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  .view.active,.hero::after{animation:none!important}
+  .nav button,.card,.unit,.btn,.links a{transition:none!important}
+}
+
+
+/* ================= V7 / MOTION & VISUAL IDENTITY ================= */
+:root{--ease-out:cubic-bezier(.2,.75,.25,1);--ease-spring:cubic-bezier(.18,.9,.25,1.25)}
+html{scroll-behavior:smooth}
+body{isolation:isolate;overflow-x:hidden}
+body::before,body::after{content:"";position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(2px);opacity:.55}
+body::before{width:520px;height:520px;top:-230px;left:-180px;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 17%,transparent),transparent 68%);animation:ambientDrift 19s ease-in-out infinite alternate}
+body::after{width:440px;height:440px;right:-210px;bottom:-210px;background:radial-gradient(circle,color-mix(in srgb,#18bfa4 13%,transparent),transparent 68%);animation:ambientDrift 23s ease-in-out infinite alternate-reverse}
+@keyframes ambientDrift{0%{transform:translate3d(0,0,0) scale(.9)}100%{transform:translate3d(55px,35px,0) scale(1.12)}}
+.app{position:relative}
+.side{position:sticky;top:0;height:100vh;align-self:start;overflow-y:auto;scrollbar-width:thin}
+.brand{position:relative}
+.brand svg{filter:drop-shadow(0 0 10px color-mix(in srgb,var(--accent) 35%,transparent));animation:brandBreath 5s ease-in-out infinite}
+@keyframes brandBreath{50%{filter:drop-shadow(0 0 17px color-mix(in srgb,var(--accent) 55%,transparent))}}
+.nav button{position:relative;isolation:isolate;overflow:hidden;transition:transform .28s var(--ease-spring),background .25s,border-color .25s,color .25s}
+.nav button::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 15%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 85%);transform:translateX(120%);transition:transform .55s var(--ease-out);z-index:-1}
+.nav button:hover::before{transform:translateX(-120%)}
+.nav button:hover{transform:translateX(-3px)}
+.nav button.active{box-shadow:inset -3px 0 0 var(--accent),0 8px 22px -16px var(--accent)}
+.nav button.active .i{filter:drop-shadow(0 0 5px color-mix(in srgb,var(--accent) 65%,transparent));animation:iconPop .45s var(--ease-spring)}
+@keyframes iconPop{0%{transform:scale(.7) rotate(-12deg)}100%{transform:scale(1) rotate(0)}}
+.main{min-width:0;animation:mainEnter .65s var(--ease-out) both}
+@keyframes mainEnter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.top{position:relative}
+.top::after{content:"";position:absolute;bottom:-1px;right:0;width:clamp(70px,13vw,170px);height:2px;border-radius:9px;background:linear-gradient(90deg,transparent,var(--accent),#20b8a4);transform-origin:right;animation:lineReveal .9s .15s var(--ease-out) both}
+@keyframes lineReveal{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+.hero{position:relative;isolation:isolate;overflow:hidden;border:1px solid color-mix(in srgb,var(--accent) 18%,var(--line));background:linear-gradient(125deg,color-mix(in srgb,var(--panel) 96%,var(--accent) 4%),var(--panel) 52%,color-mix(in srgb,var(--panel) 92%,#18bfa4 8%));box-shadow:0 20px 55px -34px color-mix(in srgb,var(--accent) 48%,transparent),var(--shadow);transform:translateZ(0)}
+.hero::before{content:"";position:absolute;z-index:-1;width:310px;height:310px;left:-110px;top:-170px;border:1px solid color-mix(in srgb,var(--accent) 19%,transparent);border-radius:50%;box-shadow:0 0 0 22px color-mix(in srgb,var(--accent) 3%,transparent),0 0 0 52px color-mix(in srgb,var(--accent) 2%,transparent);animation:heroOrbit 26s linear infinite}
+.hero::after{content:"";position:absolute;z-index:-1;inset:-80% auto -80% -40%;width:30%;background:linear-gradient(90deg,transparent,color-mix(in srgb,#fff 17%,transparent),transparent);transform:rotate(22deg) translateX(-220%);animation:heroShimmer 9s 1.2s ease-in-out infinite}
+@keyframes heroOrbit{to{transform:rotate(360deg)}}
+@keyframes heroShimmer{0%,58%{transform:rotate(22deg) translateX(-220%)}78%,100%{transform:rotate(22deg) translateX(520%)}}
+.hero h2{animation:heroTextIn .7s .12s var(--ease-out) both}
+.hero p{animation:heroTextIn .7s .22s var(--ease-out) both}
+.hero .chips{animation:heroTextIn .7s .32s var(--ease-out) both}
+@keyframes heroTextIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.card,.stat{position:relative;isolation:isolate;overflow:hidden;transition:transform .32s var(--ease-out),border-color .3s,box-shadow .32s,background .25s}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;background:radial-gradient(280px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--accent) 10%,transparent),transparent 70%);transition:opacity .3s}
+.card:hover::before{opacity:1}
+.card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 32%,var(--line));box-shadow:0 18px 42px -27px color-mix(in srgb,var(--accent) 45%,transparent),var(--shadow)}
+.stat:hover{transform:translateY(-3px);z-index:1}
+.statnum{transition:color .25s,transform .3s var(--ease-spring)}
+.stat:hover .statnum{color:var(--accent);transform:translateY(-2px)}
+.view{transform-origin:top center}
+.view.active{animation:viewEnter .48s var(--ease-out) both}
+@keyframes viewEnter{from{opacity:0;transform:translateY(12px) scale(.995);filter:blur(2px)}to{opacity:1;transform:none;filter:blur(0)}}
+.reveal-ready .reveal{opacity:0;transform:translateY(18px) scale(.99);transition:opacity .55s var(--ease-out),transform .6s var(--ease-out)}
+.reveal-ready .reveal.in-view{opacity:1;transform:none}
+.progressline span,.bar span{transform-origin:right center;animation:barGrow 1s .12s var(--ease-out) both}
+@keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.orbit .o-fg{stroke-dasharray:var(--circ,1);stroke-dashoffset:var(--offset,0);animation:ringDraw 1.4s .2s var(--ease-out) both}
+@keyframes ringDraw{from{stroke-dashoffset:var(--circ,1)}to{stroke-dashoffset:var(--offset,0)}}
+.btn{position:relative;isolation:isolate;overflow:hidden;transition:transform .22s var(--ease-spring),box-shadow .25s,filter .2s,border-color .2s}
+.btn::after{content:"";position:absolute;inset:-50% auto -50% -40%;width:25%;transform:skewX(-22deg) translateX(-250%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transition:transform .65s var(--ease-out);pointer-events:none}
+.btn:hover{transform:translateY(-2px);filter:saturate(1.08);box-shadow:0 10px 22px -15px var(--accent)}
+.btn:hover::after{transform:skewX(-22deg) translateX(650%)}
+.btn:active{transform:translateY(0) scale(.97)}
+.unit{position:relative;overflow:hidden;transition:transform .28s var(--ease-spring),border-color .25s,box-shadow .25s}
+.unit::after{content:"";position:absolute;inset:auto -20% -70% -20%;height:90%;background:radial-gradient(ellipse,color-mix(in srgb,var(--accent) 13%,transparent),transparent 70%);opacity:0;transition:opacity .3s}
+.unit:hover{transform:translateY(-5px) scale(1.012);box-shadow:0 16px 28px -22px var(--accent)}
+.unit:hover::after{opacity:1}
+.week-pick{transition:background .22s,border-color .22s,transform .22s var(--ease-spring)}
+.week-pick:hover{transform:translateX(-3px)}
+.week-pick.active .wkbadge{background:var(--accent);color:var(--on-accent);border-color:var(--accent);box-shadow:0 5px 15px -7px var(--accent)}
+.task input[type=checkbox]{cursor:pointer;transition:transform .2s var(--ease-spring),filter .2s}
+.task input[type=checkbox]:checked{transform:scale(1.12);filter:drop-shadow(0 0 5px color-mix(in srgb,var(--good) 45%,transparent))}
+.formgrid input,.formgrid select,.formgrid textarea,.field{transition:background .2s,border-color .2s,box-shadow .2s,transform .2s}
+.formgrid input:focus,.formgrid select:focus,.formgrid textarea:focus{transform:translateY(-1px)}
+.data-table tbody tr{transition:background .2s,transform .2s}
+.data-table tbody tr:hover{transform:translateX(-2px)}
+.toast{animation:toastIn .35s var(--ease-spring) both}
+@keyframes toastIn{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.bottomnav button{transition:transform .25s var(--ease-spring),color .2s,background .2s}
+.bottomnav button.active{box-shadow:0 5px 18px -12px var(--accent)}
+.bottomnav button.active .i{animation:iconPop .35s var(--ease-spring)}
+.themesw .thumb{transition:transform .35s var(--ease-spring),background .25s}
+::selection{background:color-mix(in srgb,var(--accent) 28%,transparent);color:var(--text)}
+@media(hover:none){.card:hover,.stat:hover,.unit:hover{transform:none}.card::before{display:none}}
+@media(max-width:719px){
+ body::before{width:300px;height:300px;top:-150px;left:-150px}
+ body::after{width:260px;height:260px;right:-150px;bottom:40px}
+ .hero::before{width:210px;height:210px;left:-95px;top:-110px}
+ .card:hover{transform:none}
+ .nav button:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+ .reveal-ready .reveal{opacity:1!important;transform:none!important}
+}
+/* ================= END V7 ================= */
+
 </style></head>
-<body><div class="app">
-<aside class="side"><div class="brand">English Learning OS<small>12-WEEK READING & COMPREHENSION PLAN</small></div>
-<nav class="nav">
-<button class="active" data-view="home"><span class="ico">⌂</span>نمای کلی</button>
-<button data-view="curriculum"><span class="ico">▤</span>برنامه ۱۲ هفته‌ای</button>
-<button data-view="sessions"><span class="ico">◷</span>ثبت مطالعه</button>
-<button data-view="vocab"><span class="ico">Aa</span>دفتر واژگان</button>
-<button data-view="reading"><span class="ico">▧</span>Reading Tracker</button>
-<button data-view="analytics"><span class="ico">◫</span>گزارش پیشرفت</button>
-<button data-view="settings"><span class="ico">⚙</span>تنظیمات و پشتیبان</button>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="gBar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--accent)"/><stop offset="1" style="stop-color:var(--accent2)"/></linearGradient>
+<linearGradient id="gBarHi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--amber)"/><stop offset="1" style="stop-color:var(--amber);stop-opacity:.65"/></linearGradient>
+<symbol id="i-today" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></symbol>
+<symbol id="i-curriculum" viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 12.5 9 5 9-5"/><path d="m3 17 9 5 9-5"/></symbol>
+<symbol id="i-sessions" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M9.5 2.5h5"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+<symbol id="i-vocab" viewBox="0 0 24 24"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5Z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 22H20"/><path d="M9 7h7M9 11h4"/></symbol>
+<symbol id="i-reading" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+<symbol id="i-analytics" viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="11" width="3.5" height="7" rx="1"/><rect x="10.25" y="5" width="3.5" height="13" rx="1"/><rect x="15.5" y="9" width="3.5" height="9" rx="1"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/><path d="M17 3v3M15.5 4.5h3"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z"/></symbol>
+<symbol id="i-pause" viewBox="0 0 24 24"><path d="M8.5 5v14M15.5 5v14" stroke-width="2.6"/></symbol>
+<symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2.5"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 22c4 0 7-2.7 7-6.8 0-3-1.8-5-3.5-6.7-.3 1.6-1 2.6-2 3.2.3-3.5-1.3-6.4-4.5-8.7.3 3.3-1.5 5-3 6.7C4.8 11.4 5 13.5 5 15.2 5 19.3 8 22 12 22Z"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4M12 17.4v.1"/></symbol>
+<symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.5" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V5M7 9l5-5 5 5M5 20h14"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 7V4h4v3M6 7l1 13h10l1-13M10 11v5M14 11v5"/></symbol>
+<symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+<symbol id="i-arrowL" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+<symbol id="i-arrowR" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+<symbol id="i-down" viewBox="0 0 24 24"><path d="M7 7l10 10M17 9v8H9"/></symbol>
+<symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C10.5 5 8 4.5 4 4.5v13c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2v-13c-4 0-6.5.5-8 2Z"/><path d="M12 6.5v13"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></symbol>
+</defs></svg>
+
+<div class="app">
+<aside class="side"><div class="brand"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="12.5" fill="none" stroke="var(--line)" stroke-width="3.5"/><circle cx="17" cy="17" r="12.5" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="46 80" transform="rotate(-100 17 17)"/><circle cx="29" cy="12" r="2.8" fill="var(--amber)"/></svg><div class="bt">English Learning OS<small>برنامه ۱۲ هفته‌ای درک متن</small></div></div>
+<nav class="nav" id="sideNav">
+<button data-view="today" class="active"><svg class="i"><use href="#i-today"/></svg><span class="lbl">امروز</span></button>
+<button data-view="home"><svg class="i"><use href="#i-home"/></svg><span class="lbl">نمای کلی</span></button>
+<button data-view="curriculum"><svg class="i"><use href="#i-curriculum"/></svg><span class="lbl">برنامه ۱۲ هفته‌ای</span></button>
+<button data-view="sessions"><svg class="i"><use href="#i-sessions"/></svg><span class="lbl">ثبت مطالعه</span></button>
+<button data-view="vocab"><svg class="i"><use href="#i-vocab"/></svg><span class="lbl">دفتر واژگان</span></button>
+<button data-view="reading"><svg class="i"><use href="#i-reading"/></svg><span class="lbl">Reading Tracker</span></button>
+<button data-view="analytics"><svg class="i"><use href="#i-analytics"/></svg><span class="lbl">گزارش و Checkpoint</span></button>
+<button data-view="settings"><svg class="i"><use href="#i-settings"/></svg><span class="lbl">تنظیمات و پشتیبان</span></button>
 </nav><div class="side-foot">نسخه مستقل و آفلاین‌محور<br>ذخیره‌سازی روی همین مرورگر<br>ساخته‌شده برای ۵ تا ۶ ساعت مطالعه در هفته</div></aside>
+
 <main class="main">
-<header class="top"><div><div class="eyebrow">YOUR PERSONAL STUDY SPACE</div><h1 id="pageTitle">نمای کلی</h1></div><div class="top-actions"><button class="btn" id="themeBtn">◐ <span>تغییر پوسته</span></button><button class="btn primary" onclick="showView('sessions')">＋ <span>ثبت جلسه</span></button></div></header>
-<section class="view active" id="home">
-<div class="hero"><div><div class="eyebrow" style="color:#c9c4ff">YOUR 12-WEEK ROADMAP</div><h2>از مطالعه پراکنده تا درک مستقل متن</h2><p>سه یونیت Touchstone در هفته، گرامر هدفمند از English Grammar in Use و تمرین مستقل Reading. مسیر منعطف است؛ لازم نیست هر روز مطالعه کنی.</p></div><div class="big" id="heroProgress">0%<small>کل مسیر</small></div></div>
-<div class="grid stats">
-<div class="card"><div class="statlabel">هفته جاری</div><div class="statnum" id="statWeek">01 / 12</div><div class="statnote">قابل تغییر از بخش برنامه</div></div>
-<div class="card"><div class="statlabel">زمان مطالعه ثبت‌شده</div><div class="statnum" id="statHours">0.0h</div><div class="statnote">مجموع جلسات ثبت‌شده</div></div>
-<div class="card"><div class="statlabel">وظایف تکمیل‌شده</div><div class="statnum" id="statTasks">0%</div><div class="statnote">از کل وظایف ۱۲ هفته</div></div>
-<div class="card"><div class="statlabel">واژگان ثبت‌شده</div><div class="statnum" id="statWords">0</div><div class="statnote">در دفتر واژگان</div></div></div>
-<div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>ادامه مسیر</h2><p>وضعیت هفته انتخاب‌شده</p></div><button class="btn" onclick="showView('curriculum')">مشاهده برنامه ←</button></div><div id="homeWeek"></div></div>
-<div class="card"><div class="section-head" style="margin-top:0"><div><h2>تقسیم زمان پیشنهادی</h2><p>مبنای ۵ ساعت و ۳۰ دقیقه در هفته</p></div></div><div class="barrow"><span>Touchstone</span><div class="bar"><span style="width:42%"></span></div><b>140m</b></div><div class="barrow"><span>Grammar</span><div class="bar"><span style="width:18%"></span></div><b>60m</b></div><div class="barrow"><span>Reading</span><div class="bar"><span style="width:22%"></span></div><b>75m</b></div><div class="barrow"><span>Review</span><div class="bar"><span style="width:18%"></span></div><b>55m</b></div><div class="notice">Listening و Writing در دل فعالیت‌های Touchstone به‌صورت مکمل انجام می‌شوند؛ اگر زمان کم شد، ابتدا از تمرین‌های تکراری و بخش‌های کم‌اولویت کم کن، نه از Reading.</div></div></div>
+<header class="top"><div><h1 id="pageTitle">امروز</h1><div class="sub" id="topDate"></div></div><div class="top-actions"><button class="themesw" id="themeBtn" role="switch" aria-label="تغییر پوسته روشن / تیره"><span class="thumb"></span><svg class="i sun"><use href="#i-sun"/></svg><svg class="i moon"><use href="#i-moon"/></svg></button><button class="btn primary" onclick="go('sessions')"><svg class="i"><use href="#i-plus"/></svg><span>ثبت دستی جلسه</span></button></div></header>
+<div class="banner" id="backupBanner"></div>
+
+<!-- امروز -->
+<section class="view active" id="today">
+<div class="hero"><div><h2>امروز چه کنم؟</h2><p id="todayHint"></p><div class="chips" id="todayChips"></div></div><div id="todayRing"></div></div>
+<div class="statstrip">
+<div class="stat"><div class="statlabel"><svg class="i"><use href="#i-clock"/></svg>مطالعه امروز</div><div class="statnum" id="tdToday">0</div><div class="statnote">دقیقه</div></div>
+<div class="stat"><div class="statlabel"><svg class="i"><use href="#i-target"/></svg>این هفته</div><div class="statnum" id="tdWeek">0</div><div class="statnote">از هدف ۳۳۰ دقیقه</div></div>
+<div class="stat"><div class="statlabel"><svg class="i"><use href="#i-vocab"/></svg>واژه‌های موعددار</div><div class="statnum" id="tdDue">0</div><div class="statnote">آماده مرور امروز</div></div>
+<div class="stat"><div class="statlabel"><svg class="i"><use href="#i-curriculum"/></svg>هفته جاری</div><div class="statnum" id="tdWk">01 / 12</div><div class="statnote" id="tdWkPct">0% تکمیل</div></div>
+</div>
+<div class="grid cols">
+<div>
+<div class="card"><div class="section-head" style="margin-top:0"><div><h2>کار بعدی</h2><p>فقط یکی دو کار پیش‌رو؛ بقیه برنامه در بخش «برنامه»</p></div></div><div id="tdTasks"></div></div>
+<div class="card" style="margin-top:16px" id="timerCard"></div>
+</div>
+<div>
+<div class="card"><h2>۷ روز اخیر</h2><div class="chartbox" id="tdWeekChart"></div></div>
+<div class="card" style="margin-top:16px"><h2>مرور واژگان</h2><div id="tdVocab"></div></div>
+</div>
+</div>
+</section>
+
+<!-- نمای کلی -->
+<section class="view" id="home">
+<div class="hero"><div><h2>از مطالعه پراکنده تا درک مستقل متن</h2><p>سه یونیت Touchstone در هفته، گرامر هدفمند از English Grammar in Use، تمرین مستقل Reading و یک بلوک کوتاه Listening. مسیر منعطف است؛ لازم نیست هر روز مطالعه کنی.</p></div><div id="heroProgress"></div></div>
+<div class="statstrip">
+<div class="stat"><div class="statlabel"><svg class="i"><use href="#i-curriculum"/></svg>هفته جاری</div><div class="statnum" id="statWeek">01 / 12</div><div class="statnote">قابل تغییر از بخش برنامه</div></div>
+<div class="stat"><div class="statlabel"><svg class="i"><use href="#i-clock"/></svg>زمان مطالعه ثبت‌شده</div><div class="statnum" id="statHours">0.0h</div><div class="statnote">مجموع جلسات</div></div>
+<div class="stat"><div class="statlabel"><svg class="i"><use href="#i-check"/></svg>وظایف تکمیل‌شده</div><div class="statnum" id="statTasks">0%</div><div class="statnote">از کل وظایف ۱۲ هفته</div></div>
+<div class="stat"><div class="statlabel"><svg class="i"><use href="#i-vocab"/></svg>واژگان ثبت‌شده</div><div class="statnum" id="statWords">0</div><div class="statnote">در دفتر واژگان</div></div></div>
+<div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>ادامه مسیر</h2><p>وضعیت هفته انتخاب‌شده</p></div><button class="btn" onclick="go('curriculum')">مشاهده برنامه <svg class="i"><use href="#i-arrowL"/></svg></button></div><div id="homeWeek"></div></div>
+<div class="card"><div class="section-head" style="margin-top:0"><div><h2>تقسیم زمان پیشنهادی</h2><p>مبنای ۵ ساعت و ۳۰ دقیقه در هفته</p></div></div><div id="homeSplit"></div><div class="notice">اگر زمان کم شد، ابتدا از تمرین‌های تکراری و بخش‌های کم‌اولویت کم کن، نه از Reading.</div></div></div>
 <div class="section-head"><div><h2>نقشه ۱۲ هفته</h2><p>پیشرفت هر هفته بر اساس وظایف تیک‌خورده</p></div></div><div class="card" id="homeWeeks"></div>
 </section>
+
+<!-- برنامه -->
 <section class="view" id="curriculum">
 <div class="week-toolbar"><select id="weekSelect" aria-label="انتخاب هفته"></select><span class="pill">۵ تا ۶ ساعت در هفته</span><span class="pill green">Reading-first</span></div>
 <div class="week-layout"><div class="card week-list" id="weekList"></div><div class="card" id="weekDetail"></div></div>
 </section>
+
+<!-- ثبت مطالعه -->
 <section class="view" id="sessions">
-<div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>ثبت جلسه مطالعه</h2><p>زمان واقعی و فعالیت انجام‌شده را ثبت کن</p></div></div>
-<form id="sessionForm" class="formgrid"><label>تاریخ<input type="date" id="sDate" required></label><label>هفته<select id="sWeek"></select></label><label>نوع فعالیت<select id="sType"><option>Touchstone</option><option>Grammar in Use</option><option>Independent Reading</option><option>Listening</option><option>Review / Test</option><option>Vocabulary</option></select></label><label>مدت (دقیقه)<input type="number" id="sMinutes" min="1" max="600" required placeholder="مثلاً 45"></label><label style="grid-column:1/-1">یادداشت کوتاه<textarea id="sNote" placeholder="چه خواندی؟ چه چیزی دشوار بود؟"></textarea></label><button class="btn primary" type="submit">ذخیره جلسه</button></form></div>
-<div class="card"><h2>هدف هفتگی</h2><div class="statnum">330 min</div><p class="muted small">هدف پیشنهادی ۵ ساعت و ۳۰ دقیقه؛ لازم نیست در روزهای ثابت تقسیم شود.</p><div class="progressline"><span id="sessionGoalBar" style="width:0%"></span></div><div class="small muted" id="sessionGoalText">۰ از ۳۳۰ دقیقه</div><div class="notice" style="margin-top:18px">یک جلسه ۲۵ تا ۴۵ دقیقه‌ای معمولاً برای تمرکز روی یک مهارت کافی است. جلسات را می‌توانی در چند روز یا به‌صورت بلوک‌های طولانی‌تر انجام دهی.</div></div></div>
+<div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>ثبت دستی جلسه</h2><p>اگر از تایمر استفاده نکردی، زمان واقعی را اینجا ثبت کن</p></div></div>
+<form id="sessionForm" class="formgrid"><label>تاریخ<input type="date" id="sDate" required><span class="jlabel" id="sDateJ"></span></label><label>هفته<select id="sWeek"></select></label><label>نوع فعالیت<select id="sType"></select></label><label>مدت (دقیقه)<input type="number" inputmode="numeric" id="sMinutes" min="1" max="600" required placeholder="مثلاً 45"></label><label class="full">یادداشت کوتاه<textarea id="sNote" placeholder="چه خواندی؟ چه چیزی دشوار بود؟"></textarea></label><button class="btn primary" type="submit">ذخیره جلسه</button></form></div>
+<div class="card"><h2>هدف هفتگی</h2><div class="statnum">330 min</div><p class="muted small">هدف پیشنهادی ۵ ساعت و ۳۰ دقیقه؛ لازم نیست در روزهای ثابت تقسیم شود.</p><div class="progressline"><span id="sessionGoalBar" style="width:0%"></span></div><div class="small muted" id="sessionGoalText"></div><div class="notice" style="margin-top:18px">یک جلسه ۲۵ تا ۴۵ دقیقه‌ای معمولاً برای تمرکز روی یک مهارت کافی است. ساده‌ترین راه: از صفحه «امروز» تایمر را شروع کن تا جلسه خودکار ثبت شود.</div></div></div>
 <div class="section-head"><div><h2>تاریخچه جلسات</h2><p>آخرین فعالیت‌های ثبت‌شده</p></div></div><div class="card tablewrap"><table class="data-table"><thead><tr><th>تاریخ</th><th>هفته</th><th>فعالیت</th><th>مدت</th><th>یادداشت</th><th></th></tr></thead><tbody id="sessionRows"></tbody></table></div>
 </section>
-<section class="view" id="vocab"><div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>افزودن واژه</h2><p>معنا، مثال و زمان مرور را نگه دار</p></div></div><form id="vocabForm" class="formgrid"><label>واژه / عبارت<input id="vWord" required placeholder="e.g. take into account"></label><label>معنی فارسی<input id="vMeaning" placeholder="معنی یا توضیح"></label><label style="grid-column:1/-1">مثال انگلیسی<input id="vExample" placeholder="Write a natural example sentence."></label><label>منبع / یونیت<input id="vSource" placeholder="TS3 Unit 2"></label><button class="btn primary" type="submit">افزودن به دفتر</button></form></div><div class="card"><h2>مرور هوشمند</h2><div class="statnum" id="dueWords">0</div><p class="muted small">واژه‌هایی که امروز زمان مرورشان رسیده است.</p><button class="btn" onclick="filterDue()">نمایش واژه‌های موعددار</button><div class="notice" style="margin-top:15px">فاصله‌های مرور پیشنهادی: روز ۱، ۳، ۷، ۱۴ و ۳۰. با هر مرور، واژه به فاصله بعدی منتقل می‌شود.</div></div></div>
+
+<!-- واژگان -->
+<section class="view" id="vocab"><div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>افزودن واژه</h2><p>معنا، مثال و زمان مرور را نگه دار</p></div></div><form id="vocabForm" class="formgrid"><label>واژه / عبارت<input id="vWord" required placeholder="e.g. take into account" dir="ltr" autocapitalize="none"></label><label>معنی فارسی<input id="vMeaning" placeholder="معنی یا توضیح"></label><label class="full">مثال انگلیسی<input id="vExample" dir="ltr" placeholder="Write a natural example sentence."></label><label>منبع / یونیت<input id="vSource" placeholder="TS3 Unit 2"></label><button class="btn primary" type="submit">افزودن به دفتر</button></form></div><div class="card"><h2>مرور هوشمند</h2><div class="statnum" id="dueWords">0</div><p class="muted small">واژه‌هایی که امروز زمان مرورشان رسیده است.</p><button class="btn" id="dueBtn" onclick="toggleDue()">فقط واژه‌های موعددار</button><div class="notice" style="margin-top:15px">فاصله‌ها: روز ۱، ۳، ۷، ۱۴ و ۳۰. «یادم بود» واژه را به فاصله بعدی می‌برد؛ «فراموش کردم» دوباره از روز ۱ شروع می‌کند.</div></div></div>
 <div class="section-head"><div><h2>دفتر واژگان</h2><p>واژه‌ها و عبارت‌های کاربردی متن‌ها</p></div><input class="field" id="vSearch" placeholder="جست‌وجو..." style="max-width:220px"></div><div class="card tablewrap"><table class="data-table"><thead><tr><th>واژه</th><th>معنی</th><th>مثال</th><th>منبع</th><th>مرور بعدی</th><th>عملیات</th></tr></thead><tbody id="vocabRows"></tbody></table></div>
 </section>
-<section class="view" id="reading"><div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>ثبت تمرین Reading</h2><p>سرعت و میزان درک متن را پایش کن</p></div></div><form id="readingForm" class="formgrid"><label>تاریخ<input type="date" id="rDate" required></label><label>هفته<select id="rWeek"></select></label><label style="grid-column:1/-1">عنوان متن<input id="rTitle" required placeholder="Article / chapter title"></label><label>منبع<input id="rSource" placeholder="BBC, blog, book..."></label><label>تعداد کلمات<input id="rWords" type="number" min="1" required></label><label>زمان مطالعه (دقیقه)<input id="rMinutes" type="number" min="1" required></label><label>درک مطلب<select id="rComprehension"><option value="1">۱ — ضعیف</option><option value="2">۲ — محدود</option><option value="3" selected>۳ — متوسط</option><option value="4">۴ — خوب</option><option value="5">۵ — بسیار خوب</option></select></label><label style="grid-column:1/-1">یادداشت / نکته<textarea id="rNote" placeholder="موضوع اصلی، جملات دشوار، نکات جدید..."></textarea></label><button class="btn primary" type="submit">ثبت متن</button></form></div><div class="card"><h2>معیار پیشنهادی تحلیل متن</h2><div class="task"><span class="pill">۱</span><div>ابتدا متن را یک‌بار بدون دیکشنری بخوان و ایده اصلی را مشخص کن.</div></div><div class="task"><span class="pill">۲</span><div>فقط واژه‌هایی را استخراج کن که برای فهم متن مهم‌اند یا تکرار می‌شوند.</div></div><div class="task"><span class="pill">۳</span><div>سه تا پنج جمله دشوار را از نظر فاعل، فعل، بندها و ارجاع ضمایر باز کن.</div></div><div class="task"><span class="pill">۴</span><div>در پایان، خلاصه ۲ تا ۳ جمله‌ای انگلیسی یا فارسی بنویس.</div></div></div></div>
+
+<!-- Reading -->
+<section class="view" id="reading"><div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>ثبت تمرین Reading</h2><p>سرعت و میزان درک متن را پایش کن</p></div></div><form id="readingForm" class="formgrid"><label>تاریخ<input type="date" id="rDate" required><span class="jlabel" id="rDateJ"></span></label><label>هفته<select id="rWeek"></select></label><label class="full">عنوان متن<input id="rTitle" required placeholder="Article / chapter title" dir="ltr"></label><label>منبع<input id="rSource" placeholder="BBC, blog, book..."></label><label>تعداد کلمات<input id="rWords" type="number" inputmode="numeric" min="1" required></label><label>زمان مطالعه (دقیقه)<input id="rMinutes" type="number" inputmode="decimal" min="1" step="any" required></label><label>درک مطلب<select id="rComprehension"><option value="1">۱ — ضعیف</option><option value="2">۲ — محدود</option><option value="3" selected>۳ — متوسط</option><option value="4">۴ — خوب</option><option value="5">۵ — بسیار خوب</option></select></label><label class="full">یادداشت / نکته<textarea id="rNote" placeholder="موضوع اصلی، جملات دشوار، نکات جدید..."></textarea></label><button class="btn primary" type="submit">ثبت متن</button></form></div>
+<div><div class="card"><h2>این هفته چه بخوانم؟</h2><div id="readPick"></div></div>
+<div class="card" style="margin-top:16px"><h2>روش تحلیل متن</h2><div class="task"><span class="pill">۱</span><div>ابتدا متن را یک‌بار بدون دیکشنری بخوان و ایده اصلی را مشخص کن.</div></div><div class="task"><span class="pill">۲</span><div>فقط واژه‌هایی را استخراج کن که برای فهم متن مهم‌اند یا تکرار می‌شوند.</div></div><div class="task"><span class="pill">۳</span><div>سه تا پنج جمله دشوار را از نظر فاعل، فعل، بندها و ارجاع ضمایر باز کن.</div></div><div class="task"><span class="pill">۴</span><div>در پایان، خلاصه ۲ تا ۳ جمله‌ای انگلیسی یا فارسی بنویس.</div></div></div></div></div>
 <div class="section-head"><div><h2>سوابق Reading</h2><p>WPM = تعداد کلمات تقسیم بر دقیقه</p></div></div><div class="card tablewrap"><table class="data-table"><thead><tr><th>تاریخ</th><th>عنوان</th><th>کلمات</th><th>دقیقه</th><th>WPM</th><th>درک</th><th></th></tr></thead><tbody id="readingRows"></tbody></table></div></section>
-<section class="view" id="analytics"><div class="grid stats"><div class="card"><div class="statlabel">کل ساعات</div><div class="statnum" id="aHours">0</div></div><div class="card"><div class="statlabel">میانگین WPM</div><div class="statnum" id="aWpm">—</div></div><div class="card"><div class="statlabel">میانگین درک</div><div class="statnum" id="aComp">—</div></div><div class="card"><div class="statlabel">جلسات ثبت‌شده</div><div class="statnum" id="aSessions">0</div></div></div><div class="grid cols"><div class="card"><h2>پیشرفت هفتگی</h2><div id="analyticsWeeks"></div></div><div class="card"><h2>Checkpointها</h2><div class="task"><span class="pill">هفته ۴</span><div><b>Checkpoint 1</b><small class="muted">درک متن‌های کوتاه، تشخیص زمان‌های اصلی و مرور Unitهای Touchstone 2.</small></div></div><div class="task"><span class="pill">هفته ۸</span><div><b>Checkpoint 2</b><small class="muted">خواندن متن‌های طولانی‌تر، فهم present perfect، شرطی‌ها، passive و relative clauses.</small></div></div><div class="task"><span class="pill">هفته ۱۲</span><div><b>Checkpoint 3</b><small class="muted">یک متن عمومی/خبری ناآشنا؛ خلاصه‌سازی، تحلیل جملات پیچیده و مقایسه با هفته اول.</small></div></div><div class="notice">برای مقایسه منصفانه، در هر checkpoint متنی با دشواری و موضوع تقریباً مشابه انتخاب کن. سرعت به‌تنهایی معیار پیشرفت نیست؛ دقت درک مهم‌تر است.</div></div></div></section>
-<section class="view" id="settings"><div class="grid cols"><div class="card"><h2>ظاهر و تجربه</h2><p class="muted small">پوسته و تنظیمات نمایش</p><button class="btn" onclick="toggleTheme()">تغییر Light / Dark Mode</button><div class="notice" style="margin-top:15px">فونت تیترها: Lalezar<br>فونت متن‌ها: Vazirmatn<br>در صورت نبود اتصال اینترنت، فونت جایگزین سیستم استفاده می‌شود.</div></div><div class="card"><h2>پشتیبان‌گیری و انتقال</h2><p class="muted small">اطلاعات در localStorage همین مرورگر ذخیره می‌شود.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:15px"><button class="btn primary" onclick="exportData()">دانلود پشتیبان JSON</button><label class="btn" for="importFile">بازیابی پشتیبان</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><div class="notice" style="margin-top:15px">پیش از انتقال به GitHub Pages یا دستگاه دیگر، فایل JSON بگیر و در نسخه جدید Import کن. localStorage بین مرورگرها و آدرس‌های مختلف همگام نمی‌شود. اتصال Supabase در مرحله بعدی اجرا اضافه خواهد شد.</div></div></div>
-<div class="card" style="margin-top:15px"><h2>بازنشانی داده‌ها</h2><p class="muted small">این گزینه همه جلسات، واژگان، سوابق Reading و تیک وظایف را از همین مرورگر پاک می‌کند.</p><button class="btn" style="color:var(--bad);border-color:var(--bad)" onclick="resetData()">بازنشانی کامل</button></div></section>
-<footer class="small muted" style="text-align:center;padding:30px 0 10px">English Learning OS · 12-week plan · Local-first edition</footer>
+
+<!-- گزارش -->
+<section class="view" id="analytics">
+<div class="statstrip"><div class="stat"><div class="statlabel"><svg class="i"><use href="#i-clock"/></svg>کل ساعات</div><div class="statnum" id="aHours">0</div></div><div class="stat"><div class="statlabel"><svg class="i"><use href="#i-reading"/></svg>میانگین WPM</div><div class="statnum" id="aWpm">—</div></div><div class="stat"><div class="statlabel"><svg class="i"><use href="#i-target"/></svg>میانگین درک</div><div class="statnum" id="aComp">—</div></div><div class="stat"><div class="statlabel"><svg class="i"><use href="#i-flame"/></svg>streak فعلی / بهترین</div><div class="statnum" id="aStreak">0 / 0</div></div></div>
+<div class="grid cols">
+<div class="card"><h2>دقیقه‌های مطالعه در هر هفته برنامه</h2><p class="muted small">خط نقطه‌چین = هدف ۳۳۰ دقیقه؛ ستون نارنجی = هفته جاری</p><div class="chartbox" id="chWeekly"></div></div>
+<div class="card"><h2>این هفته به تفکیک فعالیت</h2><div id="chTypes"></div></div>
+</div>
+<div class="grid cols" style="margin-top:16px">
+<div class="card"><h2>۱۴ روز اخیر</h2><div class="chartbox" id="chDaily"></div></div>
+<div class="card"><h2>سرعت Reading (WPM)</h2><div class="chartbox" id="chWpm"></div></div>
+</div>
+<div class="grid cols" style="margin-top:16px">
+<div class="card"><h2>Checkpointها</h2><p class="muted small">در هفته‌های ۴، ۸ و ۱۲ یک متن با دشواری مشابه بخوان و نتیجه را ثبت کن تا پیشرفت واقعی دیده شود.</p><div id="cpWrap"></div><div class="notice">سرعت به‌تنهایی معیار پیشرفت نیست؛ دقت درک مهم‌تر است.</div></div>
+<div class="card"><h2>پیشرفت هفتگی وظایف</h2><div id="analyticsWeeks"></div></div>
+</div>
+</section>
+
+<!-- تنظیمات -->
+<section class="view" id="settings"><div class="grid cols"><div class="card"><h2>ظاهر و تجربه</h2><p class="muted small">پوسته و تنظیمات نمایش</p><button class="btn" onclick="toggleTheme()"><svg class="i"><use href="#i-sun"/></svg><svg class="i"><use href="#i-moon"/></svg> تغییر پوسته روشن / تیره</button><div class="notice" style="margin-top:15px">فونت تیترها Lalezar و فونت متن Vazirmatn است و هنگام اتصال به اینترنت از Google Fonts بارگذاری می‌شود. بدون اینترنت، فونت فارسی خود دستگاه استفاده می‌شود و داشبورد همچنان کار می‌کند.</div></div>
+<div class="card"><h2>پشتیبان‌گیری و انتقال</h2><p class="muted small">اطلاعات در حافظه همین مرورگر ذخیره می‌شود.</p><div class="btnrow"><button class="btn primary" onclick="exportData()"><svg class="i"><use href="#i-download"/></svg> دانلود پشتیبان JSON</button><label class="btn" for="importFile"><svg class="i"><use href="#i-upload"/></svg> بازیابی پشتیبان</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><div class="notice" style="margin-top:15px" id="backupInfo"></div><div class="notice" style="margin-top:10px">حداقل هفته‌ای یک بار بکاپ بگیر. اگر کش مرورگر پاک شود یا مرورگر عوض کنی، فقط با فایل بکاپ می‌توانی اطلاعات را برگردانی. حافظه بین مرورگرها و آدرس‌های مختلف همگام نمی‌شود. <span id="persistState"></span></div></div></div>
+<div class="card" style="margin-top:16px"><h2>بازنشانی داده‌ها</h2><p class="muted small">این گزینه همه جلسات، واژگان، سوابق Reading، Checkpointها و تیک وظایف را از همین مرورگر پاک می‌کند.</p><button class="btn danger" onclick="resetData()"><svg class="i"><use href="#i-trash"/></svg> بازنشانی کامل</button></div></section>
+<footer class="small muted" style="text-align:center;padding:30px 0 10px">English Learning OS · 12-week plan · Local-first edition · v6</footer>
 </main></div>
+
+<nav class="bottomnav" id="bottomNav" aria-label="ناوبری اصلی">
+<button data-view="today" class="active"><svg class="i"><use href="#i-today"/></svg>امروز</button>
+<button data-view="curriculum"><svg class="i"><use href="#i-curriculum"/></svg>برنامه</button>
+<button data-view="vocab"><svg class="i"><use href="#i-vocab"/></svg>واژگان</button>
+<button data-view="reading"><svg class="i"><use href="#i-reading"/></svg>Reading</button>
+<button id="moreBtn"><svg class="i"><use href="#i-more"/></svg>بیشتر</button>
+</nav>
+<div class="sheet" id="moreSheet"><div class="sheet-body">
+<button data-view="home"><svg class="i"><use href="#i-home"/></svg>نمای کلی</button>
+<button data-view="sessions"><svg class="i"><use href="#i-sessions"/></svg>ثبت دستی مطالعه</button>
+<button data-view="analytics"><svg class="i"><use href="#i-analytics"/></svg>گزارش و Checkpoint</button>
+<button data-view="settings"><svg class="i"><use href="#i-settings"/></svg>تنظیمات و پشتیبان</button>
+</div></div>
+<div class="mini" id="mini"><span class="t timerClock">00:00</span><span class="l" id="miniLbl"></span><span style="display:flex;gap:6px"><button class="pauseBtnMini" onclick="pauseResume()" aria-label="توقف/ادامه"></button><button onclick="stopTimer()" aria-label="پایان"><svg class="i"><use href="#i-stop"/></svg></button></span></div>
+<div class="toast" id="toast" role="status"></div>
+
 <script>
 const curriculum = [
 {book:'Touchstone 2',units:[['Making friends','Simple present / present continuous questions; too / either; conversation openers'],['Interests','Verbs + prepositions; object pronouns; everybody / nobody'],['Health','Simple present / continuous; if / when clauses; health vocabulary']],grammar:[['1–4','Present continuous and present simple','ضروری'],['49–52','Questions and auxiliary verbs','ضروری'],['82–85','Object pronouns and basic pronoun reference','تکمیلی'],['113–115','If / when and basic conjunctions','تکمیلی']],tasks:[['Touchstone · Unit 1','Grammar + Reading را کامل انجام بده؛ عبارت‌های شروع مکالمه را استخراج کن.'],['Touchstone · Unit 2','Reading و Vocabulary اولویت دارند؛ object pronouns را در متن پیدا کن.'],['Touchstone · Unit 3','ساختار present simple/continuous و جمله‌های if/when را مقایسه کن.'],['Grammar in Use','درس‌های 1–2 و 49–52؛ فقط تمرین‌های مرتبط را حل کن.'],['Independent Reading','یک متن 400–600 کلمه‌ای عمومی؛ ایده اصلی و 5 واژه کلیدی را ثبت کن.'],['Weekly review','یک خلاصه 5 جمله‌ای بنویس و 10 واژه را مرور کن.']]},
@@ -81,50 +822,427 @@ const curriculum = [
 {book:'Touchstone 4',units:[['Relationships','Subject / object relative clauses; phrasal verbs'],['Behavior / Material world','Third conditional; unreal present / future conditionals'],['Tech savvy?','Embedded questions; technology and email scams']],grammar:[['38–41','Conditionals and wish: unreal / past situations','ضروری'],['92–97','Relative clauses','ضروری'],['137–145','Phrasal verbs and word order','ضروری'],['49–52','Embedded questions and auxiliary verbs','تکمیلی']],tasks:[['Touchstone · Unit 7','relative clauseها را تشخیص بده و اطلاعات ضروری/اضافی را جدا کن.'],['Touchstone · Unit 8','third conditional را به علت و نتیجه گذشته پیوند بده؛ unreal present/future را مقایسه کن.'],['Touchstone · Unit 9','embedded questions و واژگان امنیت دیجیتال؛ جمله‌های طولانی را بخش‌بندی کن.'],['Grammar in Use','درس‌های 38–41، 92–97، 137–145 و مرور 49–52.'],['Independent Reading','یک مقاله درباره فناوری یا امنیت آنلاین 750–900 کلمه‌ای.'],['Weekly review','یک سناریوی فرضی بنویس و حداقل 3 phrasal verb و 2 relative clause استفاده کن.']]},
 {book:'Touchstone 4',units:[['What’s up? / Impressions','Present perfect continuous vs present perfect; since / for / yet'],['Trends','Passive of present continuous / present perfect; linking ideas'],['Careers','Noun clauses as subjects; may / might / must; future perfect']],grammar:[['9–11','Present perfect continuous vs present perfect','ضروری'],['45–46','Passive forms: continuous / perfect passive','ضروری'],['24–25','Future perfect and future time clauses','ضروری'],['26–30','Modals for certainty and deduction','تکمیلی'],['113–120','Linking ideas: conjunctions and prepositions','تکمیلی']],tasks:[['Touchstone · Unit 10','since/for/yet و تفاوت نتیجه/مدت را در متن بررسی کن.'],['Touchstone · Unit 11','passive continuous و passive perfect؛ فرایند و نتیجه را از هم جدا کن.'],['Touchstone · Unit 12','noun clause به‌عنوان فاعل و future perfect؛ پیش‌بینی و قطعیت را تحلیل کن.'],['Grammar in Use','درس‌های 9–11، 45–46، 24–25 و مرور 26–30.'],['Independent Reading','یک مقاله حرفه‌ای/شغلی 800–1000 کلمه‌ای؛ ساختار استدلال و بندهای اسمی را تحلیل کن.'],['Final checkpoint','یک متن ناآشنا 800–1000 کلمه‌ای؛ خلاصه، تحلیل 5 جمله پیچیده و مقایسه با هفته اول.']]}
 ];
-const stateKey='englishDashboard_v2';
-let data={theme:'light',currentWeek:1,tasks:{},sessions:[],vocab:[],readings:[]};
-function load(){try{let x=JSON.parse(localStorage.getItem(stateKey)||'null');if(x)data={...data,...x}}catch(e){}}
-function save(){localStorage.setItem(stateKey,JSON.stringify(data));renderAll()}
-function $(id){return document.getElementById(id)}
-function escapeHtml(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function taskKey(w,i){return `w${w}-t${i}`}
-function taskDone(w,i){return !!data.tasks[taskKey(w,i)]}
-function weekPct(w){let n=curriculum[w-1].tasks.length;return Math.round(curriculum[w-1].tasks.filter((_,i)=>taskDone(w,i)).length/n*100)}
-function totalTasks(){return curriculum.reduce((s,w)=>s+w.tasks.length,0)}
-function totalDone(){return curriculum.reduce((s,w,wi)=>s+w.tasks.filter((_,i)=>taskDone(wi+1,i)).length,0)}
-function fmtDate(d){return d||'—'}
-function showView(id){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===id));const titles={home:'نمای کلی',curriculum:'برنامه ۱۲ هفته‌ای',sessions:'ثبت مطالعه',vocab:'دفتر واژگان',reading:'Reading Tracker',analytics:'گزارش پیشرفت',settings:'تنظیمات و پشتیبان'};$('pageTitle').textContent=titles[id]||'';if(id==='curriculum')renderCurriculum()}
-document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
-function toggleTheme(){data.theme=data.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=data.theme;localStorage.setItem(stateKey,JSON.stringify(data));$('themeBtn').innerHTML='◐ <span>تغییر پوسته</span>'}
-$('themeBtn').onclick=toggleTheme;
-function initSelects(){['weekSelect','sWeek','rWeek'].forEach(id=>{$(id).innerHTML=curriculum.map((w,i)=>`<option value="${i+1}">هفته ${i+1} · ${w.book}</option>`).join('')});$('weekSelect').value=data.currentWeek;$('sWeek').value=data.currentWeek;$('rWeek').value=data.currentWeek;$('weekSelect').onchange=()=>{data.currentWeek=+$('weekSelect').value;save();renderCurriculum()};}
-function renderHome(){let hours=data.sessions.reduce((s,x)=>s+x.minutes,0)/60;let pct=Math.round(totalDone()/totalTasks()*100);$('heroProgress').innerHTML=pct+'%<small>کل مسیر</small>';$('statWeek').textContent=String(data.currentWeek).padStart(2,'0')+' / 12';$('statHours').textContent=hours.toFixed(1)+'h';$('statTasks').textContent=pct+'%';$('statWords').textContent=data.vocab.length;
-let w=curriculum[data.currentWeek-1],p=weekPct(data.currentWeek);$('homeWeek').innerHTML=`<div style="display:flex;justify-content:space-between;gap:10px"><div><b>هفته ${data.currentWeek} · ${w.book}</b><div class="small muted" style="margin-top:5px">Units ${((data.currentWeek-1)%4)*3+1}–${((data.currentWeek-1)%4)*3+3}</div></div><span class="pill">${p}%</span></div><div class="progressline"><span style="width:${p}%"></span></div><div class="small muted">${w.units.map(u=>u[0]).join(' · ')}</div>`;
-$('homeWeeks').innerHTML=curriculum.map((w,i)=>`<div class="week-row"><div class="week-num">${i+1}</div><div class="week-info"><strong>${w.book} · ${w.units.map((u,j)=>`U${((i)%4)*3+j+1} ${u[0]}`).join(' / ')}</strong><small>${w.tasks.filter((_,j)=>taskDone(i+1,j)).length} از ${w.tasks.length} فعالیت تکمیل شده</small><div class="progressline" style="margin:7px 0 0;height:5px"><span style="width:${weekPct(i+1)}%"></span></div></div><span class="pct">${weekPct(i+1)}%</span></div>`).join('')}
-function renderCurriculum(){let wnum=data.currentWeek,w=curriculum[wnum-1];$('weekSelect').value=wnum;$('weekList').innerHTML=curriculum.map((x,i)=>`<button class="week-pick ${i+1===wnum?'active':''}" onclick="selectWeek(${i+1})"><span class="wkbadge">${String(i+1).padStart(2,'0')}</span><span>هفته ${i+1}<small class="muted" style="display:block">${x.book} · ${weekPct(i+1)}%</small></span></button>`).join('');
-let start=((wnum-1)%4)*3+1;
-$('weekDetail').innerHTML=`<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><div><div class="eyebrow">WEEK ${String(wnum).padStart(2,'0')} / 12</div><h2 style="font-size:25px;margin-top:5px">${w.book}</h2><p class="muted small">سه یونیت اصلی · حدود ۵ تا ۶ ساعت · اولویت با درک متن</p></div><span class="pill green">${weekPct(wnum)}% تکمیل</span></div><div class="progressline"><span style="width:${weekPct(wnum)}%"></span></div><div class="unit-grid">${w.units.map((u,i)=>`<div class="unit"><div class="unitno">UNIT ${start+i}</div><h3>${u[0]}</h3><p>${u[1]}</p></div>`).join('')}</div>
-<div class="plan-block"><h3>Grammar in Use · درس‌های منتخب</h3><div class="tablewrap"><table class="grammar-table"><thead><tr><th>شماره درس</th><th>موضوع</th><th>اولویت</th></tr></thead><tbody>${w.grammar.map(g=>`<tr><td dir="ltr">${g[0]}</td><td>${g[1]}</td><td class="${g[2]==='ضروری'?'tag-essential':g[2]==='تکمیلی'?'tag-optional':'tag-reference'}">${g[2]}</td></tr>`).join('')}</tbody></table></div><p class="small muted">ضروری = مطالعه و تمرین منتخب؛ تکمیلی = در صورت نیاز یا ضعف؛ مرجع = مراجعه هنگام برخورد با ساختار دشوار. لازم نیست تمام تمرین‌های هر درس حل شود.</p></div>
-<div class="plan-block"><h3>برنامه اجرایی هفته</h3>${w.tasks.map((t,i)=>`<label class="task ${taskDone(wnum,i)?'done':''}"><input type="checkbox" ${taskDone(wnum,i)?'checked':''} onchange="toggleTask(${wnum},${i},this.checked)"><span class="tasktext"><b>${t[0]}</b><small>${t[1]}</small></span></label>`).join('')}</div>
-<div class="plan-block"><h3>چیدمان پیشنهادی زمان</h3><div class="notice">Touchstone: حدود ۱۴۰ دقیقه · Grammar in Use: حدود ۶۰ دقیقه · Independent Reading: حدود ۷۵ دقیقه · مرور و ارزیابی: حدود ۵۵ دقیقه. ترتیب و روزهای مطالعه آزاد است؛ اگر فقط ۵ ساعت وقت داشتی، زمان را از تمرین‌های کم‌اولویت کم کن.</div></div>
-<div style="display:flex;justify-content:space-between;margin-top:18px"><button class="btn" onclick="selectWeek(${Math.max(1,wnum-1)})" ${wnum===1?'disabled':''}>هفته قبل</button><button class="btn primary" onclick="selectWeek(${Math.min(12,wnum+1)})" ${wnum===12?'disabled':''}>هفته بعد ←</button></div>`;
+
+
+/* ---------- تنظیمات پایه ---------- */
+const KEY='englishDashboard_v3', OLD_KEY='englishDashboard_v2';
+const TYPES=['Touchstone','Grammar in Use','Independent Reading','Listening','Review / Test','Vocabulary'];
+const TARGETS=[['Touchstone',120,['Touchstone']],['Grammar in Use',55,['Grammar in Use']],['Independent Reading',70,['Independent Reading']],['Listening',30,['Listening']],['Review / Vocab',55,['Review / Test','Vocabulary']]];
+const GOAL=330, SRS=[1,3,7,14,30];
+const LISTEN=[
+ 'یک قسمت کوتاه 6 Minute English یا صوت یکی از یونیت‌های Touchstone را یک‌بار بدون متن گوش بده، بعد با متن مقایسه کن و ۳ عبارت جدید ثبت کن.',
+ 'یک گزارش ۴ تا ۶ دقیقه‌ای (VOA Learning English یا 6 Minute English) را دو بار گوش بده؛ بار اول بدون متن، بار دوم با متن؛ ایده اصلی را بنویس.',
+ 'یک گزارش خبری یا گفتگوی ۶ تا ۸ دقیقه‌ای را بدون زیرنویس گوش بده، خلاصه ۳ جمله‌ای بنویس و ۵ عبارت کاربردی را در دفتر واژگان ثبت کن.'
+];
+curriculum.forEach((w,i)=>w.tasks.push(['Listening · ۳۰ دقیقه',LISTEN[Math.floor(i/4)]]));
+const SOURCES=[
+ [['News in Levels','https://www.newsinlevels.com','خبر در سطح‌های مختلف؛ شروع عالی'],['Simple English Wikipedia','https://simple.wikipedia.org','مقاله‌های ساده درباره هر موضوع'],['BBC 6 Minute English','https://www.bbc.co.uk/learningenglish/english/features/6-minute-english','صوت + متن کامل']],
+ [['VOA Learning English','https://learningenglish.voanews.com','خبر و گزارش با سرعت آهسته'],['Breaking News English','https://breakingnewsenglish.com','متن در چند سطح + تمرین'],['Simple English Wikipedia','https://simple.wikipedia.org','برای موضوع‌های آشنا']],
+ [['VOA Learning English','https://learningenglish.voanews.com','خبرهای بلندتر'],['BBC News','https://www.bbc.com/news','برای متن ناآشنا و checkpoint'],['English Wikipedia','https://en.wikipedia.org','مقاله‌های بلند و تحلیلی']]
+];
+const CPS=[
+ {n:4,title:'Checkpoint 1 · پایان فاز ۱',desc:'درک متن‌های کوتاه، تشخیص زمان‌های اصلی و مرور Unitهای Touchstone 2.'},
+ {n:8,title:'Checkpoint 2 · پایان فاز ۲',desc:'خواندن متن‌های طولانی‌تر، فهم present perfect، شرطی‌ها، passive و relative clauses.'},
+ {n:12,title:'Checkpoint 3 · پایان فاز ۳',desc:'یک متن عمومی/خبری ناآشنا؛ خلاصه‌سازی، تحلیل جملات پیچیده و مقایسه با هفته اول.'}
+];
+const TITLES={today:'امروز',home:'نمای کلی',curriculum:'برنامه ۱۲ هفته‌ای',sessions:'ثبت مطالعه',vocab:'دفتر واژگان',reading:'Reading Tracker',analytics:'گزارش و Checkpoint',settings:'تنظیمات و پشتیبان'};
+const MORE=['home','sessions','analytics','settings'];
+
+/* ---------- ابزارها ---------- */
+const $=id=>document.getElementById(id);
+const ic=n=>`<svg class="i" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+let orbitDone=false;
+const osz=()=>window.matchMedia('(max-width:719px)').matches?118:152;
+function orbit(main,sub,size){
+ const st=10,r=(size-st)/2,C=2*Math.PI*r,gap=st+6,L=C/12-gap,cx=size/2,anim=!orbitDone;let s='';
+ for(let i=0;i<12;i++){
+  const p=weekPct(i+1)/100,rot=-90+i*30+(gap/2/C)*360,cur=(i+1===data.currentWeek);
+  s+=`<g transform="rotate(${rot} ${cx} ${cx})" class="${anim?'seg-in':''}" style="--i:${i}"><circle cx="${cx}" cy="${cx}" r="${r}" class="o-track${cur?' o-now':''}" stroke-dasharray="${L} ${C}"/>${p>0?`<circle cx="${cx}" cy="${cx}" r="${r}" class="o-fg" stroke-dasharray="${Math.max(.1,L*p)} ${C}"/>`:''}</g>`;
+ }
+ return `<div class="orbit" style="width:${size}px;height:${size}px;--o:${size}px"><svg viewBox="0 0 ${size} ${size}" aria-hidden="true">${s}</svg><div class="orbit-in"><b>${main}</b><small>${sub}</small></div></div>`;
 }
-function selectWeek(n){data.currentWeek=n;save();renderCurriculum();$('weekSelect').value=n;$('sWeek').value=n;$('rWeek').value=n}
-function toggleTask(w,i,v){data.tasks[taskKey(w,i)]=v;localStorage.setItem(stateKey,JSON.stringify(data));renderCurriculum();renderHome()}
-function renderSessions(){let total=data.sessions.reduce((s,x)=>s+x.minutes,0),week=data.sessions.filter(x=>x.week===data.currentWeek).reduce((s,x)=>s+x.minutes,0);$('sessionGoalBar').style.width=Math.min(100,week/330*100)+'%';$('sessionGoalText').textContent=`${week} از ۳۳۰ دقیقه · ${(week/60).toFixed(1)} ساعت`;$('sessionRows').innerHTML=data.sessions.length?data.sessions.slice().reverse().map((x,i)=>`<tr><td>${fmtDate(x.date)}</td><td>${x.week}</td><td>${escapeHtml(x.type)}</td><td>${x.minutes} دقیقه</td><td>${escapeHtml(x.note)}</td><td><button class="btn" onclick="deleteItem('sessions',${data.sessions.length-1-i})">حذف</button></td></tr>`).join(''):'<tr><td colspan="6" class="empty">هنوز جلسه‌ای ثبت نشده است.</td></tr>'}
-$('sessionForm').onsubmit=e=>{e.preventDefault();data.sessions.push({date:$('sDate').value,week:+$('sWeek').value,type:$('sType').value,minutes:+$('sMinutes').value,note:$('sNote').value});$('sNote').value='';$('sMinutes').value='';save()};
-function renderVocab(){let q=($('vSearch').value||'').toLowerCase();let today=new Date().toISOString().slice(0,10);$('dueWords').textContent=data.vocab.filter(x=>x.next<=today).length;$('vocabRows').innerHTML=data.vocab.map((x,i)=>({...x,i})).filter(x=>(x.word+x.meaning+x.example+x.source).toLowerCase().includes(q)).map(x=>`<tr><td dir="ltr">${escapeHtml(x.word)}</td><td>${escapeHtml(x.meaning)}</td><td dir="ltr">${escapeHtml(x.example)}</td><td>${escapeHtml(x.source)}</td><td>${x.next||'—'}</td><td><button class="btn" onclick="reviewWord(${x.i})">مرور شد</button> <button class="btn" onclick="deleteItem('vocab',${x.i})">حذف</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">واژه‌ای پیدا نشد.</td></tr>'}
-$('vocabForm').onsubmit=e=>{e.preventDefault();let d=new Date();d.setDate(d.getDate()+1);data.vocab.push({word:$('vWord').value,meaning:$('vMeaning').value,example:$('vExample').value,source:$('vSource').value,next:d.toISOString().slice(0,10),stage:0});e.target.reset();save()};
+const pad=n=>String(n).padStart(2,'0');
+const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function todayISO(){const d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function parseISO(s){const [y,m,d]=String(s).split('-').map(Number);return new Date(y,(m||1)-1,d||1)}
+function addDays(iso,n){const d=parseISO(iso);d.setDate(d.getDate()+n);return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function daysBetween(a,b){return Math.round((parseISO(b)-parseISO(a))/86400000)}
+let jfLong,jfNum,jfDay;
+try{
+ jfLong=new Intl.DateTimeFormat('fa-IR-u-ca-persian',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+ jfNum=new Intl.DateTimeFormat('fa-IR-u-ca-persian',{year:'numeric',month:'2-digit',day:'2-digit'});
+ jfDay=new Intl.DateTimeFormat('fa-IR-u-ca-persian',{day:'numeric'});
+}catch(e){}
+function jparts(f,iso){const o={};f.formatToParts(parseISO(iso)).forEach(p=>{o[p.type]=p.value});return o}
+function jd(iso,long){
+ if(!iso)return '—';
+ try{
+  if(long){const o=jparts(jfLong,iso);return `${o.weekday}، ${o.day} ${o.month} ${o.year}`}
+  const o=jparts(jfNum,iso);return `${o.year}/${o.month}/${o.day}`;
+ }catch(e){return iso}
+}
+function jday(iso){try{return jfDay.format(parseISO(iso))}catch(e){return iso.slice(8)}}
+function fmtClock(ms){const s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%3600/60),r=s%60;return (h?pad(h)+':':'')+pad(m)+':'+pad(r)}
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2600)}
+
+/* ---------- داده و ذخیره‌سازی ---------- */
+function defaults(){return {v:3,theme:null,currentWeek:1,tasks:{},sessions:[],vocab:[],readings:[],checkpoints:{},timer:null,lastBackup:null}}
+let data=defaults();
+function migrate(x){
+ const d=Object.assign(defaults(),x&&typeof x==='object'?x:{});
+ d.v=3;
+ ['sessions','vocab','readings'].forEach(k=>{if(!Array.isArray(d[k]))d[k]=[]});
+ if(!d.tasks||typeof d.tasks!=='object')d.tasks={};
+ if(!d.checkpoints||typeof d.checkpoints!=='object')d.checkpoints={};
+ d.sessions=d.sessions.filter(s=>s&&typeof s==='object');
+ d.vocab.forEach(v=>{if(typeof v.stage!=='number')v.stage=0;if(!v.next)v.next=addDays(todayISO(),1)});
+ d.currentWeek=Math.min(12,Math.max(1,+d.currentWeek||1));
+ return d;
+}
+function load(){
+ try{
+  const raw=localStorage.getItem(KEY)||localStorage.getItem(OLD_KEY); /* داده‌های نسخه قبلی خودکار منتقل می‌شوند */
+  if(raw)data=migrate(JSON.parse(raw));
+ }catch(e){console.warn(e)}
+}
+function persist(){
+ try{localStorage.setItem(KEY,JSON.stringify(data));return true}
+ catch(e){toast('ذخیره نشد! حافظه مرورگر پر است یا حالت خصوصی فعال است. بکاپ بگیر.');return false}
+}
+function save(){persist();renderAll()}
+function saveQuiet(){persist()}
+
+/* ---------- محاسبات ---------- */
+const taskKey=(w,i)=>`w${w}-t${i}`;
+const taskDone=(w,i)=>!!data.tasks[taskKey(w,i)];
+const weekPct=w=>{const t=curriculum[w-1].tasks;return Math.round(t.filter((_,i)=>taskDone(w,i)).length/t.length*100)};
+const totalTasks=()=>curriculum.reduce((s,w)=>s+w.tasks.length,0);
+const totalDone=()=>curriculum.reduce((s,w,wi)=>s+w.tasks.filter((_,i)=>taskDone(wi+1,i)).length,0);
+const sum=a=>a.reduce((s,x)=>s+x,0);
+const weekMinutes=w=>sum(data.sessions.filter(s=>s.week===w).map(s=>+s.minutes||0));
+const minutesOn=d=>sum(data.sessions.filter(s=>s.date===d).map(s=>+s.minutes||0));
+const taskMinutes=(w,i)=>sum(data.sessions.filter(s=>s.task===taskKey(w,i)).map(s=>+s.minutes||0));
+function taskType(t){const s=t[0];if(s.startsWith('Touchstone'))return 'Touchstone';if(s.startsWith('Grammar'))return 'Grammar in Use';if(s.startsWith('Independent'))return 'Independent Reading';if(s.startsWith('Listening'))return 'Listening';return 'Review / Test'}
+function daysSet(){return new Set(data.sessions.filter(s=>s.date&&(+s.minutes||0)>0).map(s=>s.date))}
+function streak(){const s=daysSet();let d=todayISO();if(!s.has(d))d=addDays(d,-1);let n=0;while(s.has(d)){n++;d=addDays(d,-1)}return n}
+function bestStreak(){const a=[...daysSet()].sort();let best=0,cur=0,prev=null;for(const d of a){cur=(prev&&addDays(prev,1)===d)?cur+1:1;best=Math.max(best,cur);prev=d}return best}
+const dueList=()=>{const t=todayISO();return data.vocab.map((x,i)=>({...x,i})).filter(x=>x.next<=t)};
+const wpmOf=r=>r.minutes>0?r.words/r.minutes:0;
+
+/* ---------- ناوبری ---------- */
+let curView='today';
+const hid=()=>location.hash.replace(/^#\/?/,'');
+function go(id){if(location.hash==='#/'+id)showView(id);else location.hash='/'+id}
+function showView(id){
+ if(!TITLES[id])id='today';
+ curView=id;
+ document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===id));
+ document.querySelectorAll('#sideNav button').forEach(x=>x.classList.toggle('active',x.dataset.view===id));
+ document.querySelectorAll('#bottomNav button[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===id));
+ $('moreBtn').classList.toggle('active',MORE.includes(id));
+ $('moreSheet').classList.remove('open');
+ $('pageTitle').textContent=TITLES[id];
+ if(id==='analytics')renderCheckpoints();
+ if(id==='settings')renderSettings();
+ updateClock();
+ window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',()=>showView(hid()));
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
+$('moreBtn').onclick=()=>$('moreSheet').classList.add('open');
+$('moreSheet').onclick=e=>{if(e.target.id==='moreSheet')$('moreSheet').classList.remove('open')};
+
+/* ---------- پوسته ---------- */
+function effTheme(){return data.theme||'dark'}
+function applyTheme(){const t=effTheme();document.documentElement.dataset.theme=t;$('themeBtn').setAttribute('aria-checked',t==='dark');const m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='dark'?'#070b16':'#edf0f7'}
+function toggleTheme(){data.theme=effTheme()==='dark'?'light':'dark';saveQuiet();applyTheme()}
+$('themeBtn').onclick=toggleTheme;
+
+/* ---------- انتخاب‌گرها ---------- */
+function initSelects(){
+ ['weekSelect','sWeek','rWeek'].forEach(id=>{$(id).innerHTML=curriculum.map((w,i)=>`<option value="${i+1}">هفته ${i+1} · ${w.book}</option>`).join('')});
+ $('sType').innerHTML=TYPES.map(t=>`<option>${t}</option>`).join('');
+ [ 'weekSelect','sWeek','rWeek'].forEach(id=>$(id).value=data.currentWeek);
+ $('weekSelect').onchange=()=>selectWeek(+$('weekSelect').value);
+}
+function selectWeek(n){data.currentWeek=n;['weekSelect','sWeek','rWeek'].forEach(id=>$(id).value=n);save()}
+
+/* ---------- امروز ---------- */
+const tSel={type:'Touchstone',label:''};
+function renderToday(){
+ const w=data.currentWeek,c=curriculum[w-1],t=todayISO();
+ const tm=minutesOn(t),wm=weekMinutes(w),st=streak();
+ 
+ $('todayChips').innerHTML=`<span class="chip amber">${ic('flame')}<b>${st}</b> روز پیاپی</span><span class="chip">${ic('clock')}<b>${tm}</b> دقیقه امروز</span>`;$('todayRing').innerHTML=orbit(String(w),'از ۱۲ هفته',osz());
+ let hint;
+ if(data.timer)hint='تایمر در حال اجراست؛ بعد از پایان، جلسه خودکار ثبت می‌شود.';
+ else if(!tm)hint='هنوز امروز مطالعه‌ای ثبت نشده. حتی ۲۰ دقیقه هم برای ادامه‌دادن streak کافی است.';
+ else hint=`امروز ${tm} دقیقه مطالعه ثبت شده. ادامه بده یا همین‌جا تمام کن.`;
+ $('todayHint').textContent=hint;
+ $('tdToday').textContent=tm;$('tdWeek').textContent=wm;$('tdDue').textContent=dueList().length;
+ $('tdWk').textContent=pad(w)+' / 12';$('tdWkPct').textContent=weekPct(w)+'% تکمیل · '+c.book;
+ const pending=c.tasks.map((x,i)=>({x,i})).filter(o=>!taskDone(w,o.i)).slice(0,2);
+ $('tdTasks').innerHTML=pending.length?pending.map(o=>{const m=taskMinutes(w,o.i);return `<div class="task-card"><b>${esc(o.x[0])}</b><p>${esc(o.x[1])}</p>${m?`<span class="tmeta">${ic('clock')} ${m} دقیقه ثبت‌شده</span>`:''}<div class="btnrow"><button class="btn primary sm" onclick="startTask(${w},${o.i})">${ic('play')} شروع با تایمر</button><button class="btn sm" onclick="toggleTask(${w},${o.i},true)">${ic('check')} انجام شد</button></div></div>`}).join(''):`<div class="empty">همه وظایف این هفته تمام شد${w<12?`<div class="btnrow" style="justify-content:center"><button class="btn primary" onclick="selectWeek(${w+1})">رفتن به هفته ${w+1} ${ic('arrowL')}</button></div>`:''}</div>`;
+ const days=[];for(let k=6;k>=0;k--)days.push(addDays(t,-k));
+ $('tdWeekChart').innerHTML=svgBars(days.map(minutesOn),days.map(jday),{h:150,min:60,hi:6,aria:'مطالعه ۷ روز اخیر'});
+ const due=dueList();
+ $('tdVocab').innerHTML=due.length?`<p class="muted small">${due.length} واژه امروز موعد مرور دارد.</p><div class="btnrow"><button class="btn primary" onclick="vDue=true;go('vocab');renderVocab()">شروع مرور</button></div>`:'<p class="muted small">واژه موعددار نداری.</p>';
+ renderTimer();
+}
+
+/* ---------- تایمر ---------- */
+function timerElapsed(){const t=data.timer;if(!t)return 0;return t.acc+(t.running?Date.now()-t.startedAt:0)}
+function startTimerNow(type,label,task){
+ if(data.timer&&!confirm('یک تایمر فعال داری. جایگزین شود؟ (زمان قبلی ثبت نمی‌شود)'))return false;
+ data.timer={running:true,startedAt:Date.now(),acc:0,type,label:label||'',task:task||null,week:data.currentWeek};
+ saveQuiet();renderToday();updateClock();return true;
+}
+function startTimerForm(){startTimerNow(tSel.type,tSel.label,null)}
+function startTask(w,i){
+ const t=curriculum[w-1].tasks[i];
+ if(startTimerNow(taskType(t),t[0],taskKey(w,i)))go('today');
+}
+function pauseResume(){const t=data.timer;if(!t)return;if(t.running){t.acc+=Date.now()-t.startedAt;t.running=false}else{t.startedAt=Date.now();t.running=true}saveQuiet();renderTimer();updateClock()}
+function stopTimer(){
+ const t=data.timer;if(!t)return;
+ const min=Math.round(timerElapsed()/60000);
+ if(min<1){if(!confirm('کمتر از یک دقیقه ثبت شده. دور ریخته شود؟'))return;data.timer=null;save();return}
+ data.sessions.push({date:todayISO(),week:t.week,type:t.type,minutes:min,note:t.label||'',task:t.task||null});
+ data.timer=null;save();toast(`جلسه ${min} دقیقه‌ای ثبت شد`);
+}
+function discardTimer(){if(confirm('تایمر لغو شود؟ زمان ثبت نمی‌شود.')){data.timer=null;save()}}
+function renderTimer(){
+ const t=data.timer,el=$('timerCard');if(!el)return;
+ if(!t){
+  el.innerHTML=`<h2>تایمر مطالعه</h2><p class="muted small">نوع فعالیت را انتخاب کن و شروع بزن؛ با پایان، جلسه خودکار ثبت می‌شود.</p><div class="formgrid"><label>نوع فعالیت<select onchange="tSel.type=this.value">${TYPES.map(x=>`<option ${x===tSel.type?'selected':''}>${x}</option>`).join('')}</select></label><label>برچسب (اختیاری)<input value="${esc(tSel.label)}" oninput="tSel.label=this.value" placeholder="مثلاً Unit 2 Reading"></label></div><div class="btnrow"><button class="btn primary big" onclick="startTimerForm()">${ic('play')} شروع</button></div>`;
+ }else{
+  el.innerHTML=`<h2>${t.running?'<span class="recdot"></span>':''}تایمر در حال اجرا</h2><div class="clock timerClock ${t.running?'run':''}">00:00</div><div class="small muted" style="text-align:center">${esc(t.type)}${t.label?' · '+esc(t.label):''}</div><div class="btnrow" style="justify-content:center"><button class="btn pauseBtn" onclick="pauseResume()">${t.running?ic('pause')+' توقف موقت':ic('play')+' ادامه'}</button><button class="btn primary" onclick="stopTimer()">${ic('stop')} پایان و ثبت</button><button class="btn" onclick="discardTimer()">لغو</button></div>`;
+ }
+}
+function updateClock(){
+ const t=data.timer,txt=fmtClock(timerElapsed());
+ document.querySelectorAll('.timerClock').forEach(e=>e.textContent=txt);
+ const mini=$('mini');
+ mini.classList.toggle('show',!!t&&curView!=='today');
+ if(t){$('miniLbl').textContent=t.label||t.type;document.querySelectorAll('.pauseBtnMini').forEach(b=>b.innerHTML=ic(t.running?'pause':'play'))}
+ document.title=t&&t.running?'⏱ '+txt+' | English Learning OS':'English Learning OS | برنامه ۱۲ هفته‌ای';
+}
+setInterval(updateClock,1000);
+document.addEventListener('visibilitychange',updateClock);
+
+/* ---------- نمودارها (SVG ساده) ---------- */
+function svgBars(vals,labels,o={}){
+ const W=560,H=o.h||170,p={l:8,r:8,t:16,b:26},n=vals.length;
+ const max=Math.max(o.min||1,...vals,o.goal||0)*1.08,bw=(W-p.l-p.r)/n,ih=H-p.t-p.b;
+ let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.aria||'نمودار')}" style="direction:ltr">`;
+ s+=`<line x1="${p.l}" x2="${W-p.r}" y1="${p.t+ih}" y2="${p.t+ih}" class="ch-axis"/>`;
+ if(o.goal){const y=p.t+ih-o.goal/max*ih;s+=`<line x1="${p.l}" x2="${W-p.r}" y1="${y}" y2="${y}" class="ch-goal"/><text x="${p.l+2}" y="${y-4}" class="ch-t">${o.goal}</text>`}
+ vals.forEach((v,i)=>{
+  const h=v/max*ih,w=bw*.62,x=p.l+i*bw+(bw-w)/2,y=p.t+ih-h;
+  s+=`<rect x="${x}" y="${y}" width="${w}" height="${v?Math.max(h,2):0}" rx="4" class="ch-bar${o.hi===i?' hi':''}"><title>${labels[i]}: ${v}</title></rect>`;
+  if(v&&n<=14)s+=`<text x="${x+w/2}" y="${y-3}" text-anchor="middle" class="ch-v">${v}</text>`;
+  s+=`<text x="${x+w/2}" y="${H-8}" text-anchor="middle" class="ch-t">${labels[i]}</text>`;
+ });
+ return s+'</svg>';
+}
+function svgLine(pts,aria){
+ const W=560,H=190,pl=40,pr=14,pt=14,pb=26,n=pts.length;
+ const max=Math.max(...pts.map(p=>p.y))*1.15||1,iw=W-pl-pr,ih=H-pt-pb;
+ const X=i=>n===1?pl+iw/2:pl+i*iw/(n-1),Y=v=>pt+ih-v/max*ih;
+ let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(aria)}" style="direction:ltr">`;
+ [0,.5,1].forEach(f=>{const y=Y(max*f);s+=`<line x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}" class="ch-axis"/><text x="${pl-6}" y="${y+4}" text-anchor="end" class="ch-t">${Math.round(max*f)}</text>`});
+ s+=`<path class="ch-line" d="${pts.map((p,i)=>(i?'L':'M')+X(i)+' '+Y(p.y)).join(' ')}"/>`;
+ pts.forEach((p,i)=>{s+=`<circle cx="${X(i)}" cy="${Y(p.y)}" r="4.5" class="ch-dot"><title>${esc(p.t)}: ${Math.round(p.y)} WPM</title></circle>`;if(i===0||i===n-1||n<=6)s+=`<text x="${X(i)}" y="${H-8}" text-anchor="middle" class="ch-t">${esc(p.l)}</text>`});
+ return s+'</svg>';
+}
+
+/* ---------- نمای کلی ---------- */
+function renderHome(){
+ const hours=sum(data.sessions.map(x=>+x.minutes||0))/60,pct=Math.round(totalDone()/totalTasks()*100);
+ $('heroProgress').innerHTML=orbit(pct+'%','کل مسیر',osz());
+ $('statWeek').textContent=pad(data.currentWeek)+' / 12';
+ $('statHours').textContent=hours.toFixed(1)+'h';$('statTasks').textContent=pct+'%';$('statWords').textContent=data.vocab.length;
+ const w=curriculum[data.currentWeek-1],p=weekPct(data.currentWeek),s0=((data.currentWeek-1)%4)*3+1;
+ $('homeWeek').innerHTML=`<div style="display:flex;justify-content:space-between;gap:10px"><div><b>هفته ${data.currentWeek} · ${w.book}</b><div class="small muted" style="margin-top:5px">Units ${s0}–${s0+2}</div></div><span class="pill">${p}%</span></div><div class="progressline"><span style="width:${p}%"></span></div><div class="small muted">${w.units.map(u=>u[0]).join(' · ')}</div>`;
+ $('homeSplit').innerHTML=TARGETS.map(t=>`<div class="barrow"><span>${t[0]}</span><div class="bar"><span style="width:${t[1]/GOAL*100}%"></span></div><b>${t[1]}m</b></div>`).join('');
+ $('homeWeeks').innerHTML=curriculum.map((w,i)=>`<div class="week-row"><div class="week-num">${i+1}</div><div class="week-info"><strong>${w.book} · ${w.units.map((u,j)=>`U${(i%4)*3+j+1} ${u[0]}`).join(' / ')}</strong><small>${w.tasks.filter((_,j)=>taskDone(i+1,j)).length} از ${w.tasks.length} فعالیت تکمیل شده</small><div class="progressline" style="margin:7px 0 0;height:5px"><span style="width:${weekPct(i+1)}%"></span></div></div><span class="pct">${weekPct(i+1)}%</span></div>`).join('');
+}
+
+/* ---------- برنامه ---------- */
+function renderCurriculum(){
+ const wn=data.currentWeek,w=curriculum[wn-1],start=((wn-1)%4)*3+1,phase=Math.floor((wn-1)/4);
+ $('weekSelect').value=wn;
+ $('weekList').innerHTML=curriculum.map((x,i)=>`<button class="week-pick ${i+1===wn?'active':''}" onclick="selectWeek(${i+1})"><span class="wkbadge">${pad(i+1)}</span><span>هفته ${i+1}<small class="muted" style="display:block">${x.book} · ${weekPct(i+1)}%</small></span></button>`).join('');
+ $('weekDetail').innerHTML=`<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><div><div class="eyebrow">WEEK ${pad(wn)} / 12</div><h2 style="font-size:25px;margin-top:5px">${w.book}</h2><p class="muted small">سه یونیت اصلی · حدود ۵ تا ۶ ساعت · اولویت با درک متن</p></div><span class="pill green">${weekPct(wn)}% تکمیل</span></div><div class="progressline"><span style="width:${weekPct(wn)}%"></span></div>
+<div class="unit-grid">${w.units.map((u,i)=>`<div class="unit"><div class="unitno">UNIT ${start+i}</div><h3>${esc(u[0])}</h3><p>${esc(u[1])}</p></div>`).join('')}</div>
+<div class="plan-block"><h3>Grammar in Use · درس‌های منتخب</h3><div class="tablewrap"><table class="grammar-table"><thead><tr><th>شماره درس</th><th>موضوع</th><th>اولویت</th></tr></thead><tbody>${w.grammar.map(g=>`<tr><td dir="ltr">${g[0]}</td><td>${esc(g[1])}</td><td class="${g[2]==='ضروری'?'tag-essential':g[2]==='تکمیلی'?'tag-optional':'tag-reference'}">${g[2]}</td></tr>`).join('')}</tbody></table></div><p class="small muted">ضروری = مطالعه و تمرین منتخب؛ تکمیلی = در صورت نیاز یا ضعف؛ مرجع = مراجعه هنگام برخورد با ساختار دشوار. شماره درس‌ها را با ویرایشی که داری تطبیق بده.</p></div>
+<div class="plan-block"><h3>برنامه اجرایی هفته</h3>${w.tasks.map((t,i)=>{const m=taskMinutes(wn,i);return `<div class="task ${taskDone(wn,i)?'done':''}"><input type="checkbox" aria-label="انجام شد" ${taskDone(wn,i)?'checked':''} onchange="toggleTask(${wn},${i},this.checked)"><div class="tasktext"><b>${esc(t[0])}</b><small>${esc(t[1])}</small>${m?`<span class="tmeta">${ic('clock')} ${m} دقیقه ثبت‌شده</span>`:''}</div><button class="btn sm" onclick="startTask(${wn},${i})" aria-label="شروع با تایمر">${ic('play')}</button></div>`}).join('')}</div>
+<div class="plan-block"><h3>منابع پیشنهادی Reading و Listening</h3><div class="links">${SOURCES[phase].map(s=>`<a href="${s[1]}" target="_blank" rel="noopener"><span>${s[0]}<small>${s[2]}</small></span>${ic('ext')}</a>`).join('')}</div><p class="small muted">اگر سایتی بدون VPN باز نشد، متن مشابه را از منبع دیگری انتخاب کن.</p></div>
+<div class="plan-block"><h3>چیدمان پیشنهادی زمان</h3><div class="notice">Touchstone: حدود ۱۲۰ دقیقه · Grammar in Use: حدود ۵۵ · Independent Reading: حدود ۷۰ · Listening: حدود ۳۰ · مرور و ارزیابی: حدود ۵۵. ترتیب و روزهای مطالعه آزاد است.</div></div>
+<div style="display:flex;justify-content:space-between;margin-top:18px"><button class="btn" onclick="selectWeek(${Math.max(1,wn-1)})" ${wn===1?'disabled':''}>${ic('arrowR')} هفته قبل</button><button class="btn primary" onclick="selectWeek(${Math.min(12,wn+1)})" ${wn===12?'disabled':''}>هفته بعد ${ic('arrowL')}</button></div>`;
+}
+function toggleTask(w,i,v){data.tasks[taskKey(w,i)]=!!v;save()}
+
+/* ---------- جلسات ---------- */
+function renderSessions(){
+ const week=weekMinutes(data.currentWeek);
+ $('sessionGoalBar').style.width=Math.min(100,week/GOAL*100)+'%';
+ $('sessionGoalText').textContent=`${week} از ${GOAL} دقیقه · ${(week/60).toFixed(1)} ساعت (هفته ${data.currentWeek})`;
+ $('sessionRows').innerHTML=data.sessions.length?data.sessions.map((x,i)=>({x,i})).reverse().map(({x,i})=>`<tr><td data-label="تاریخ">${jd(x.date)}</td><td data-label="هفته">${x.week}</td><td data-label="فعالیت">${esc(x.type)}</td><td data-label="مدت">${x.minutes} دقیقه</td><td data-label="یادداشت" class="wrap">${esc(x.note||'')}</td><td class="actions"><button class="btn sm" onclick="deleteItem('sessions',${i})">${ic('trash')} حذف</button></td></tr>`).join(''):'<tr><td colspan="6" class="empty">هنوز جلسه‌ای ثبت نشده است.</td></tr>';
+}
+$('sessionForm').onsubmit=e=>{e.preventDefault();data.sessions.push({date:$('sDate').value||todayISO(),week:+$('sWeek').value,type:$('sType').value,minutes:+$('sMinutes').value,note:$('sNote').value.trim(),task:null});$('sNote').value='';$('sMinutes').value='';save();toast('جلسه ثبت شد')};
+
+/* ---------- واژگان (SRS اصلاح‌شده) ---------- */
+let vDue=false;
+function toggleDue(){vDue=!vDue;renderVocab()}
+function renderVocab(){
+ const q=($('vSearch').value||'').toLowerCase().trim(),t=todayISO();
+ $('dueWords').textContent=dueList().length;
+ $('dueBtn').textContent=vDue?'نمایش همه واژه‌ها':'فقط واژه‌های موعددار';
+ const rows=data.vocab.map((x,i)=>({...x,i})).filter(x=>(!vDue||x.next<=t)&&(x.word+' '+x.meaning+' '+x.example+' '+x.source).toLowerCase().includes(q));
+ $('vocabRows').innerHTML=rows.length?rows.map(x=>{const due=x.next<=t;return `<tr><td data-label="واژه" dir="ltr">${esc(x.word)}</td><td data-label="معنی">${esc(x.meaning)}</td><td data-label="مثال" dir="ltr" class="wrap">${esc(x.example)}</td><td data-label="منبع">${esc(x.source)}</td><td data-label="مرور بعدی">${due?'<span class="pill amber">امروز / موعد گذشته</span>':jd(x.next)}</td><td class="actions"><button class="btn sm primary" onclick="reviewWord(${x.i},true)">یادم بود</button><button class="btn sm" onclick="reviewWord(${x.i},false)">فراموش کردم</button><button class="btn sm" onclick="deleteItem('vocab',${x.i})">${ic('trash')} حذف</button></td></tr>`}).join(''):`<tr><td colspan="6" class="empty">${vDue?'واژه موعددار نداریم.':'واژه‌ای پیدا نشد.'}</td></tr>`;
+}
+function reviewWord(i,ok){
+ const x=data.vocab[i];if(!x)return;
+ x.stage=ok?Math.min((x.stage||0)+1,SRS.length-1):0;
+ x.next=addDays(todayISO(),SRS[x.stage]);x.last=todayISO();
+ save();toast(ok?`مرور بعدی: ${SRS[x.stage]} روز دیگر`:'از روز ۱ دوباره شروع می‌شود');
+}
+$('vocabForm').onsubmit=e=>{
+ e.preventDefault();
+ const w=$('vWord').value.trim();if(!w)return;
+ if(data.vocab.some(x=>x.word.toLowerCase()===w.toLowerCase())){toast('این واژه قبلاً ثبت شده');return}
+ data.vocab.push({word:w,meaning:$('vMeaning').value.trim(),example:$('vExample').value.trim(),source:$('vSource').value.trim(),next:addDays(todayISO(),SRS[0]),stage:0,added:todayISO()});
+ e.target.reset();save();toast('واژه اضافه شد');
+};
 $('vSearch').oninput=renderVocab;
-function filterDue(){$('vSearch').value='';renderVocab();let today=new Date().toISOString().slice(0,10);$('vocabRows').innerHTML=data.vocab.map((x,i)=>({...x,i})).filter(x=>x.next<=today).map(x=>`<tr><td dir="ltr">${escapeHtml(x.word)}</td><td>${escapeHtml(x.meaning)}</td><td dir="ltr">${escapeHtml(x.example)}</td><td>${escapeHtml(x.source)}</td><td>${x.next}</td><td><button class="btn" onclick="reviewWord(${x.i})">مرور شد</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">واژه موعددار نداریم.</td></tr>'}
-function reviewWord(i){let x=data.vocab[i],steps=[1,3,7,14,30],stage=Math.min((x.stage||0)+1,4),d=new Date();d.setDate(d.getDate()+steps[stage]);x.stage=stage;x.next=d.toISOString().slice(0,10);save()}
-function renderReading(){$('readingRows').innerHTML=data.readings.length?data.readings.slice().reverse().map((x,i)=>`<tr><td>${x.date}</td><td>${escapeHtml(x.title)}</td><td>${x.words}</td><td>${x.minutes}</td><td>${(x.words/x.minutes).toFixed(1)}</td><td>${x.comp}/5</td><td><button class="btn" onclick="deleteItem('readings',${data.readings.length-1-i})">حذف</button></td></tr>`).join(''):'<tr><td colspan="7" class="empty">هنوز متنی ثبت نشده است.</td></tr>'}
-$('readingForm').onsubmit=e=>{e.preventDefault();data.readings.push({date:$('rDate').value,week:+$('rWeek').value,title:$('rTitle').value,source:$('rSource').value,words:+$('rWords').value,minutes:+$('rMinutes').value,comp:+$('rComprehension').value,note:$('rNote').value});e.target.reset();save()};
-function renderAnalytics(){let hours=data.sessions.reduce((s,x)=>s+x.minutes,0)/60;let wpm=data.readings.length?data.readings.reduce((s,x)=>s+x.words/x.minutes,0)/data.readings.length:0;let comp=data.readings.length?data.readings.reduce((s,x)=>s+x.comp,0)/data.readings.length:0;$('aHours').textContent=hours.toFixed(1);$('aWpm').textContent=wpm?wpm.toFixed(0):'—';$('aComp').textContent=comp?comp.toFixed(1)+'/5':'—';$('aSessions').textContent=data.sessions.length;$('analyticsWeeks').innerHTML=curriculum.map((w,i)=>`<div class="barrow"><span>هفته ${i+1}</span><div class="bar"><span style="width:${weekPct(i+1)}%"></span></div><b>${weekPct(i+1)}%</b></div>`).join('')}
+
+/* ---------- Reading ---------- */
+function renderReading(){
+ const w=curriculum[data.currentWeek-1],ph=Math.floor((data.currentWeek-1)/4),rt=w.tasks.find(t=>t[0].startsWith('Independent'));
+ $('readPick').innerHTML=`<p class="small muted">هفته ${data.currentWeek}</p><p style="font-size:13px;line-height:1.9;margin:4px 0 0">${esc(rt?rt[1]:'')}</p><div class="links">${SOURCES[ph].map(s=>`<a href="${s[1]}" target="_blank" rel="noopener"><span>${s[0]}<small>${s[2]}</small></span>${ic('ext')}</a>`).join('')}</div>`;
+ $('readingRows').innerHTML=data.readings.length?data.readings.map((x,i)=>({x,i})).reverse().map(({x,i})=>`<tr><td data-label="تاریخ">${jd(x.date)}</td><td data-label="عنوان" dir="ltr" class="wrap">${esc(x.title)}</td><td data-label="کلمات">${x.words}</td><td data-label="دقیقه">${x.minutes}</td><td data-label="WPM">${wpmOf(x).toFixed(0)}</td><td data-label="درک">${x.comp}/5</td><td class="actions"><button class="btn sm" onclick="deleteItem('readings',${i})">${ic('trash')} حذف</button></td></tr>`).join(''):'<tr><td colspan="7" class="empty">هنوز متنی ثبت نشده است.</td></tr>';
+}
+$('readingForm').onsubmit=e=>{e.preventDefault();data.readings.push({date:$('rDate').value||todayISO(),week:+$('rWeek').value,title:$('rTitle').value.trim(),source:$('rSource').value.trim(),words:+$('rWords').value,minutes:+$('rMinutes').value,comp:+$('rComprehension').value,note:$('rNote').value.trim()});e.target.reset();$('rDate').value=todayISO();$('rWeek').value=data.currentWeek;updateDateLabels();save();toast('متن ثبت شد')};
+
+/* ---------- گزارش ---------- */
+function renderAnalytics(){
+ const hours=sum(data.sessions.map(x=>+x.minutes||0))/60,R=data.readings;
+ const wpm=R.length?sum(R.map(wpmOf))/R.length:0,comp=R.length?sum(R.map(x=>x.comp))/R.length:0;
+ $('aHours').textContent=hours.toFixed(1);$('aWpm').textContent=wpm?wpm.toFixed(0):'—';$('aComp').textContent=comp?comp.toFixed(1)+'/5':'—';
+ $('aStreak').textContent=streak()+' / '+bestStreak();
+ const wk=curriculum.map((_,i)=>weekMinutes(i+1));
+ $('chWeekly').innerHTML=svgBars(wk,curriculum.map((_,i)=>String(i+1)),{h:200,goal:GOAL,min:GOAL/1.5,hi:data.currentWeek-1,aria:'دقیقه مطالعه هر هفته'});
+ const cw=data.currentWeek,sess=data.sessions.filter(s=>s.week===cw);
+ $('chTypes').innerHTML=TARGETS.map(t=>{const m=sum(sess.filter(s=>t[2].includes(s.type)).map(s=>+s.minutes||0));return `<div class="barrow"><span>${t[0]}</span><div class="bar"><span style="width:${Math.min(100,m/t[1]*100)}%"></span></div><b>${m}/${t[1]}</b></div>`}).join('')+'<p class="small muted">اعداد به دقیقه است؛ هدف هر بخش، مقدار پیشنهادی هفته است.</p>';
+ const t=todayISO(),days=[];for(let k=13;k>=0;k--)days.push(addDays(t,-k));
+ $('chDaily').innerHTML=svgBars(days.map(minutesOn),days.map(jday),{h:170,min:60,hi:13,aria:'مطالعه ۱۴ روز اخیر'});
+ const pts=R.map((x,i)=>({x,i})).sort((a,b)=>(a.x.date||'').localeCompare(b.x.date||'')||a.i-b.i).map(({x})=>({y:wpmOf(x),l:jday(x.date),t:x.title}));
+ $('chWpm').innerHTML=pts.length>=2?svgLine(pts,'سرعت Reading'):'<div class="empty">برای رسم نمودار، حداقل دو متن در Reading Tracker ثبت کن.</div>';
+ $('analyticsWeeks').innerHTML=curriculum.map((w,i)=>`<div class="barrow"><span>هفته ${i+1}</span><div class="bar"><span style="width:${weekPct(i+1)}%"></span></div><b>${weekPct(i+1)}%</b></div>`).join('');
+}
+
+/* ---------- Checkpoint ---------- */
+function cpMetrics(r){return r&&r.words&&r.minutes?{wpm:r.words/r.minutes,comp:r.comp,err:r.errors}:null}
+function deltaChip(v,unit,goodUp){if(!isFinite(v)||v===0)return `<span class="delta muted">بدون تغییر</span>`;const up=v>0,good=goodUp?up:!up;return `<span class="delta ${good?'up':'down'}">${ic(up?'up':'down')} ${Math.abs(Math.round(v))} ${unit}</span>`}
+function renderCheckpoints(){
+ $('cpWrap').innerHTML=CPS.map(cp=>{
+  const r=data.checkpoints[cp.n]||{},m=cpMetrics(r);
+  const prev=CPS.filter(c=>c.n<cp.n&&data.checkpoints[c.n]).pop(),pm=prev?cpMetrics(data.checkpoints[prev.n]):null;
+  let res='';
+  if(m){res=`<div class="small" style="margin:8px 0">سرعت: <b>${m.wpm.toFixed(0)}</b> WPM · درک: <b>${m.comp}%</b> · خطای تکراری گرامر: <b>${m.err}</b></div>`;
+   if(pm)res+=`<div style="margin-bottom:8px">${deltaChip(m.wpm-pm.wpm,'WPM',true)}${deltaChip(m.comp-pm.comp,'درصد درک',true)}${deltaChip(m.err-pm.err,'خطا',false)}<span class="small muted">نسبت به ${prev.title.split(' ·')[0]}</span></div>`}
+  const id=k=>`cp${cp.n}_${k}`;
+  return `<div class="cpcard"><h3>${cp.title}</h3><p class="small muted" style="margin:0">${cp.desc}</p>${res}<form class="formgrid" onsubmit="saveCp(event,${cp.n})" style="margin-top:10px"><label>تاریخ<input type="date" id="${id('date')}" value="${r.date||todayISO()}"><span class="jlabel" id="${id('date')}J">${jd(r.date||todayISO())}</span></label><label>عنوان متن<input id="${id('title')}" dir="ltr" value="${esc(r.title||'')}"></label><label>تعداد کلمات<input id="${id('words')}" type="number" inputmode="numeric" min="1" required value="${r.words||''}"></label><label>زمان (دقیقه)<input id="${id('min')}" type="number" inputmode="decimal" step="any" min="1" required value="${r.minutes||''}"></label><label>درک مطلب (۰ تا ۱۰۰٪)<input id="${id('comp')}" type="number" inputmode="numeric" min="0" max="100" required value="${r.comp??''}"></label><label>تعداد خطای تکراری گرامر<input id="${id('err')}" type="number" inputmode="numeric" min="0" required value="${r.errors??''}"></label><label class="full">یادداشت<textarea id="${id('note')}">${esc(r.note||'')}</textarea></label><button class="btn primary" type="submit">${m?'به‌روزرسانی':'ثبت نتیجه'}</button></form></div>`;
+ }).join('');
+}
+function saveCp(e,n){
+ e.preventDefault();const g=k=>$(`cp${n}_${k}`).value;
+ data.checkpoints[n]={date:g('date')||todayISO(),title:g('title').trim(),words:+g('words'),minutes:+g('min'),comp:+g('comp'),errors:+g('err'),note:g('note').trim()};
+ save();renderCheckpoints();toast('نتیجه Checkpoint ثبت شد');
+}
+
+/* ---------- تنظیمات و بکاپ ---------- */
+function hasData(){return data.sessions.length||data.vocab.length||data.readings.length||Object.keys(data.checkpoints).length||Object.values(data.tasks).some(Boolean)}
+function renderBanner(){
+ const b=$('backupBanner');let show=false,txt='';
+ if(hasData()&&!sessionStorageGet('snooze')){
+  const days=data.lastBackup?daysBetween(data.lastBackup,todayISO()):Infinity;
+  if(days>=7){show=true;txt=data.lastBackup?`${days} روز از آخرین بکاپ گذشته.`:'هنوز هیچ بکاپی نگرفته‌ای.'}
+ }
+ b.classList.toggle('show',show);
+ b.innerHTML=show?`<span>${ic('alert')} ${txt} اطلاعاتت فقط روی همین مرورگر است.</span><span class="btnrow" style="margin:0"><button class="btn sm primary" onclick="exportData()">دانلود بکاپ</button><button class="btn sm" onclick="sessionStorageSet('snooze','1');renderBanner()">بعداً</button></span>`:'';
+}
+function sessionStorageGet(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+function sessionStorageSet(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
+function renderSettings(){$('backupInfo').textContent=data.lastBackup?`آخرین بکاپ: ${jd(data.lastBackup,true)}`:'هنوز بکاپی ثبت نشده است.'}
+function exportData(){
+ try{
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download='english-learning-backup-'+todayISO()+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+  data.lastBackup=todayISO();save();toast('بکاپ دانلود شد');
+ }catch(e){toast('دانلود بکاپ ممکن نشد')}
+}
+$('importFile').onchange=async e=>{
+ const f=e.target.files[0];if(!f)return;
+ try{
+  const x=JSON.parse(await f.text());
+  if(!x||!Array.isArray(x.sessions)||!Array.isArray(x.vocab)||!Array.isArray(x.readings))throw Error('invalid');
+  if(hasData()&&!confirm('اطلاعات فعلی با فایل بکاپ جایگزین می‌شود. ادامه می‌دهی؟')){e.target.value='';return}
+  data=migrate(x);save();alert('اطلاعات با موفقیت بازیابی شد.');
+ }catch(err){alert('فایل پشتیبان معتبر نیست.')}
+ e.target.value='';
+};
+function resetData(){
+ if(confirm('همه اطلاعات این داشبورد پاک شود؟ این کار قابل بازگشت نیست. (پیشنهاد: اول بکاپ بگیر)')){
+  const th=data.theme;data=defaults();data.theme=th;save();toast('بازنشانی شد');
+ }
+}
 function deleteItem(key,i){if(confirm('این مورد حذف شود؟')){data[key].splice(i,1);save()}}
-function renderAll(){document.documentElement.dataset.theme=data.theme;renderHome();renderCurriculum();renderSessions();renderVocab();renderReading();renderAnalytics()}
-function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='english-learning-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(a.href)}
-$('importFile').onchange=async e=>{let f=e.target.files[0];if(!f)return;try{let x=JSON.parse(await f.text());if(!x||!Array.isArray(x.sessions)||!Array.isArray(x.vocab)||!Array.isArray(x.readings))throw Error('invalid');data={...data,...x};save();alert('اطلاعات با موفقیت بازیابی شد.')}catch(err){alert('فایل پشتیبان معتبر نیست.')}e.target.value=''};
-function resetData(){if(confirm('همه اطلاعات این داشبورد پاک شود؟ این کار قابل بازگشت نیست.')){data={theme:data.theme,currentWeek:1,tasks:{},sessions:[],vocab:[],readings:[]};save()}}
-load();initSelects();$('sDate').value=new Date().toISOString().slice(0,10);$('rDate').value=new Date().toISOString().slice(0,10);renderAll();
+
+/* ---------- برچسب تاریخ شمسی کنار ورودی‌های تاریخ ---------- */
+function updateDateLabels(){document.querySelectorAll('input[type=date]').forEach(i=>{const l=$(i.id+'J');if(l)l.textContent=i.value?jd(i.value,true):''})}
+document.addEventListener('input',e=>{if(e.target.type==='date'){const l=$(e.target.id+'J');if(l)l.textContent=e.target.value?jd(e.target.value,true):''}});
+
+/* ---------- رندر کلی ---------- */
+function renderAll(){
+ applyTheme();$('topDate').textContent=jd(todayISO(),true);renderToday();renderHome();renderCurriculum();renderSessions();renderVocab();renderReading();renderAnalytics();renderBanner();updateClock();
+}
+load();initSelects();
+$('sDate').value=todayISO();$('rDate').value=todayISO();updateDateLabels();
+renderAll();
+setTimeout(()=>{orbitDone=true},1800);
+let rz;window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{renderToday();renderHome()},200)});
+showView(hid()||'today');
+try{if(navigator.storage&&navigator.storage.persist){navigator.storage.persist().then(ok=>{const p=$('persistState');if(p)p.textContent=ok?'ذخیره‌سازی پایدار فعال است.':''})}}catch(e){}
+
+
+/* V7 motion system: viewport reveals + subtle pointer light */
+(function initV7Motion(){
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealCurrent=()=>{
+    const root=document.querySelector('.view.active'); if(!root)return;
+    const items=root.querySelectorAll('.hero,.statstrip,.card,.section-head,.task-card,.cpcard');
+    items.forEach((el,i)=>{el.classList.add('reveal');el.style.transitionDelay=Math.min(i%5,4)*55+'ms'});
+    if(reduce){items.forEach(el=>el.classList.add('in-view'));return;}
+    if(!('IntersectionObserver' in window)){items.forEach(el=>el.classList.add('in-view'));return;}
+    const io=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('in-view');io.unobserve(entry.target)}
+    }),{threshold:.08,rootMargin:'0px 0px -28px 0px'});
+    items.forEach(el=>{if(!el.classList.contains('in-view'))io.observe(el)});
+  };
+  document.documentElement.classList.add('reveal-ready');
+  const originalShowView=window.showView;
+  if(typeof originalShowView==='function'){
+    window.showView=function(id){originalShowView(id);requestAnimationFrame(()=>requestAnimationFrame(revealCurrent));};
+  }
+  requestAnimationFrame(()=>requestAnimationFrame(revealCurrent));
+  if(!reduce && window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    let raf=0;
+    document.addEventListener('pointermove',e=>{
+      if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const card=e.target.closest('.card');if(!card)return;const r=card.getBoundingClientRect();card.style.setProperty('--mx',(e.clientX-r.left)+'px');card.style.setProperty('--my',(e.clientY-r.top)+'px')});
+    },{passive:true});
+  }
+})();
+
 </script></body></html>
