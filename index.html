@@ -652,10 +652,37 @@ body::after{width:440px;height:440px;right:-210px;bottom:-210px;background:radia
  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
  .reveal-ready .reveal{opacity:1!important;transform:none!important}
 }
+
+/* Supabase auth gate */
+.auth-gate{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:22px;background:var(--bg);background-image:radial-gradient(ellipse at 15% 10%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 45%)}
+.auth-card{width:min(100%,430px);padding:30px;border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:var(--shadow)}
+.auth-brand{font-size:25px;font-weight:800;letter-spacing:-.6px;margin-bottom:6px}.auth-desc{color:var(--muted);font-size:13px;line-height:1.9;margin:0 0 22px}.auth-field{display:grid;gap:7px;margin:13px 0;font-size:13px}.auth-field input{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;background:var(--bg);color:var(--text);font:inherit;direction:ltr}.auth-submit{width:100%;margin-top:10px;justify-content:center}.auth-msg{min-height:22px;margin-top:12px;font-size:12px;color:var(--muted);line-height:1.8}.auth-msg.error{color:var(--danger)}.auth-msg.ok{color:var(--green)}
+body:not(.authenticated) .app,body:not(.authenticated) .bottomnav,body:not(.authenticated) .sheet,body:not(.authenticated) .mini,body:not(.authenticated) .toast{display:none!important}
+body.authenticated .auth-gate{display:none}
+.cloud-status{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}.cloud-dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block}
+
 /* ================= END V7 ================= */
 
+
+/* V8 targeted fix: keep the "کار بعدی" card glow above its background
+   and below its content; avoid negative-z compositing artifacts (dark square). */
+#today .grid.cols > div:first-child > .card:first-child{isolation:isolate}
+#today .grid.cols > div:first-child > .card:first-child::before{z-index:0}
+#today .grid.cols > div:first-child > .card:first-child > *{position:relative;z-index:1}
 </style></head>
 <body>
+
+<div class="auth-gate" id="authGate"><div class="auth-card">
+  <div class="auth-brand">English Learning OS</div>
+  <p class="auth-desc">برای دسترسی به داشبورد شخصی و همگام‌سازی اطلاعات، وارد حساب خودت شو.</p>
+  <form id="authForm">
+    <label class="auth-field">ایمیل<input id="authEmail" type="email" autocomplete="username" required placeholder="you@example.com"></label>
+    <label class="auth-field">رمز عبور<input id="authPassword" type="password" autocomplete="current-password" required placeholder="رمز عبور" minlength="6"></label>
+    <button class="btn primary auth-submit" id="authSubmit" type="submit">ورود به داشبورد</button>
+  </form>
+  <div class="auth-msg" id="authMessage" role="status">حساب کاربری از قبل در Supabase ساخته شده است؛ ثبت‌نام عمومی در این نسخه غیرفعال است.</div>
+</div></div>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 <linearGradient id="gBar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--accent)"/><stop offset="1" style="stop-color:var(--accent2)"/></linearGradient>
 <linearGradient id="gBarHi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--amber)"/><stop offset="1" style="stop-color:var(--amber);stop-opacity:.65"/></linearGradient>
@@ -786,7 +813,7 @@ body::after{width:440px;height:440px;right:-210px;bottom:-210px;background:radia
 
 <!-- تنظیمات -->
 <section class="view" id="settings"><div class="grid cols"><div class="card"><h2>ظاهر و تجربه</h2><p class="muted small">پوسته و تنظیمات نمایش</p><button class="btn" onclick="toggleTheme()"><svg class="i"><use href="#i-sun"/></svg><svg class="i"><use href="#i-moon"/></svg> تغییر پوسته روشن / تیره</button><div class="notice" style="margin-top:15px">فونت تیترها Lalezar و فونت متن Vazirmatn است و هنگام اتصال به اینترنت از Google Fonts بارگذاری می‌شود. بدون اینترنت، فونت فارسی خود دستگاه استفاده می‌شود و داشبورد همچنان کار می‌کند.</div></div>
-<div class="card"><h2>پشتیبان‌گیری و انتقال</h2><p class="muted small">اطلاعات در حافظه همین مرورگر ذخیره می‌شود.</p><div class="btnrow"><button class="btn primary" onclick="exportData()"><svg class="i"><use href="#i-download"/></svg> دانلود پشتیبان JSON</button><label class="btn" for="importFile"><svg class="i"><use href="#i-upload"/></svg> بازیابی پشتیبان</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><div class="notice" style="margin-top:15px" id="backupInfo"></div><div class="notice" style="margin-top:10px">حداقل هفته‌ای یک بار بکاپ بگیر. اگر کش مرورگر پاک شود یا مرورگر عوض کنی، فقط با فایل بکاپ می‌توانی اطلاعات را برگردانی. حافظه بین مرورگرها و آدرس‌های مختلف همگام نمی‌شود. <span id="persistState"></span></div></div></div>
+<div class="card"><h2>حساب و همگام‌سازی</h2><p class="muted small" id="accountEmail">—</p><div class="notice" id="cloudStatus"><span class="cloud-dot"></span> اتصال ابری آماده نیست.</div><div class="btnrow" style="margin-top:12px"><button class="btn" onclick="syncNow()">همگام‌سازی اکنون</button><button class="btn danger" onclick="signOutUser()">خروج از حساب</button></div></div><div class="card"><h2>پشتیبان‌گیری و انتقال</h2><p class="muted small">اطلاعات در این مرورگر و حساب ابری شخصی تو ذخیره می‌شود.</p><div class="btnrow"><button class="btn primary" onclick="exportData()"><svg class="i"><use href="#i-download"/></svg> دانلود پشتیبان JSON</button><label class="btn" for="importFile"><svg class="i"><use href="#i-upload"/></svg> بازیابی پشتیبان</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><div class="notice" style="margin-top:15px" id="backupInfo"></div><div class="notice" style="margin-top:10px">حداقل هفته‌ای یک بار بکاپ بگیر. اطلاعات پس از ورود به حساب Supabase همگام می‌شود؛ بااین‌حال فایل JSON همچنان بهترین بکاپ مستقل است. <span id="persistState"></span></div></div></div>
 <div class="card" style="margin-top:16px"><h2>بازنشانی داده‌ها</h2><p class="muted small">این گزینه همه جلسات، واژگان، سوابق Reading، Checkpointها و تیک وظایف را از همین مرورگر پاک می‌کند.</p><button class="btn danger" onclick="resetData()"><svg class="i"><use href="#i-trash"/></svg> بازنشانی کامل</button></div></section>
 <footer class="small muted" style="text-align:center;padding:30px 0 10px">English Learning OS · 12-week plan · Local-first edition · v6</footer>
 </main></div>
@@ -807,6 +834,7 @@ body::after{width:440px;height:440px;right:-210px;bottom:-210px;background:radia
 <div class="mini" id="mini"><span class="t timerClock">00:00</span><span class="l" id="miniLbl"></span><span style="display:flex;gap:6px"><button class="pauseBtnMini" onclick="pauseResume()" aria-label="توقف/ادامه"></button><button onclick="stopTimer()" aria-label="پایان"><svg class="i"><use href="#i-stop"/></svg></button></span></div>
 <div class="toast" id="toast" role="status"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const curriculum = [
 {book:'Touchstone 2',units:[['Making friends','Simple present / present continuous questions; too / either; conversation openers'],['Interests','Verbs + prepositions; object pronouns; everybody / nobody'],['Health','Simple present / continuous; if / when clauses; health vocabulary']],grammar:[['1–4','Present continuous and present simple','ضروری'],['49–52','Questions and auxiliary verbs','ضروری'],['82–85','Object pronouns and basic pronoun reference','تکمیلی'],['113–115','If / when and basic conjunctions','تکمیلی']],tasks:[['Touchstone · Unit 1','Grammar + Reading را کامل انجام بده؛ عبارت‌های شروع مکالمه را استخراج کن.'],['Touchstone · Unit 2','Reading و Vocabulary اولویت دارند؛ object pronouns را در متن پیدا کن.'],['Touchstone · Unit 3','ساختار present simple/continuous و جمله‌های if/when را مقایسه کن.'],['Grammar in Use','درس‌های 1–2 و 49–52؛ فقط تمرین‌های مرتبط را حل کن.'],['Independent Reading','یک متن 400–600 کلمه‌ای عمومی؛ ایده اصلی و 5 واژه کلیدی را ثبت کن.'],['Weekly review','یک خلاصه 5 جمله‌ای بنویس و 10 واژه را مرور کن.']]},
@@ -905,12 +933,76 @@ function load(){
   if(raw)data=migrate(JSON.parse(raw));
  }catch(e){console.warn(e)}
 }
+let cloudClient=null,cloudUser=null,cloudReady=false,cloudTimer=null,cloudSaving=false,cloudRevision=0,cloudHydrating=false;
+const SUPABASE_URL='https://ljannmzqxkqrvbtzhdlj.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_34PnMkEG05AS3aWBzdbBWg_m-LoQE03';
+function setCloudStatus(message,kind='info'){
+ const el=$('cloudStatus');if(el){el.textContent=message;el.style.color=kind==='error'?'var(--danger)':kind==='ok'?'var(--green)':'var(--muted)'}
+}
 function persist(){
- try{localStorage.setItem(KEY,JSON.stringify(data));return true}
+ try{localStorage.setItem(KEY,JSON.stringify(data));if(cloudUser&&cloudReady&&!cloudHydrating)scheduleCloudSave();return true}
  catch(e){toast('ذخیره نشد! حافظه مرورگر پر است یا حالت خصوصی فعال است. بکاپ بگیر.');return false}
 }
 function save(){persist();renderAll()}
 function saveQuiet(){persist()}
+function scheduleCloudSave(){
+ cloudRevision++;const revision=cloudRevision;clearTimeout(cloudTimer);
+ setCloudStatus('تغییرات ذخیره شد محلی؛ همگام‌سازی در صف است.');
+ cloudTimer=setTimeout(()=>writeCloud(revision),900);
+}
+async function writeCloud(revision=cloudRevision){
+ if(!cloudClient||!cloudUser||!cloudReady||cloudHydrating)return;
+ if(cloudSaving){clearTimeout(cloudTimer);cloudTimer=setTimeout(()=>writeCloud(cloudRevision),500);return}
+ cloudSaving=true;const snapshot=JSON.parse(JSON.stringify(data));
+ try{
+  const {error}=await cloudClient.from('dashboard_data').upsert({user_id:cloudUser.id,payload:snapshot,updated_at:new Date().toISOString()},{onConflict:'user_id'});
+  if(error)throw error;
+  if(revision===cloudRevision)setCloudStatus('همگام‌سازی ابری انجام شد.','ok');
+  else{clearTimeout(cloudTimer);cloudTimer=setTimeout(()=>writeCloud(cloudRevision),300)}
+ }catch(e){console.error('Cloud save failed',e);setCloudStatus('ذخیره محلی انجام شد؛ همگام‌سازی ابری ناموفق بود.','error')}
+ finally{cloudSaving=false}
+}
+async function syncNow(){if(!cloudUser){toast('ابتدا وارد حساب شو');return}clearTimeout(cloudTimer);await writeCloud(cloudRevision);}
+async function loadUserCloud(user){
+ cloudHydrating=true;cloudReady=false;cloudUser=user;
+ setCloudStatus('در حال دریافت اطلاعات از فضای ابری…');
+ try{
+  const {data:row,error}=await cloudClient.from('dashboard_data').select('payload,updated_at').eq('user_id',user.id).maybeSingle();
+  if(error)throw error;
+  if(row&&row.payload&&typeof row.payload==='object'){
+   data=migrate(row.payload);localStorage.setItem(KEY,JSON.stringify(data));
+   setCloudStatus('اطلاعات حساب از فضای ابری بارگذاری شد.','ok');
+  }else{
+   const local=localStorage.getItem(KEY)||localStorage.getItem(OLD_KEY);
+   if(local){data=migrate(JSON.parse(local));}
+   else data=defaults();
+   const {error:insertError}=await cloudClient.from('dashboard_data').upsert({user_id:user.id,payload:data,updated_at:new Date().toISOString()},{onConflict:'user_id'});
+   if(insertError)throw insertError;
+   localStorage.setItem(KEY,JSON.stringify(data));
+   setCloudStatus('فضای ابری برای این حساب ساخته شد.','ok');
+  }
+  cloudReady=true;document.body.classList.add('authenticated');
+  $('accountEmail').textContent=user.email||'حساب واردشده';
+  renderAll();
+ }catch(e){console.error('Cloud load failed',e);cloudUser=null;cloudReady=false;document.body.classList.remove('authenticated');showAuthMessage('دریافت اطلاعات از Supabase ناموفق بود: '+(e.message||'خطای نامشخص'),'error')}
+ finally{cloudHydrating=false}
+}
+function showAuthMessage(msg,kind='info'){const el=$('authMessage');if(el){el.textContent=msg;el.className='auth-msg'+(kind==='error'?' error':kind==='ok'?' ok':'')}}
+async function signOutUser(){if(!cloudClient)return;const {error}=await cloudClient.auth.signOut();if(error){toast('خروج انجام نشد: '+error.message);return}cloudUser=null;cloudReady=false;document.body.classList.remove('authenticated');$('authPassword').value='';showAuthMessage('از حساب خارج شدی. برای ادامه دوباره وارد شو.');}
+async function initCloudAuth(){
+ if(!window.supabase||!window.supabase.createClient){showAuthMessage('کتابخانه اتصال بارگذاری نشد. اتصال اینترنت را بررسی و صفحه را تازه‌سازی کن.','error');return}
+ cloudClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+ $('authForm').addEventListener('submit',async e=>{
+  e.preventDefault();const btn=$('authSubmit');btn.disabled=true;btn.textContent='در حال ورود…';showAuthMessage('در حال بررسی اطلاعات ورود…');
+  try{const {data:res,error}=await cloudClient.auth.signInWithPassword({email:$('authEmail').value.trim(),password:$('authPassword').value});if(error)throw error;await loadUserCloud(res.user)}
+  catch(err){showAuthMessage('ورود ناموفق بود: '+(err.message||'اطلاعات ورود را بررسی کن.'),'error')}
+  finally{btn.disabled=false;btn.textContent='ورود به داشبورد'}
+ });
+ const {data:sessionData,error}=await cloudClient.auth.getSession();
+ if(error){showAuthMessage('خطا در بررسی نشست: '+error.message,'error');return}
+ if(sessionData.session?.user)await loadUserCloud(sessionData.session.user);
+}
+
 
 /* ---------- محاسبات ---------- */
 const taskKey=(w,i)=>`w${w}-t${i}`;
@@ -1210,8 +1302,8 @@ function renderAll(){
 }
 load();initSelects();
 $('sDate').value=todayISO();$('rDate').value=todayISO();updateDateLabels();
-renderAll();
 setTimeout(()=>{orbitDone=true},1800);
+initCloudAuth();
 let rz;window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{renderToday();renderHome()},200)});
 showView(hid()||'today');
 try{if(navigator.storage&&navigator.storage.persist){navigator.storage.persist().then(ok=>{const p=$('persistState');if(p)p.textContent=ok?'ذخیره‌سازی پایدار فعال است.':''})}}catch(e){}
