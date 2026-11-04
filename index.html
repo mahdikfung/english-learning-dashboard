@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070b16">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-BLrnwkbIF9pZcl8phhRfI+ugIyoeTGTvPP8lPtu+hBQ='; style-src 'unsafe-inline' https://fonts.googleapis.com; style-src-elem 'sha256-6DZD0KgYdGcilYDU5SuufBArIRzPwZT10QOJvLlKC3c=' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<title>English Learning OS V7 | برنامه ۱۲ هفته‌ای</title>
+<title>English Learning OS | برنامه ۱۲ هفته‌ای</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -14,11 +16,11 @@
  --bg:#edf0f7;--panel:#ffffff;--panel2:#f4f6fc;--line:#dce2f0;--text:#0e1424;--muted:#5b6885;
  --accent:#4357e6;--accent2:#2f43c8;--on-accent:#ffffff;--amber:#d98200;--good:#0f9b72;--bad:#d6455d;--warn:#d98200;
  --grid:rgba(60,80,160,.07);--glow:rgba(67,87,230,.10);--shadow:0 1px 0 rgba(255,255,255,.6) inset,0 12px 32px -18px rgba(30,45,110,.25);
- --radius:20px;--sb:env(safe-area-inset-bottom,0px);
+ --radius:20px;--track:#d3dbed;--sb:env(safe-area-inset-bottom,0px);
  --fb:Vazirmatn,Tahoma,"Segoe UI",system-ui,-apple-system,sans-serif;--fh:Lalezar,Vazirmatn,Tahoma,"Segoe UI",system-ui,sans-serif;--fm:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 }
 [data-theme=dark]{
- --bg:#070b16;--panel:#0d1426;--panel2:#111a31;--line:#1b2744;--text:#e8edfb;--muted:#8793b2;
+ --track:#27355c;--bg:#070b16;--panel:#0d1426;--panel2:#111a31;--line:#1b2744;--text:#e8edfb;--muted:#8793b2;
  --accent:#7b90ff;--accent2:#4d63ea;--on-accent:#050a18;--amber:#ffb547;--good:#3ee6b0;--bad:#ff6b81;--warn:#ffb547;
  --grid:rgba(120,140,230,.055);--glow:rgba(100,125,255,.14);--shadow:0 1px 0 rgba(255,255,255,.03) inset,0 18px 40px -24px rgba(0,0,0,.8);
 }
@@ -31,31 +33,40 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 h1,h2,h3,.brand{font-family:var(--fh);font-weight:400;margin:0;letter-spacing:0}
 .i{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;vertical-align:-.22em}
-.app{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.app{display:grid;grid-template-columns:256px minmax(0,1fr);min-height:100vh}
 .side{background:color-mix(in srgb,var(--panel) 80%,transparent);backdrop-filter:blur(14px);border-left:1px solid var(--line);padding:24px 16px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:26px;overflow:auto}
-.brand{font-size:22px;line-height:1.15;display:flex;align-items:center;gap:11px;padding:0 6px}
-.brand svg{width:34px;height:34px;flex-shrink:0}
-.brand small{display:block;font:500 11px var(--fb);color:var(--muted);margin-top:3px}
+.brand{display:flex;align-items:center;gap:12px;padding:2px 4px}
+.brand .logo{width:38px;height:38px;flex-shrink:0}
+.brand .logo path{fill:none;stroke:var(--track);stroke-width:3.2;stroke-linecap:round}
+.brand .logo .done{stroke:var(--accent)}.brand .logo .now{stroke:var(--amber)}
+.brand .bt{min-width:0}
+.brand .bt b{display:block;font:800 15.5px/1.3 var(--fb);letter-spacing:-.2px;direction:ltr;text-align:right;white-space:nowrap}
+.brand .bt small{display:block;font:500 11.5px/1.5 var(--fb);color:var(--muted);margin-top:2px}
 .nav{display:grid;gap:4px}
 .nav button{border:0;background:transparent;color:var(--muted);text-align:right;padding:11px 14px;border-radius:12px;display:flex;gap:12px;align-items:center;width:100%;position:relative;font-size:13px;transition:background .15s,color .15s}
 .nav button .i{font-size:19px}
 .nav button:hover{color:var(--text);background:var(--panel2)}
 .nav button.active{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
 .nav button.active::after{content:"";position:absolute;right:-16px;top:9px;bottom:9px;width:3px;border-radius:3px;background:var(--accent);box-shadow:0 0 12px var(--accent)}
-.side-foot{margin-top:auto;color:var(--muted);font-size:11px;line-height:1.9;padding:0 6px}
+.side-foot{margin-top:auto;display:grid;gap:11px;padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--panel2);font-size:12px;line-height:1.8}
+.sf-row{display:flex;gap:9px;align-items:flex-start;color:var(--muted)}
+.sf-row .i{margin-top:4px;color:var(--accent)}
+.sf-row span{text-wrap:balance}
+.sf-backup{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:11px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
+.sf-backup.warn{color:var(--amber)}
+.sf-backup:empty{display:none}
 .main{padding:26px clamp(16px,3vw,42px) 40px;max-width:1500px;width:100%;margin:auto;min-width:0}
 .top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
 .top h1{font-size:34px;line-height:1.2}
 .top .sub{font-size:12px;color:var(--muted);margin-top:4px}
 .top-actions{display:flex;gap:10px;align-items:center}
-.themesw{position:relative;width:76px;height:40px;border-radius:22px;border:1px solid var(--line);background:var(--panel);padding:0;display:flex;align-items:center;justify-content:space-around;color:var(--muted);overflow:hidden}
-.themesw .thumb{position:absolute;top:4px;inset-inline-start:4px;width:30px;height:30px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px color-mix(in srgb,var(--accent) 55%,transparent);transition:transform .35s cubic-bezier(.5,1.4,.5,1)}
-[data-theme=dark] .themesw .thumb{transform:translateX(-36px)}
-.themesw .i{position:relative;z-index:1;width:18px;height:18px;transition:color .25s,transform .45s}
+.themesw{position:relative;width:72px;height:40px;border-radius:22px;border:1px solid var(--line);background:var(--panel);padding:0;display:grid;grid-template-columns:1fr 1fr;place-items:center;overflow:hidden}
+.themesw .thumb{position:absolute;top:4px;inset-inline-start:2.5px;width:30px;height:30px;border-radius:50%;background:var(--accent);box-shadow:0 4px 12px -2px color-mix(in srgb,var(--accent) 60%,transparent);transition:transform .3s cubic-bezier(.4,1.3,.5,1)}
+[data-theme=dark] .themesw .thumb{transform:translateX(-35px)}
+.themesw .i{position:relative;z-index:1;width:18px;height:18px;transition:color .25s}
 .themesw .sun{color:var(--on-accent)}.themesw .moon{color:var(--muted)}
-[data-theme=dark] .themesw .sun{color:var(--muted);transform:rotate(-90deg)}
-[data-theme=dark] .themesw .moon{color:var(--on-accent);transform:rotate(0)}
-:root:not([data-theme=dark]) .themesw .moon{transform:rotate(90deg)}
+[data-theme=dark] .themesw .sun{color:var(--muted)}
+[data-theme=dark] .themesw .moon{color:var(--on-accent)}
 .btn{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:9px 15px;border-radius:12px;font-size:12px;min-height:40px;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:border-color .15s,background .15s,transform .1s}
 .btn:hover{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
 .btn:active{transform:scale(.97)}
@@ -76,11 +87,14 @@ h1,h2,h3,.brand{font-family:var(--fh);font-weight:400;margin:0;letter-spacing:0}
 .orbit{position:relative;flex-shrink:0}
 .orbit svg{width:100%;height:100%;display:block}
 .orbit-in{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
-.orbit-in b{font-family:var(--fh);font-weight:400;font-size:calc(var(--o,150px)*.34);line-height:1}
-.orbit-in small{font-size:calc(var(--o,150px)*.085);color:var(--muted);margin-top:4px}
-.o-track{fill:none;stroke:var(--line);stroke-width:10;stroke-linecap:round}
-.o-track.o-now{stroke:color-mix(in srgb,var(--amber) 55%,var(--line))}
-.o-fg{fill:none;stroke:var(--accent);stroke-width:10;stroke-linecap:round;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--accent) 55%,transparent))}
+.orbit-in b{font-family:var(--fh);font-weight:400;font-size:calc(var(--o,150px)*.3);line-height:1}
+.orbit-in small{font-size:calc(var(--o,150px)*.085);color:var(--muted);margin-top:5px}
+.o-seg{fill:none;stroke:var(--track);stroke-linecap:round}
+.o-seg.part{stroke:color-mix(in srgb,var(--accent) 45%,var(--track))}
+.o-seg.done{stroke:var(--accent)}
+.o-seg.now{stroke:var(--amber)}
+.o-ring{fill:none;stroke:var(--track);opacity:.55}
+.o-prog{fill:none;stroke:var(--accent);stroke-linecap:round}
 .seg-in{animation:segin .6s calc(var(--i)*70ms) both}
 @keyframes segin{from{opacity:0}}
 /* نوار آمار */
@@ -192,8 +206,9 @@ h1,h2,h3,.brand{font-family:var(--fh);font-weight:400;margin:0;letter-spacing:0}
 .mini .t{font-family:var(--fm);font-weight:700;direction:ltr;font-variant-numeric:tabular-nums;font-size:17px;color:var(--amber)}
 .mini .l{font-size:11px;color:var(--muted);max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mini button{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:11px;min-width:38px;min-height:38px;display:grid;place-items:center}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + var(--sb));background:var(--text);color:var(--bg);padding:11px 18px;border-radius:14px;font-size:12px;z-index:60;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90vw;text-align:center}
-.toast.show{opacity:1}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,10px);background:var(--text);color:var(--bg);padding:11px 18px;border-radius:14px;font-size:12px;z-index:60;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s,transform .25s,visibility 0s .25s;max-width:90vw;text-align:center}
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .25s,transform .25s}
+.toast:empty{display:none}
 /* تبلت: ستون آیکونی */
 @media(max-width:1099px) and (min-width:720px){
  .app{grid-template-columns:88px minmax(0,1fr)}
@@ -227,6 +242,7 @@ h1,h2,h3,.brand{font-family:var(--fh);font-weight:400;margin:0;letter-spacing:0}
  .card{padding:16px}
  .clock{font-size:44px}
  .mini{left:12px;right:12px;bottom:calc(86px + var(--sb));justify-content:space-between}
+ .toast{bottom:calc(92px + var(--sb))}
  .btn{min-height:44px}.btn.sm{min-height:38px}
  .barrow{grid-template-columns:82px 1fr 54px}
  .card.tablewrap{background:transparent;border:0;box-shadow:none;padding:0;overflow:visible}
@@ -240,449 +256,8 @@ h1,h2,h3,.brand{font-family:var(--fh);font-weight:400;margin:0;letter-spacing:0}
 }
 @media(pointer:coarse){.task input[type=checkbox]{width:24px;height:24px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-
-/* =========================
-   ENGLISH LEARNING OS · V7 MOTION REDESIGN
-   UI layer only — application logic and data model preserved
-   ========================= */
-:root{
-  --bg:#f4f6fb;
-  --panel:#ffffff;
-  --panel2:#f7f9fd;
-  --line:#e3e8f2;
-  --text:#182238;
-  --muted:#73809a;
-  --accent:#5268e8;
-  --accent2:#354bd0;
-  --on-accent:#ffffff;
-  --amber:#d9952b;
-  --good:#159b78;
-  --bad:#d9536b;
-  --warn:#d9952b;
-  --grid:rgba(70,92,170,.035);
-  --glow:rgba(82,104,232,.13);
-  --shadow:0 8px 30px -20px rgba(35,51,96,.22),0 1px 0 rgba(255,255,255,.85) inset;
-  --radius:22px;
-}
-[data-theme=dark]{
-  --bg:#080d19;
-  --panel:#101a2d;
-  --panel2:#142139;
-  --line:#24324d;
-  --text:#edf2ff;
-  --muted:#91a0bd;
-  --accent:#8b9cff;
-  --accent2:#6278f1;
-  --on-accent:#081020;
-  --amber:#ffc46b;
-  --good:#4bdcb0;
-  --bad:#ff8295;
-  --warn:#ffc46b;
-  --grid:rgba(130,151,220,.045);
-  --glow:rgba(100,124,255,.16);
-  --shadow:0 18px 44px -28px rgba(0,0,0,.8),0 1px 0 rgba(255,255,255,.025) inset;
-}
-html{scroll-behavior:smooth}
-body{
-  background-color:var(--bg);
-  background-image:
-    radial-gradient(ellipse 780px 460px at 92% -12%,var(--glow),transparent 68%),
-    radial-gradient(ellipse 600px 380px at -15% 60%,rgba(30,190,190,.045),transparent 70%),
-    linear-gradient(var(--grid) 1px,transparent 1px),
-    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:auto,auto,38px 38px,38px 38px;
-  background-attachment:fixed;
-}
-.app{grid-template-columns:264px minmax(0,1fr);gap:0}
-.side{
-  background:color-mix(in srgb,var(--panel) 90%,transparent);
-  border-left:1px solid var(--line);
-  padding:27px 17px 20px;
-  gap:28px;
-  box-shadow:8px 0 40px -35px rgba(20,35,75,.3);
-}
-.brand{padding:4px 8px;font-size:24px;gap:12px}
-.brand svg{width:39px;height:39px;filter:drop-shadow(0 4px 10px var(--glow))}
-.brand small{font-size:11px;letter-spacing:.1px}
-.nav{gap:6px}
-.nav button{
-  min-height:46px;
-  padding:12px 14px;
-  border:1px solid transparent;
-  border-radius:14px;
-  font-size:13px;
-  gap:13px;
-}
-.nav button .i{font-size:19px}
-.nav button:hover{transform:translateX(-2px);background:var(--panel2)}
-.nav button.active{
-  border-color:color-mix(in srgb,var(--accent) 24%,var(--line));
-  background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 13%,var(--panel)),color-mix(in srgb,var(--accent) 5%,var(--panel)));
-  box-shadow:0 5px 18px -14px var(--accent);
-}
-.nav button.active::after{right:-17px;width:3px;top:10px;bottom:10px}
-.side-foot{
-  border-top:1px solid var(--line);
-  padding:16px 8px 0;
-  line-height:2.1;
-}
-.main{max-width:1580px;padding:28px clamp(18px,3.2vw,48px) 48px}
-.top{
-  min-height:64px;
-  margin-bottom:25px;
-  padding-bottom:17px;
-  border-bottom:1px solid var(--line);
-}
-.top h1{font-size:36px;letter-spacing:-.3px}
-.top .sub{font-size:12px;margin-top:6px}
-.top-actions{gap:12px}
-.themesw{width:78px;height:42px;border-radius:14px}
-.themesw .thumb{border-radius:10px;width:32px;height:32px;top:4px}
-.themesw .i{width:17px;height:17px}
-.btn{
-  min-height:43px;
-  border-radius:13px;
-  padding:10px 16px;
-  font-size:12px;
-  font-weight:600;
-  box-shadow:0 2px 8px -7px var(--text);
-}
-.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px -14px var(--accent)}
-.btn.primary{
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  box-shadow:0 9px 22px -13px var(--accent);
-}
-.btn.primary:hover{box-shadow:0 12px 24px -12px var(--accent)}
-.btn.big{min-height:52px;border-radius:15px}
-.view.active{animation:viewEnter .34s ease both}
-@keyframes viewEnter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-.hero{
-  position:relative;
-  overflow:hidden;
-  padding:34px 38px;
-  min-height:190px;
-  border-radius:26px;
-  border-color:color-mix(in srgb,var(--accent) 18%,var(--line));
-  background:
-    radial-gradient(ellipse 380px 240px at 5% 110%,color-mix(in srgb,var(--accent) 17%,transparent),transparent 72%),
-    radial-gradient(ellipse 300px 180px at 95% -20%,rgba(20,190,180,.08),transparent 70%),
-    var(--panel);
-  box-shadow:var(--shadow);
-}
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.035) 50%,transparent 70%);
-  transform:translateX(-100%);
-  animation:heroSheen 9s ease-in-out infinite;
-}
-@keyframes heroSheen{0%,65%{transform:translateX(-100%)}90%,100%{transform:translateX(100%)}}
-.hero h2{font-size:39px;line-height:1.25;position:relative;z-index:1}
-.hero p{font-size:13px;line-height:2.1;max-width:620px;position:relative;z-index:1}
-.chips{gap:9px}
-.chip{border-radius:11px;padding:7px 12px;font-size:11px}
-.orbit{filter:drop-shadow(0 8px 16px var(--glow))}
-.statstrip{
-  border-radius:20px;
-  gap:1px;
-  box-shadow:var(--shadow);
-}
-.stat{padding:19px 21px;transition:background .2s}
-.stat:hover{background:var(--panel2)}
-.statlabel{font-size:12px;font-weight:500}
-.statlabel .i{color:var(--accent)}
-.statnum{font-size:32px;letter-spacing:-.8px;margin:10px 0 4px}
-.statnote{font-size:11px}
-.grid{gap:18px}
-.cols{grid-template-columns:minmax(0,1.25fr) minmax(300px,.85fr)}
-.card{
-  padding:22px;
-  border-radius:21px;
-  box-shadow:var(--shadow);
-  transition:border-color .2s,transform .2s,box-shadow .2s;
-}
-.card>h2{font-size:23px;margin-bottom:8px}
-.section-head{margin:28px 0 14px}
-.section-head h2{font-size:25px}
-.section-head p{font-size:12px;line-height:1.8}
-.progressline{height:8px;background:color-mix(in srgb,var(--line) 75%,var(--panel));margin:12px 0;border-radius:30px}
-.progressline span{background:linear-gradient(90deg,#20b8a4,var(--accent));box-shadow:0 0 12px var(--glow)}
-.week-row{padding:13px 2px}
-.week-num{width:38px;height:38px;border-radius:12px}
-.week-info strong{font-size:13px}
-.week-info small{font-size:11px;line-height:1.8}
-.week-pick{padding:11px;border-radius:13px}
-.week-pick.active{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 10%,transparent)}
-.week-pick .wkbadge{width:34px;height:34px;border-radius:11px}
-.unit-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
-.unit{
-  border-radius:16px;
-  padding:16px;
-  transition:transform .2s,border-color .2s,background .2s;
-}
-.unit:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 35%,var(--line));background:color-mix(in srgb,var(--accent) 4%,var(--panel2))}
-.unit h3{font-size:19px}
-.unit p{font-size:12px;line-height:2}
-.task{padding:14px 0;font-size:13px;line-height:2}
-.task input[type=checkbox]{width:19px;height:19px;accent-color:var(--accent)}
-.tasktext small{font-size:11px;line-height:1.8}
-.pill{padding:5px 10px;border-radius:9px;font-weight:600}
-.week-toolbar{gap:10px;margin-bottom:18px}
-.week-toolbar select,.field{border-radius:13px;min-height:44px}
-.formgrid{gap:14px}
-.formgrid label{font-size:12px;gap:7px}
-.formgrid input,.formgrid select,.formgrid textarea{
-  border-radius:13px;
-  min-height:46px;
-  padding:11px 13px;
-  background:var(--panel2);
-}
-.formgrid textarea{min-height:92px}
-.formgrid input:hover,.formgrid select:hover,.formgrid textarea:hover{border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
-.tablewrap{border-radius:18px}
-.data-table{font-size:12px}
-.data-table th{font-size:11px;letter-spacing:.1px}
-.data-table th,.data-table td{padding:14px 10px}
-.data-table tbody tr{transition:background .15s}
-.data-table tbody tr:hover{background:color-mix(in srgb,var(--accent) 4%,transparent)}
-.notice{border-radius:15px;line-height:2.1;padding:15px 16px}
-.links a{border-radius:14px;padding:13px 15px;transition:transform .15s,border-color .15s}
-.links a:hover{transform:translateX(-2px)}
-.clock{font-size:58px;letter-spacing:2px}
-.task-card{border-radius:16px;padding:17px}
-.task-card b{font-size:14px}
-.banner{border-radius:15px;padding:14px 17px}
-.chartbox{min-width:0}
-.chartbox svg{overflow:visible}
-.cpcard{border-radius:17px;padding:18px}
-.bottomnav{
-  background:color-mix(in srgb,var(--panel) 91%,transparent);
-  border-color:color-mix(in srgb,var(--line) 90%,transparent);
-  box-shadow:0 18px 50px -22px rgba(0,0,0,.45);
-}
-.bottomnav button{font-weight:600}
-.bottomnav button.active{border:1px solid color-mix(in srgb,var(--accent) 20%,transparent)}
-.sheet-body{gap:9px}
-.sheet-body button{border-radius:15px}
-.toast{border:1px solid var(--line);box-shadow:0 12px 30px -15px rgba(0,0,0,.5)}
-/* Responsive refinement */
-@media(max-width:1099px) and (min-width:720px){
-  .app{grid-template-columns:82px minmax(0,1fr)}
-  .side{padding:18px 7px;gap:19px}
-  .brand svg{width:36px;height:36px}
-  .nav button{min-height:62px;border-radius:13px}
-  .main{padding:24px 22px 42px}
-  .hero{padding:28px}
-}
-@media(max-width:900px){
-  .cols{grid-template-columns:1fr}
-  .week-layout{grid-template-columns:1fr}
-  .week-list{display:flex;gap:8px;padding:10px;scroll-snap-type:x proximity}
-  .week-pick{min-width:165px;scroll-snap-align:start}
-}
-@media(max-width:719px){
-  body{background-size:auto,auto,30px 30px,30px 30px}
-  .app{grid-template-columns:1fr}
-  .main{padding:15px 13px calc(112px + var(--sb))}
-  .top{align-items:flex-start;gap:10px;padding-bottom:14px;margin-bottom:17px}
-  .top h1{font-size:29px}
-  .top .sub{font-size:11px}
-  .top-actions{gap:7px}
-  .themesw{width:66px;height:39px;border-radius:12px;flex-shrink:0}
-  .themesw .thumb{width:29px;height:29px}
-  .top-actions .btn{width:44px;min-width:44px;padding:0;border-radius:12px}
-  .top-actions .btn span{display:none}
-  .hero{
-    grid-template-columns:minmax(0,1fr) auto;
-    gap:10px;
-    padding:21px 17px;
-    min-height:155px;
-    border-radius:21px;
-  }
-  .hero h2{font-size:27px}
-  .hero p{font-size:11px;line-height:2;margin-top:7px}
-  .hero .chips{margin-top:11px;gap:6px}
-  .chip{font-size:10px;padding:6px 9px}
-  .orbit{max-width:104px}
-  .statstrip{grid-template-columns:repeat(2,minmax(0,1fr));border-radius:17px}
-  .stat{padding:14px 13px}
-  .statnum{font-size:25px;margin:8px 0 3px}
-  .statlabel{font-size:11px;gap:5px}
-  .statnote{font-size:10px}
-  .grid{gap:13px}
-  .card{padding:16px;border-radius:18px}
-  .card>h2{font-size:21px}
-  .section-head{margin:21px 0 11px}
-  .section-head h2{font-size:22px}
-  .section-head p{font-size:11px}
-  .formgrid{grid-template-columns:1fr;gap:12px}
-  .formgrid .full{grid-column:auto}
-  .formgrid input,.formgrid select,.formgrid textarea,.field,.week-toolbar select{font-size:16px}
-  .formgrid label{font-size:12px}
-  .week-toolbar{align-items:stretch}
-  .week-toolbar select{width:100%;min-width:0}
-  .week-toolbar .pill{align-self:flex-start}
-  .week-layout{gap:12px}
-  .week-list{margin:0 -2px}
-  .week-pick{min-width:148px;padding:9px}
-  .unit-grid{grid-template-columns:1fr}
-  .unit{padding:14px}
-  .task{font-size:12px;gap:9px}
-  .task input[type=checkbox]{width:22px;height:22px}
-  .clock{font-size:46px}
-  .barrow{grid-template-columns:78px minmax(0,1fr) 48px;gap:7px}
-  .data-table th,.data-table td{padding:9px 0}
-  .data-table tr{padding:10px 12px}
-  .data-table td{font-size:12px;line-height:1.7}
-  .data-table td::before{max-width:38%;white-space:normal;text-align:right}
-  .data-table td.actions{gap:6px}
-  .btn{min-height:44px}
-  .btn.sm{min-height:39px}
-  .bottomnav{left:8px;right:8px;bottom:calc(8px + var(--sb));border-radius:19px;padding:5px}
-  .bottomnav button{min-height:53px;font-size:9px;padding:6px 1px}
-  .bottomnav button .i{font-size:19px}
-  .mini{left:10px;right:10px;bottom:calc(83px + var(--sb))}
-  .toast{bottom:calc(90px + var(--sb));font-size:11px}
-  .banner{font-size:11px}
-  .grammar-table{font-size:11px}
-  .grammar-table td,.grammar-table th{padding:9px 5px}
-}
-@media(max-width:380px){
-  .main{padding-inline:10px}
-  .hero{grid-template-columns:minmax(0,1fr) 82px;padding:17px 13px}
-  .hero h2{font-size:24px}
-  .orbit{max-width:82px}
-  .stat{padding:12px 10px}
-  .statnum{font-size:23px}
-  .top h1{font-size:26px}
-  .bottomnav button{font-size:8px}
-}
-@media(prefers-reduced-motion:reduce){
-  .view.active,.hero::after{animation:none!important}
-  .nav button,.card,.unit,.btn,.links a{transition:none!important}
-}
-
-
-/* ================= V7 / MOTION & VISUAL IDENTITY ================= */
-:root{--ease-out:cubic-bezier(.2,.75,.25,1);--ease-spring:cubic-bezier(.18,.9,.25,1.25)}
-html{scroll-behavior:smooth}
-body{isolation:isolate;overflow-x:hidden}
-body::before,body::after{content:"";position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(2px);opacity:.55}
-body::before{width:520px;height:520px;top:-230px;left:-180px;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 17%,transparent),transparent 68%);animation:ambientDrift 19s ease-in-out infinite alternate}
-body::after{width:440px;height:440px;right:-210px;bottom:-210px;background:radial-gradient(circle,color-mix(in srgb,#18bfa4 13%,transparent),transparent 68%);animation:ambientDrift 23s ease-in-out infinite alternate-reverse}
-@keyframes ambientDrift{0%{transform:translate3d(0,0,0) scale(.9)}100%{transform:translate3d(55px,35px,0) scale(1.12)}}
-.app{position:relative}
-.side{position:sticky;top:0;height:100vh;align-self:start;overflow-y:auto;scrollbar-width:thin}
-.brand{position:relative}
-.brand svg{filter:drop-shadow(0 0 10px color-mix(in srgb,var(--accent) 35%,transparent));animation:brandBreath 5s ease-in-out infinite}
-@keyframes brandBreath{50%{filter:drop-shadow(0 0 17px color-mix(in srgb,var(--accent) 55%,transparent))}}
-.nav button{position:relative;isolation:isolate;overflow:hidden;transition:transform .28s var(--ease-spring),background .25s,border-color .25s,color .25s}
-.nav button::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 15%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 85%);transform:translateX(120%);transition:transform .55s var(--ease-out);z-index:-1}
-.nav button:hover::before{transform:translateX(-120%)}
-.nav button:hover{transform:translateX(-3px)}
-.nav button.active{box-shadow:inset -3px 0 0 var(--accent),0 8px 22px -16px var(--accent)}
-.nav button.active .i{filter:drop-shadow(0 0 5px color-mix(in srgb,var(--accent) 65%,transparent));animation:iconPop .45s var(--ease-spring)}
-@keyframes iconPop{0%{transform:scale(.7) rotate(-12deg)}100%{transform:scale(1) rotate(0)}}
-.main{min-width:0;animation:mainEnter .65s var(--ease-out) both}
-@keyframes mainEnter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.top{position:relative}
-.top::after{content:"";position:absolute;bottom:-1px;right:0;width:clamp(70px,13vw,170px);height:2px;border-radius:9px;background:linear-gradient(90deg,transparent,var(--accent),#20b8a4);transform-origin:right;animation:lineReveal .9s .15s var(--ease-out) both}
-@keyframes lineReveal{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
-.hero{position:relative;isolation:isolate;overflow:hidden;border:1px solid color-mix(in srgb,var(--accent) 18%,var(--line));background:linear-gradient(125deg,color-mix(in srgb,var(--panel) 96%,var(--accent) 4%),var(--panel) 52%,color-mix(in srgb,var(--panel) 92%,#18bfa4 8%));box-shadow:0 20px 55px -34px color-mix(in srgb,var(--accent) 48%,transparent),var(--shadow);transform:translateZ(0)}
-.hero::before{content:"";position:absolute;z-index:-1;width:310px;height:310px;left:-110px;top:-170px;border:1px solid color-mix(in srgb,var(--accent) 19%,transparent);border-radius:50%;box-shadow:0 0 0 22px color-mix(in srgb,var(--accent) 3%,transparent),0 0 0 52px color-mix(in srgb,var(--accent) 2%,transparent);animation:heroOrbit 26s linear infinite}
-.hero::after{content:"";position:absolute;z-index:-1;inset:-80% auto -80% -40%;width:30%;background:linear-gradient(90deg,transparent,color-mix(in srgb,#fff 17%,transparent),transparent);transform:rotate(22deg) translateX(-220%);animation:heroShimmer 9s 1.2s ease-in-out infinite}
-@keyframes heroOrbit{to{transform:rotate(360deg)}}
-@keyframes heroShimmer{0%,58%{transform:rotate(22deg) translateX(-220%)}78%,100%{transform:rotate(22deg) translateX(520%)}}
-.hero h2{animation:heroTextIn .7s .12s var(--ease-out) both}
-.hero p{animation:heroTextIn .7s .22s var(--ease-out) both}
-.hero .chips{animation:heroTextIn .7s .32s var(--ease-out) both}
-@keyframes heroTextIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.card,.stat{position:relative;isolation:isolate;overflow:hidden;transition:transform .32s var(--ease-out),border-color .3s,box-shadow .32s,background .25s}
-.card::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;background:radial-gradient(280px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--accent) 10%,transparent),transparent 70%);transition:opacity .3s}
-.card:hover::before{opacity:1}
-.card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 32%,var(--line));box-shadow:0 18px 42px -27px color-mix(in srgb,var(--accent) 45%,transparent),var(--shadow)}
-.stat:hover{transform:translateY(-3px);z-index:1}
-.statnum{transition:color .25s,transform .3s var(--ease-spring)}
-.stat:hover .statnum{color:var(--accent);transform:translateY(-2px)}
-.view{transform-origin:top center}
-.view.active{animation:viewEnter .48s var(--ease-out) both}
-@keyframes viewEnter{from{opacity:0;transform:translateY(12px) scale(.995);filter:blur(2px)}to{opacity:1;transform:none;filter:blur(0)}}
-.reveal-ready .reveal{opacity:0;transform:translateY(18px) scale(.99);transition:opacity .55s var(--ease-out),transform .6s var(--ease-out)}
-.reveal-ready .reveal.in-view{opacity:1;transform:none}
-.progressline span,.bar span{transform-origin:right center;animation:barGrow 1s .12s var(--ease-out) both}
-@keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.orbit .o-fg{stroke-dasharray:var(--circ,1);stroke-dashoffset:var(--offset,0);animation:ringDraw 1.4s .2s var(--ease-out) both}
-@keyframes ringDraw{from{stroke-dashoffset:var(--circ,1)}to{stroke-dashoffset:var(--offset,0)}}
-.btn{position:relative;isolation:isolate;overflow:hidden;transition:transform .22s var(--ease-spring),box-shadow .25s,filter .2s,border-color .2s}
-.btn::after{content:"";position:absolute;inset:-50% auto -50% -40%;width:25%;transform:skewX(-22deg) translateX(-250%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transition:transform .65s var(--ease-out);pointer-events:none}
-.btn:hover{transform:translateY(-2px);filter:saturate(1.08);box-shadow:0 10px 22px -15px var(--accent)}
-.btn:hover::after{transform:skewX(-22deg) translateX(650%)}
-.btn:active{transform:translateY(0) scale(.97)}
-.unit{position:relative;overflow:hidden;transition:transform .28s var(--ease-spring),border-color .25s,box-shadow .25s}
-.unit::after{content:"";position:absolute;inset:auto -20% -70% -20%;height:90%;background:radial-gradient(ellipse,color-mix(in srgb,var(--accent) 13%,transparent),transparent 70%);opacity:0;transition:opacity .3s}
-.unit:hover{transform:translateY(-5px) scale(1.012);box-shadow:0 16px 28px -22px var(--accent)}
-.unit:hover::after{opacity:1}
-.week-pick{transition:background .22s,border-color .22s,transform .22s var(--ease-spring)}
-.week-pick:hover{transform:translateX(-3px)}
-.week-pick.active .wkbadge{background:var(--accent);color:var(--on-accent);border-color:var(--accent);box-shadow:0 5px 15px -7px var(--accent)}
-.task input[type=checkbox]{cursor:pointer;transition:transform .2s var(--ease-spring),filter .2s}
-.task input[type=checkbox]:checked{transform:scale(1.12);filter:drop-shadow(0 0 5px color-mix(in srgb,var(--good) 45%,transparent))}
-.formgrid input,.formgrid select,.formgrid textarea,.field{transition:background .2s,border-color .2s,box-shadow .2s,transform .2s}
-.formgrid input:focus,.formgrid select:focus,.formgrid textarea:focus{transform:translateY(-1px)}
-.data-table tbody tr{transition:background .2s,transform .2s}
-.data-table tbody tr:hover{transform:translateX(-2px)}
-.toast{animation:toastIn .35s var(--ease-spring) both}
-@keyframes toastIn{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
-.bottomnav button{transition:transform .25s var(--ease-spring),color .2s,background .2s}
-.bottomnav button.active{box-shadow:0 5px 18px -12px var(--accent)}
-.bottomnav button.active .i{animation:iconPop .35s var(--ease-spring)}
-.themesw .thumb{transition:transform .35s var(--ease-spring),background .25s}
-::selection{background:color-mix(in srgb,var(--accent) 28%,transparent);color:var(--text)}
-@media(hover:none){.card:hover,.stat:hover,.unit:hover{transform:none}.card::before{display:none}}
-@media(max-width:719px){
- body::before{width:300px;height:300px;top:-150px;left:-150px}
- body::after{width:260px;height:260px;right:-150px;bottom:40px}
- .hero::before{width:210px;height:210px;left:-95px;top:-110px}
- .card:hover{transform:none}
- .nav button:hover{transform:none}
-}
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
- .reveal-ready .reveal{opacity:1!important;transform:none!important}
-}
-
-/* Supabase auth gate */
-.auth-gate{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:22px;background:var(--bg);background-image:radial-gradient(ellipse at 15% 10%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 45%)}
-.auth-card{width:min(100%,430px);padding:30px;border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:var(--shadow)}
-.auth-brand{font-size:25px;font-weight:800;letter-spacing:-.6px;margin-bottom:6px}.auth-desc{color:var(--muted);font-size:13px;line-height:1.9;margin:0 0 22px}.auth-field{display:grid;gap:7px;margin:13px 0;font-size:13px}.auth-field input{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;background:var(--bg);color:var(--text);font:inherit;direction:ltr}.auth-submit{width:100%;margin-top:10px;justify-content:center}.auth-msg{min-height:22px;margin-top:12px;font-size:12px;color:var(--muted);line-height:1.8}.auth-msg.error{color:var(--danger)}.auth-msg.ok{color:var(--green)}
-body:not(.authenticated) .app,body:not(.authenticated) .bottomnav,body:not(.authenticated) .sheet,body:not(.authenticated) .mini,body:not(.authenticated) .toast{display:none!important}
-body.authenticated .auth-gate{display:none}
-.cloud-status{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}.cloud-dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block}
-
-/* ================= END V7 ================= */
-
-
-/* V8 targeted fix: keep the "کار بعدی" card glow above its background
-   and below its content; avoid negative-z compositing artifacts (dark square). */
-#today .grid.cols > div:first-child > .card:first-child{isolation:isolate}
-#today .grid.cols > div:first-child > .card:first-child::before{z-index:0}
-#today .grid.cols > div:first-child > .card:first-child > *{position:relative;z-index:1}
 </style></head>
 <body>
-
-<div class="auth-gate" id="authGate"><div class="auth-card">
-  <div class="auth-brand">English Learning OS</div>
-  <p class="auth-desc">برای دسترسی به داشبورد شخصی و همگام‌سازی اطلاعات، وارد حساب خودت شو.</p>
-  <form id="authForm">
-    <label class="auth-field">ایمیل<input id="authEmail" type="email" autocomplete="username" required placeholder="you@example.com"></label>
-    <label class="auth-field">رمز عبور<input id="authPassword" type="password" autocomplete="current-password" required placeholder="رمز عبور" minlength="6"></label>
-    <button class="btn primary auth-submit" id="authSubmit" type="submit">ورود به داشبورد</button>
-  </form>
-  <div class="auth-msg" id="authMessage" role="status">حساب کاربری از قبل در Supabase ساخته شده است؛ ثبت‌نام عمومی در این نسخه غیرفعال است.</div>
-</div></div>
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 <linearGradient id="gBar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--accent)"/><stop offset="1" style="stop-color:var(--accent2)"/></linearGradient>
 <linearGradient id="gBarHi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--amber)"/><stop offset="1" style="stop-color:var(--amber);stop-opacity:.65"/></linearGradient>
@@ -715,11 +290,12 @@ body.authenticated .auth-gate{display:none}
 <symbol id="i-down" viewBox="0 0 24 24"><path d="M7 7l10 10M17 9v8H9"/></symbol>
 <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></symbol>
 <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C10.5 5 8 4.5 4 4.5v13c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2v-13c-4 0-6.5.5-8 2Z"/><path d="M12 6.5v13"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8 7.5 9.5 4.4-1.5 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
 <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></symbol>
 </defs></svg>
 
 <div class="app">
-<aside class="side"><div class="brand"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="12.5" fill="none" stroke="var(--line)" stroke-width="3.5"/><circle cx="17" cy="17" r="12.5" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="46 80" transform="rotate(-100 17 17)"/><circle cx="29" cy="12" r="2.8" fill="var(--amber)"/></svg><div class="bt">English Learning OS<small>برنامه ۱۲ هفته‌ای درک متن</small></div></div>
+<aside class="side"><div class="brand"><svg class="logo" viewBox="0 0 38 38" aria-hidden="true"><path d="M21.39 4.70A14.5 14.5 0 0 1 24.08 5.42" class="done"/><path d="M28.22 7.81A14.5 14.5 0 0 1 30.19 9.78" class="done"/><path d="M32.58 13.92A14.5 14.5 0 0 1 33.30 16.61" class="done"/><path d="M33.30 21.39A14.5 14.5 0 0 1 32.58 24.08" class="done"/><path d="M30.19 28.22A14.5 14.5 0 0 1 28.22 30.19" class="now"/><path d="M24.08 32.58A14.5 14.5 0 0 1 21.39 33.30"/><path d="M16.61 33.30A14.5 14.5 0 0 1 13.92 32.58"/><path d="M9.78 30.19A14.5 14.5 0 0 1 7.81 28.22"/><path d="M5.42 24.08A14.5 14.5 0 0 1 4.70 21.39"/><path d="M4.70 16.61A14.5 14.5 0 0 1 5.42 13.92"/><path d="M7.81 9.78A14.5 14.5 0 0 1 9.78 7.81"/><path d="M13.92 5.42A14.5 14.5 0 0 1 16.61 4.70"/></svg><div class="bt"><b>English Learning OS</b><small>برنامه ۱۲ هفته‌ای درک متن</small></div></div>
 <nav class="nav" id="sideNav">
 <button data-view="today" class="active"><svg class="i"><use href="#i-today"/></svg><span class="lbl">امروز</span></button>
 <button data-view="home"><svg class="i"><use href="#i-home"/></svg><span class="lbl">نمای کلی</span></button>
@@ -729,10 +305,10 @@ body.authenticated .auth-gate{display:none}
 <button data-view="reading"><svg class="i"><use href="#i-reading"/></svg><span class="lbl">Reading Tracker</span></button>
 <button data-view="analytics"><svg class="i"><use href="#i-analytics"/></svg><span class="lbl">گزارش و Checkpoint</span></button>
 <button data-view="settings"><svg class="i"><use href="#i-settings"/></svg><span class="lbl">تنظیمات و پشتیبان</span></button>
-</nav><div class="side-foot">نسخه مستقل و آفلاین‌محور<br>ذخیره‌سازی روی همین مرورگر<br>ساخته‌شده برای ۵ تا ۶ ساعت مطالعه در هفته</div></aside>
+</nav><div class="side-foot"><div class="sf-row"><svg class="i"><use href="#i-shield"/></svg><span>آفلاین؛ داده‌ها فقط روی همین مرورگر می‌مانند</span></div><div class="sf-row"><svg class="i"><use href="#i-target"/></svg><span>هدف: ۵ تا ۶ ساعت در هفته</span></div><div class="sf-backup" id="sideBackup"></div></div></aside>
 
 <main class="main">
-<header class="top"><div><h1 id="pageTitle">امروز</h1><div class="sub" id="topDate"></div></div><div class="top-actions"><button class="themesw" id="themeBtn" role="switch" aria-label="تغییر پوسته روشن / تیره"><span class="thumb"></span><svg class="i sun"><use href="#i-sun"/></svg><svg class="i moon"><use href="#i-moon"/></svg></button><button class="btn primary" onclick="go('sessions')"><svg class="i"><use href="#i-plus"/></svg><span>ثبت دستی جلسه</span></button></div></header>
+<header class="top"><div><h1 id="pageTitle">امروز</h1><div class="sub" id="topDate"></div></div><div class="top-actions"><button class="themesw" id="themeBtn" role="switch" aria-label="تغییر پوسته روشن / تیره"><span class="thumb"></span><svg class="i sun"><use href="#i-sun"/></svg><svg class="i moon"><use href="#i-moon"/></svg></button><button class="btn primary" data-act="go" data-a="sessions"><svg class="i"><use href="#i-plus"/></svg><span>ثبت دستی جلسه</span></button></div></header>
 <div class="banner" id="backupBanner"></div>
 
 <!-- امروز -->
@@ -764,7 +340,7 @@ body.authenticated .auth-gate{display:none}
 <div class="stat"><div class="statlabel"><svg class="i"><use href="#i-clock"/></svg>زمان مطالعه ثبت‌شده</div><div class="statnum" id="statHours">0.0h</div><div class="statnote">مجموع جلسات</div></div>
 <div class="stat"><div class="statlabel"><svg class="i"><use href="#i-check"/></svg>وظایف تکمیل‌شده</div><div class="statnum" id="statTasks">0%</div><div class="statnote">از کل وظایف ۱۲ هفته</div></div>
 <div class="stat"><div class="statlabel"><svg class="i"><use href="#i-vocab"/></svg>واژگان ثبت‌شده</div><div class="statnum" id="statWords">0</div><div class="statnote">در دفتر واژگان</div></div></div>
-<div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>ادامه مسیر</h2><p>وضعیت هفته انتخاب‌شده</p></div><button class="btn" onclick="go('curriculum')">مشاهده برنامه <svg class="i"><use href="#i-arrowL"/></svg></button></div><div id="homeWeek"></div></div>
+<div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>ادامه مسیر</h2><p>وضعیت هفته انتخاب‌شده</p></div><button class="btn" data-act="go" data-a="curriculum">مشاهده برنامه <svg class="i"><use href="#i-arrowL"/></svg></button></div><div id="homeWeek"></div></div>
 <div class="card"><div class="section-head" style="margin-top:0"><div><h2>تقسیم زمان پیشنهادی</h2><p>مبنای ۵ ساعت و ۳۰ دقیقه در هفته</p></div></div><div id="homeSplit"></div><div class="notice">اگر زمان کم شد، ابتدا از تمرین‌های تکراری و بخش‌های کم‌اولویت کم کن، نه از Reading.</div></div></div>
 <div class="section-head"><div><h2>نقشه ۱۲ هفته</h2><p>پیشرفت هر هفته بر اساس وظایف تیک‌خورده</p></div></div><div class="card" id="homeWeeks"></div>
 </section>
@@ -784,7 +360,7 @@ body.authenticated .auth-gate{display:none}
 </section>
 
 <!-- واژگان -->
-<section class="view" id="vocab"><div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>افزودن واژه</h2><p>معنا، مثال و زمان مرور را نگه دار</p></div></div><form id="vocabForm" class="formgrid"><label>واژه / عبارت<input id="vWord" required placeholder="e.g. take into account" dir="ltr" autocapitalize="none"></label><label>معنی فارسی<input id="vMeaning" placeholder="معنی یا توضیح"></label><label class="full">مثال انگلیسی<input id="vExample" dir="ltr" placeholder="Write a natural example sentence."></label><label>منبع / یونیت<input id="vSource" placeholder="TS3 Unit 2"></label><button class="btn primary" type="submit">افزودن به دفتر</button></form></div><div class="card"><h2>مرور هوشمند</h2><div class="statnum" id="dueWords">0</div><p class="muted small">واژه‌هایی که امروز زمان مرورشان رسیده است.</p><button class="btn" id="dueBtn" onclick="toggleDue()">فقط واژه‌های موعددار</button><div class="notice" style="margin-top:15px">فاصله‌ها: روز ۱، ۳، ۷، ۱۴ و ۳۰. «یادم بود» واژه را به فاصله بعدی می‌برد؛ «فراموش کردم» دوباره از روز ۱ شروع می‌کند.</div></div></div>
+<section class="view" id="vocab"><div class="grid cols"><div class="card"><div class="section-head" style="margin-top:0"><div><h2>افزودن واژه</h2><p>معنا، مثال و زمان مرور را نگه دار</p></div></div><form id="vocabForm" class="formgrid"><label>واژه / عبارت<input id="vWord" required placeholder="e.g. take into account" dir="ltr" autocapitalize="none"></label><label>معنی فارسی<input id="vMeaning" placeholder="معنی یا توضیح"></label><label class="full">مثال انگلیسی<input id="vExample" dir="ltr" placeholder="Write a natural example sentence."></label><label>منبع / یونیت<input id="vSource" placeholder="TS3 Unit 2"></label><button class="btn primary" type="submit">افزودن به دفتر</button></form></div><div class="card"><h2>مرور هوشمند</h2><div class="statnum" id="dueWords">0</div><p class="muted small">واژه‌هایی که امروز زمان مرورشان رسیده است.</p><button class="btn" id="dueBtn" data-act="toggleDue">فقط واژه‌های موعددار</button><div class="notice" style="margin-top:15px">فاصله‌ها: روز ۱، ۳، ۷، ۱۴ و ۳۰. «یادم بود» واژه را به فاصله بعدی می‌برد؛ «فراموش کردم» دوباره از روز ۱ شروع می‌کند.</div></div></div>
 <div class="section-head"><div><h2>دفتر واژگان</h2><p>واژه‌ها و عبارت‌های کاربردی متن‌ها</p></div><input class="field" id="vSearch" placeholder="جست‌وجو..." style="max-width:220px"></div><div class="card tablewrap"><table class="data-table"><thead><tr><th>واژه</th><th>معنی</th><th>مثال</th><th>منبع</th><th>مرور بعدی</th><th>عملیات</th></tr></thead><tbody id="vocabRows"></tbody></table></div>
 </section>
 
@@ -812,10 +388,10 @@ body.authenticated .auth-gate{display:none}
 </section>
 
 <!-- تنظیمات -->
-<section class="view" id="settings"><div class="grid cols"><div class="card"><h2>ظاهر و تجربه</h2><p class="muted small">پوسته و تنظیمات نمایش</p><button class="btn" onclick="toggleTheme()"><svg class="i"><use href="#i-sun"/></svg><svg class="i"><use href="#i-moon"/></svg> تغییر پوسته روشن / تیره</button><div class="notice" style="margin-top:15px">فونت تیترها Lalezar و فونت متن Vazirmatn است و هنگام اتصال به اینترنت از Google Fonts بارگذاری می‌شود. بدون اینترنت، فونت فارسی خود دستگاه استفاده می‌شود و داشبورد همچنان کار می‌کند.</div></div>
-<div class="card"><h2>حساب و همگام‌سازی</h2><p class="muted small" id="accountEmail">—</p><div class="notice" id="cloudStatus"><span class="cloud-dot"></span> اتصال ابری آماده نیست.</div><div class="btnrow" style="margin-top:12px"><button class="btn" onclick="syncNow()">همگام‌سازی اکنون</button><button class="btn danger" onclick="signOutUser()">خروج از حساب</button></div></div><div class="card"><h2>پشتیبان‌گیری و انتقال</h2><p class="muted small">اطلاعات در این مرورگر و حساب ابری شخصی تو ذخیره می‌شود.</p><div class="btnrow"><button class="btn primary" onclick="exportData()"><svg class="i"><use href="#i-download"/></svg> دانلود پشتیبان JSON</button><label class="btn" for="importFile"><svg class="i"><use href="#i-upload"/></svg> بازیابی پشتیبان</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><div class="notice" style="margin-top:15px" id="backupInfo"></div><div class="notice" style="margin-top:10px">حداقل هفته‌ای یک بار بکاپ بگیر. اطلاعات پس از ورود به حساب Supabase همگام می‌شود؛ بااین‌حال فایل JSON همچنان بهترین بکاپ مستقل است. <span id="persistState"></span></div></div></div>
-<div class="card" style="margin-top:16px"><h2>بازنشانی داده‌ها</h2><p class="muted small">این گزینه همه جلسات، واژگان، سوابق Reading، Checkpointها و تیک وظایف را از همین مرورگر پاک می‌کند.</p><button class="btn danger" onclick="resetData()"><svg class="i"><use href="#i-trash"/></svg> بازنشانی کامل</button></div></section>
-<footer class="small muted" style="text-align:center;padding:30px 0 10px">English Learning OS · 12-week plan · Local-first edition · v6</footer>
+<section class="view" id="settings"><div class="grid cols"><div class="card"><h2>ظاهر و تجربه</h2><p class="muted small">پوسته و تنظیمات نمایش</p><button class="btn" data-act="toggleTheme"><svg class="i"><use href="#i-sun"/></svg><svg class="i"><use href="#i-moon"/></svg> تغییر پوسته روشن / تیره</button><div class="notice" style="margin-top:15px">فونت تیترها Lalezar و فونت متن Vazirmatn است و هنگام اتصال به اینترنت از Google Fonts بارگذاری می‌شود. بدون اینترنت، فونت فارسی خود دستگاه استفاده می‌شود و داشبورد همچنان کار می‌کند.</div></div>
+<div class="card"><h2>پشتیبان‌گیری و انتقال</h2><p class="muted small">اطلاعات در حافظه همین مرورگر ذخیره می‌شود.</p><div class="btnrow"><button class="btn primary" data-act="exportData"><svg class="i"><use href="#i-download"/></svg> دانلود پشتیبان JSON</button><label class="btn" for="importFile"><svg class="i"><use href="#i-upload"/></svg> بازیابی پشتیبان</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><div class="notice" style="margin-top:15px" id="backupInfo"></div><div class="notice" style="margin-top:10px">حداقل هفته‌ای یک بار بکاپ بگیر. اگر کش مرورگر پاک شود یا مرورگر عوض کنی، فقط با فایل بکاپ می‌توانی اطلاعات را برگردانی. حافظه بین مرورگرها و آدرس‌های مختلف همگام نمی‌شود. <span id="persistState"></span></div></div></div>
+<div class="card" style="margin-top:16px"><h2>بازنشانی داده‌ها</h2><p class="muted small">این گزینه همه جلسات، واژگان، سوابق Reading، Checkpointها و تیک وظایف را از همین مرورگر پاک می‌کند.</p><button class="btn danger" data-act="resetData"><svg class="i"><use href="#i-trash"/></svg> بازنشانی کامل</button></div></section>
+<footer class="small muted" style="text-align:center;padding:30px 0 10px">English Learning OS · 12-week plan · Local-first edition · v7</footer>
 </main></div>
 
 <nav class="bottomnav" id="bottomNav" aria-label="ناوبری اصلی">
@@ -831,10 +407,9 @@ body.authenticated .auth-gate{display:none}
 <button data-view="analytics"><svg class="i"><use href="#i-analytics"/></svg>گزارش و Checkpoint</button>
 <button data-view="settings"><svg class="i"><use href="#i-settings"/></svg>تنظیمات و پشتیبان</button>
 </div></div>
-<div class="mini" id="mini"><span class="t timerClock">00:00</span><span class="l" id="miniLbl"></span><span style="display:flex;gap:6px"><button class="pauseBtnMini" onclick="pauseResume()" aria-label="توقف/ادامه"></button><button onclick="stopTimer()" aria-label="پایان"><svg class="i"><use href="#i-stop"/></svg></button></span></div>
+<div class="mini" id="mini"><span class="t timerClock">00:00</span><span class="l" id="miniLbl"></span><span style="display:flex;gap:6px"><button class="pauseBtnMini" data-act="pauseResume" aria-label="توقف/ادامه"></button><button data-act="stopTimer" aria-label="پایان"><svg class="i"><use href="#i-stop"/></svg></button></span></div>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const curriculum = [
 {book:'Touchstone 2',units:[['Making friends','Simple present / present continuous questions; too / either; conversation openers'],['Interests','Verbs + prepositions; object pronouns; everybody / nobody'],['Health','Simple present / continuous; if / when clauses; health vocabulary']],grammar:[['1–4','Present continuous and present simple','ضروری'],['49–52','Questions and auxiliary verbs','ضروری'],['82–85','Object pronouns and basic pronoun reference','تکمیلی'],['113–115','If / when and basic conjunctions','تکمیلی']],tasks:[['Touchstone · Unit 1','Grammar + Reading را کامل انجام بده؛ عبارت‌های شروع مکالمه را استخراج کن.'],['Touchstone · Unit 2','Reading و Vocabulary اولویت دارند؛ object pronouns را در متن پیدا کن.'],['Touchstone · Unit 3','ساختار present simple/continuous و جمله‌های if/when را مقایسه کن.'],['Grammar in Use','درس‌های 1–2 و 49–52؛ فقط تمرین‌های مرتبط را حل کن.'],['Independent Reading','یک متن 400–600 کلمه‌ای عمومی؛ ایده اصلی و 5 واژه کلیدی را ثبت کن.'],['Weekly review','یک خلاصه 5 جمله‌ای بنویس و 10 واژه را مرور کن.']]},
@@ -880,14 +455,20 @@ const MORE=['home','sessions','analytics','settings'];
 const $=id=>document.getElementById(id);
 const ic=n=>`<svg class="i" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 let orbitDone=false;
-const osz=()=>window.matchMedia('(max-width:719px)').matches?118:152;
-function orbit(main,sub,size){
- const st=10,r=(size-st)/2,C=2*Math.PI*r,gap=st+6,L=C/12-gap,cx=size/2,anim=!orbitDone;let s='';
+const osz=()=>window.matchMedia('(max-width:719px)').matches?128:168;
+function arcPath(c,r,a1,a2){const p=a=>[c+r*Math.cos(a*Math.PI/180),c+r*Math.sin(a*Math.PI/180)].map(v=>v.toFixed(2));const q1=p(a1),q2=p(a2);return `M${q1[0]} ${q1[1]}A${r} ${r} 0 0 1 ${q2[0]} ${q2[1]}`}
+/* حلقه بیرونی: ۱۲ هفته (کامل=آبی، هفته جاری=نارنجی، شروع‌شده=آبی کم‌رنگ). حلقه درونی: درصد پیشرفت (inner از ۰ تا ۱) */
+function orbit(main,sub,size,inner,label){
+ const c=size/2,sw=Math.max(5,Math.round(size/26)),r1=c-sw/2-3,sw2=Math.round(sw*1.2),r2=r1-sw/2-sw2/2-8,anim=!orbitDone;
+ const deg=x=>x/r1*180/Math.PI,span=30-deg(sw*0.7)-deg(sw);let s='';
  for(let i=0;i<12;i++){
-  const p=weekPct(i+1)/100,rot=-90+i*30+(gap/2/C)*360,cur=(i+1===data.currentWeek);
-  s+=`<g transform="rotate(${rot} ${cx} ${cx})" class="${anim?'seg-in':''}" style="--i:${i}"><circle cx="${cx}" cy="${cx}" r="${r}" class="o-track${cur?' o-now':''}" stroke-dasharray="${L} ${C}"/>${p>0?`<circle cx="${cx}" cy="${cx}" r="${r}" class="o-fg" stroke-dasharray="${Math.max(.1,L*p)} ${C}"/>`:''}</g>`;
+  const p=weekPct(i+1),mid=-90+i*30+15,cls=i+1===data.currentWeek?'now':p>=100?'done':p>0?'part':'';
+  s+=`<path d="${arcPath(c,r1,mid-span/2,mid+span/2)}" class="o-seg ${cls}${anim?' seg-in':''}" style="--i:${i}" stroke-width="${sw}"/>`;
  }
- return `<div class="orbit" style="width:${size}px;height:${size}px;--o:${size}px"><svg viewBox="0 0 ${size} ${size}" aria-hidden="true">${s}</svg><div class="orbit-in"><b>${main}</b><small>${sub}</small></div></div>`;
+ const C2=2*Math.PI*r2,v=Math.max(0,Math.min(1,inner||0));
+ s+=`<circle cx="${c}" cy="${c}" r="${r2}" class="o-ring" stroke-width="${sw2}"/>`;
+ if(v>0.005)s+=`<circle cx="${c}" cy="${c}" r="${r2}" class="o-prog" stroke-width="${sw2}" stroke-dasharray="${(Math.max(.02,v)*C2).toFixed(2)} ${C2.toFixed(2)}" transform="rotate(-90 ${c} ${c})"/>`;
+ return `<div class="orbit" role="img" aria-label="${esc(label||'')}" style="width:${size}px;height:${size}px;--o:${size}px"><svg viewBox="0 0 ${size} ${size}" aria-hidden="true">${s}</svg><div class="orbit-in"><b>${main}</b><small>${sub}</small></div></div>`;
 }
 const pad=n=>String(n).padStart(2,'0');
 const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -902,107 +483,80 @@ try{
  jfDay=new Intl.DateTimeFormat('fa-IR-u-ca-persian',{day:'numeric'});
 }catch(e){}
 function jparts(f,iso){const o={};f.formatToParts(parseISO(iso)).forEach(p=>{o[p.type]=p.value});return o}
+const RE_DATE=/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+function validDate(v){if(typeof v!=='string'||!RE_DATE.test(v))return false;const d=parseISO(v);return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())===v}
 function jd(iso,long){
- if(!iso)return '—';
+ if(!validDate(iso))return '—';
  try{
   if(long){const o=jparts(jfLong,iso);return `${o.weekday}، ${o.day} ${o.month} ${o.year}`}
   const o=jparts(jfNum,iso);return `${o.year}/${o.month}/${o.day}`;
- }catch(e){return iso}
+ }catch(e){return '—'}
 }
-function jday(iso){try{return jfDay.format(parseISO(iso))}catch(e){return iso.slice(8)}}
+function jday(iso){if(!validDate(iso))return '';try{return jfDay.format(parseISO(iso))}catch(e){return ''}}
 function fmtClock(ms){const s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%3600/60),r=s%60;return (h?pad(h)+':':'')+pad(m)+':'+pad(r)}
 function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2600)}
 
 /* ---------- داده و ذخیره‌سازی ---------- */
 function defaults(){return {v:3,theme:null,currentWeek:1,tasks:{},sessions:[],vocab:[],readings:[],checkpoints:{},timer:null,lastBackup:null}}
 let data=defaults();
-function migrate(x){
- const d=Object.assign(defaults(),x&&typeof x==='object'?x:{});
- d.v=3;
- ['sessions','vocab','readings'].forEach(k=>{if(!Array.isArray(d[k]))d[k]=[]});
- if(!d.tasks||typeof d.tasks!=='object')d.tasks={};
- if(!d.checkpoints||typeof d.checkpoints!=='object')d.checkpoints={};
- d.sessions=d.sessions.filter(s=>s&&typeof s==='object');
- d.vocab.forEach(v=>{if(typeof v.stage!=='number')v.stage=0;if(!v.next)v.next=addDays(todayISO(),1)});
- d.currentWeek=Math.min(12,Math.max(1,+d.currentWeek||1));
+const RE_TASK=/^w(?:[1-9]|1[0-2])-t\d{1,2}$/;
+const isObj=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
+const cStr=(v,max)=>typeof v==='string'?v.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,'').slice(0,max):'';
+const toNum=v=>typeof v==='number'?v:(typeof v==='string'&&/^\d{1,9}(\.\d{1,4})?$/.test(v)?+v:NaN);
+const cNum=(v,min,max)=>{const n=toNum(v);return Number.isFinite(n)&&n>=min&&n<=max?n:null};
+const cInt=(v,min,max,dflt)=>{const n=cNum(v,min,max);return n===null?dflt:Math.round(n)};
+const okTask=v=>typeof v==='string'&&RE_TASK.test(v)?v:null;
+let dropped=0;
+/* هر داده‌ای که وارد می‌شود (localStorage یا فایل بکاپ) از این فیلتر می‌گذرد: فقط فیلدهای شناخته‌شده، با نوع و بازه مجاز */
+function sanitize(x){
+ dropped=0;const d=defaults();
+ if(!isObj(x))return d;
+ d.theme=x.theme==='dark'||x.theme==='light'?x.theme:null;
+ d.currentWeek=cInt(x.currentWeek,1,12,1);
+ d.lastBackup=validDate(x.lastBackup)?x.lastBackup:null;
+ if(isObj(x.tasks))for(const k of Object.keys(x.tasks))if(RE_TASK.test(k)&&x.tasks[k]===true)d.tasks[k]=true;
+ const arr=(v,max)=>Array.isArray(v)?v.slice(0,max):[];
+ arr(x.sessions,5000).forEach(s=>{
+  const m=isObj(s)?cNum(s.minutes,1,600):null;
+  if(m===null||!validDate(s.date)||!TYPES.includes(s.type)){dropped++;return}
+  d.sessions.push({date:s.date,week:cInt(s.week,1,12,1),type:s.type,minutes:Math.round(m),note:cStr(s.note,1000),task:okTask(s.task)});
+ });
+ arr(x.vocab,5000).forEach(v=>{
+  const w=isObj(v)?cStr(v.word,120).trim():'';
+  if(!w){dropped++;return}
+  const o={word:w,meaning:cStr(v.meaning,300),example:cStr(v.example,400),source:cStr(v.source,80),next:validDate(v.next)?v.next:addDays(todayISO(),1),stage:cInt(v.stage,0,SRS.length-1,0),added:validDate(v.added)?v.added:todayISO()};
+  if(validDate(v.last))o.last=v.last;
+  d.vocab.push(o);
+ });
+ arr(x.readings,2000).forEach(r=>{
+  const ok=isObj(r),t=ok?cStr(r.title,200).trim():'',wd=ok?cNum(r.words,1,1e6):null,mn=ok?cNum(r.minutes,0.1,1440):null,cp=ok?cNum(r.comp,1,5):null;
+  if(!t||!validDate(r.date)||wd===null||mn===null||cp===null){dropped++;return}
+  d.readings.push({date:r.date,week:cInt(r.week,1,12,1),title:t,source:cStr(r.source,80),words:Math.round(wd),minutes:mn,comp:Math.round(cp),note:cStr(r.note,1000)});
+ });
+ if(isObj(x.checkpoints))['4','8','12'].forEach(n=>{
+  const c=x.checkpoints[n];if(c===undefined)return;
+  const ok=isObj(c),wd=ok?cNum(c.words,1,1e6):null,mn=ok?cNum(c.minutes,0.1,1440):null,cp=ok?cNum(c.comp,0,100):null,er=ok?cNum(c.errors,0,1000):null;
+  if(wd===null||mn===null||cp===null||er===null){dropped++;return}
+  d.checkpoints[n]={date:validDate(c.date)?c.date:todayISO(),title:cStr(c.title,200).trim(),words:Math.round(wd),minutes:mn,comp:Math.round(cp),errors:Math.round(er),note:cStr(c.note,1000)};
+ });
+ const t=x.timer;
+ if(isObj(t)&&typeof t.running==='boolean'&&TYPES.includes(t.type)){
+  const sa=cNum(t.startedAt,0,4e12),ac=cNum(t.acc,0,864e5);
+  if(sa!==null&&ac!==null)d.timer={running:t.running,startedAt:sa,acc:ac,type:t.type,label:cStr(t.label,200),task:okTask(t.task),week:cInt(t.week,1,12,d.currentWeek)};
+ }
  return d;
 }
 function load(){
- try{
-  const raw=localStorage.getItem(KEY)||localStorage.getItem(OLD_KEY); /* داده‌های نسخه قبلی خودکار منتقل می‌شوند */
-  if(raw)data=migrate(JSON.parse(raw));
- }catch(e){console.warn(e)}
-}
-let cloudClient=null,cloudUser=null,cloudReady=false,cloudTimer=null,cloudSaving=false,cloudRevision=0,cloudHydrating=false;
-const SUPABASE_URL='https://ljannmzqxkqrvbtzhdlj.supabase.co';
-const SUPABASE_PUBLISHABLE_KEY='sb_publishable_34PnMkEG05AS3aWBzdbBWg_m-LoQE03';
-function setCloudStatus(message,kind='info'){
- const el=$('cloudStatus');if(el){el.textContent=message;el.style.color=kind==='error'?'var(--danger)':kind==='ok'?'var(--green)':'var(--muted)'}
+ let raw=null;
+ try{raw=localStorage.getItem(KEY)||localStorage.getItem(OLD_KEY);if(raw)data=sanitize(JSON.parse(raw))}
+ catch(e){try{if(raw)localStorage.setItem(KEY+'_corrupt',raw)}catch(_){}} /* داده خراب پیش از بازنویسی کنار گذاشته می‌شود */
 }
 function persist(){
- try{localStorage.setItem(KEY,JSON.stringify(data));if(cloudUser&&cloudReady&&!cloudHydrating)scheduleCloudSave();return true}
+ try{localStorage.setItem(KEY,JSON.stringify(data));return true}
  catch(e){toast('ذخیره نشد! حافظه مرورگر پر است یا حالت خصوصی فعال است. بکاپ بگیر.');return false}
 }
 function save(){persist();renderAll()}
 function saveQuiet(){persist()}
-function scheduleCloudSave(){
- cloudRevision++;const revision=cloudRevision;clearTimeout(cloudTimer);
- setCloudStatus('تغییرات ذخیره شد محلی؛ همگام‌سازی در صف است.');
- cloudTimer=setTimeout(()=>writeCloud(revision),900);
-}
-async function writeCloud(revision=cloudRevision){
- if(!cloudClient||!cloudUser||!cloudReady||cloudHydrating)return;
- if(cloudSaving){clearTimeout(cloudTimer);cloudTimer=setTimeout(()=>writeCloud(cloudRevision),500);return}
- cloudSaving=true;const snapshot=JSON.parse(JSON.stringify(data));
- try{
-  const {error}=await cloudClient.from('dashboard_data').upsert({user_id:cloudUser.id,payload:snapshot,updated_at:new Date().toISOString()},{onConflict:'user_id'});
-  if(error)throw error;
-  if(revision===cloudRevision)setCloudStatus('همگام‌سازی ابری انجام شد.','ok');
-  else{clearTimeout(cloudTimer);cloudTimer=setTimeout(()=>writeCloud(cloudRevision),300)}
- }catch(e){console.error('Cloud save failed',e);setCloudStatus('ذخیره محلی انجام شد؛ همگام‌سازی ابری ناموفق بود.','error')}
- finally{cloudSaving=false}
-}
-async function syncNow(){if(!cloudUser){toast('ابتدا وارد حساب شو');return}clearTimeout(cloudTimer);await writeCloud(cloudRevision);}
-async function loadUserCloud(user){
- cloudHydrating=true;cloudReady=false;cloudUser=user;
- setCloudStatus('در حال دریافت اطلاعات از فضای ابری…');
- try{
-  const {data:row,error}=await cloudClient.from('dashboard_data').select('payload,updated_at').eq('user_id',user.id).maybeSingle();
-  if(error)throw error;
-  if(row&&row.payload&&typeof row.payload==='object'){
-   data=migrate(row.payload);localStorage.setItem(KEY,JSON.stringify(data));
-   setCloudStatus('اطلاعات حساب از فضای ابری بارگذاری شد.','ok');
-  }else{
-   const local=localStorage.getItem(KEY)||localStorage.getItem(OLD_KEY);
-   if(local){data=migrate(JSON.parse(local));}
-   else data=defaults();
-   const {error:insertError}=await cloudClient.from('dashboard_data').upsert({user_id:user.id,payload:data,updated_at:new Date().toISOString()},{onConflict:'user_id'});
-   if(insertError)throw insertError;
-   localStorage.setItem(KEY,JSON.stringify(data));
-   setCloudStatus('فضای ابری برای این حساب ساخته شد.','ok');
-  }
-  cloudReady=true;document.body.classList.add('authenticated');
-  $('accountEmail').textContent=user.email||'حساب واردشده';
-  renderAll();
- }catch(e){console.error('Cloud load failed',e);cloudUser=null;cloudReady=false;document.body.classList.remove('authenticated');showAuthMessage('دریافت اطلاعات از Supabase ناموفق بود: '+(e.message||'خطای نامشخص'),'error')}
- finally{cloudHydrating=false}
-}
-function showAuthMessage(msg,kind='info'){const el=$('authMessage');if(el){el.textContent=msg;el.className='auth-msg'+(kind==='error'?' error':kind==='ok'?' ok':'')}}
-async function signOutUser(){if(!cloudClient)return;const {error}=await cloudClient.auth.signOut();if(error){toast('خروج انجام نشد: '+error.message);return}cloudUser=null;cloudReady=false;document.body.classList.remove('authenticated');$('authPassword').value='';showAuthMessage('از حساب خارج شدی. برای ادامه دوباره وارد شو.');}
-async function initCloudAuth(){
- if(!window.supabase||!window.supabase.createClient){showAuthMessage('کتابخانه اتصال بارگذاری نشد. اتصال اینترنت را بررسی و صفحه را تازه‌سازی کن.','error');return}
- cloudClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
- $('authForm').addEventListener('submit',async e=>{
-  e.preventDefault();const btn=$('authSubmit');btn.disabled=true;btn.textContent='در حال ورود…';showAuthMessage('در حال بررسی اطلاعات ورود…');
-  try{const {data:res,error}=await cloudClient.auth.signInWithPassword({email:$('authEmail').value.trim(),password:$('authPassword').value});if(error)throw error;await loadUserCloud(res.user)}
-  catch(err){showAuthMessage('ورود ناموفق بود: '+(err.message||'اطلاعات ورود را بررسی کن.'),'error')}
-  finally{btn.disabled=false;btn.textContent='ورود به داشبورد'}
- });
- const {data:sessionData,error}=await cloudClient.auth.getSession();
- if(error){showAuthMessage('خطا در بررسی نشست: '+error.message,'error');return}
- if(sessionData.session?.user)await loadUserCloud(sessionData.session.user);
-}
-
 
 /* ---------- محاسبات ---------- */
 const taskKey=(w,i)=>`w${w}-t${i}`;
@@ -1024,9 +578,10 @@ const wpmOf=r=>r.minutes>0?r.words/r.minutes:0;
 /* ---------- ناوبری ---------- */
 let curView='today';
 const hid=()=>location.hash.replace(/^#\/?/,'');
-function go(id){if(location.hash==='#/'+id)showView(id);else location.hash='/'+id}
+const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
+function go(id){if(!own(TITLES,id))id='today';if(location.hash==='#/'+id)showView(id);else location.hash='/'+id}
 function showView(id){
- if(!TITLES[id])id='today';
+ if(!own(TITLES,id))id='today';
  curView=id;
  document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===id));
  document.querySelectorAll('#sideNav button').forEach(x=>x.classList.toggle('active',x.dataset.view===id));
@@ -1065,7 +620,7 @@ function renderToday(){
  const w=data.currentWeek,c=curriculum[w-1],t=todayISO();
  const tm=minutesOn(t),wm=weekMinutes(w),st=streak();
  
- $('todayChips').innerHTML=`<span class="chip amber">${ic('flame')}<b>${st}</b> روز پیاپی</span><span class="chip">${ic('clock')}<b>${tm}</b> دقیقه امروز</span>`;$('todayRing').innerHTML=orbit(String(w),'از ۱۲ هفته',osz());
+ $('todayChips').innerHTML=`<span class="chip amber">${ic('flame')}<b>${st}</b> روز پیاپی</span><span class="chip">${ic('clock')}<b>${tm}</b> دقیقه امروز</span><span class="chip">${ic('target')}<b>${weekPct(w)}%</b> این هفته</span>`;$('todayRing').innerHTML=orbit(String(w),'از ۱۲ هفته',osz(),weekPct(w)/100,`هفته ${w} از ۱۲، ${weekPct(w)} درصد از وظایف این هفته انجام شده`);
  let hint;
  if(data.timer)hint='تایمر در حال اجراست؛ بعد از پایان، جلسه خودکار ثبت می‌شود.';
  else if(!tm)hint='هنوز امروز مطالعه‌ای ثبت نشده. حتی ۲۰ دقیقه هم برای ادامه‌دادن streak کافی است.';
@@ -1074,16 +629,16 @@ function renderToday(){
  $('tdToday').textContent=tm;$('tdWeek').textContent=wm;$('tdDue').textContent=dueList().length;
  $('tdWk').textContent=pad(w)+' / 12';$('tdWkPct').textContent=weekPct(w)+'% تکمیل · '+c.book;
  const pending=c.tasks.map((x,i)=>({x,i})).filter(o=>!taskDone(w,o.i)).slice(0,2);
- $('tdTasks').innerHTML=pending.length?pending.map(o=>{const m=taskMinutes(w,o.i);return `<div class="task-card"><b>${esc(o.x[0])}</b><p>${esc(o.x[1])}</p>${m?`<span class="tmeta">${ic('clock')} ${m} دقیقه ثبت‌شده</span>`:''}<div class="btnrow"><button class="btn primary sm" onclick="startTask(${w},${o.i})">${ic('play')} شروع با تایمر</button><button class="btn sm" onclick="toggleTask(${w},${o.i},true)">${ic('check')} انجام شد</button></div></div>`}).join(''):`<div class="empty">همه وظایف این هفته تمام شد${w<12?`<div class="btnrow" style="justify-content:center"><button class="btn primary" onclick="selectWeek(${w+1})">رفتن به هفته ${w+1} ${ic('arrowL')}</button></div>`:''}</div>`;
+ $('tdTasks').innerHTML=pending.length?pending.map(o=>{const m=taskMinutes(w,o.i);return `<div class="task-card"><b>${esc(o.x[0])}</b><p>${esc(o.x[1])}</p>${m?`<span class="tmeta">${ic('clock')} ${m} دقیقه ثبت‌شده</span>`:''}<div class="btnrow"><button class="btn primary sm" data-act="startTask" data-a="${w},${o.i}">${ic('play')} شروع با تایمر</button><button class="btn sm" data-act="doneTask" data-a="${w},${o.i}">${ic('check')} انجام شد</button></div></div>`}).join(''):`<div class="empty">همه وظایف این هفته تمام شد${w<12?`<div class="btnrow" style="justify-content:center"><button class="btn primary" data-act="selectWeek" data-a="${w+1}">رفتن به هفته ${w+1} ${ic('arrowL')}</button></div>`:''}</div>`;
  const days=[];for(let k=6;k>=0;k--)days.push(addDays(t,-k));
  $('tdWeekChart').innerHTML=svgBars(days.map(minutesOn),days.map(jday),{h:150,min:60,hi:6,aria:'مطالعه ۷ روز اخیر'});
  const due=dueList();
- $('tdVocab').innerHTML=due.length?`<p class="muted small">${due.length} واژه امروز موعد مرور دارد.</p><div class="btnrow"><button class="btn primary" onclick="vDue=true;go('vocab');renderVocab()">شروع مرور</button></div>`:'<p class="muted small">واژه موعددار نداری.</p>';
+ $('tdVocab').innerHTML=due.length?`<p class="muted small">${due.length} واژه امروز موعد مرور دارد.</p><div class="btnrow"><button class="btn primary" data-act="reviewDue">شروع مرور</button></div>`:'<p class="muted small">واژه موعددار نداری.</p>';
  renderTimer();
 }
 
 /* ---------- تایمر ---------- */
-function timerElapsed(){const t=data.timer;if(!t)return 0;return t.acc+(t.running?Date.now()-t.startedAt:0)}
+function timerElapsed(){const t=data.timer;if(!t)return 0;return Math.min(36e6,Math.max(0,t.acc+(t.running?Date.now()-t.startedAt:0)))}
 function startTimerNow(type,label,task){
  if(data.timer&&!confirm('یک تایمر فعال داری. جایگزین شود؟ (زمان قبلی ثبت نمی‌شود)'))return false;
  data.timer={running:true,startedAt:Date.now(),acc:0,type,label:label||'',task:task||null,week:data.currentWeek};
@@ -1097,7 +652,7 @@ function startTask(w,i){
 function pauseResume(){const t=data.timer;if(!t)return;if(t.running){t.acc+=Date.now()-t.startedAt;t.running=false}else{t.startedAt=Date.now();t.running=true}saveQuiet();renderTimer();updateClock()}
 function stopTimer(){
  const t=data.timer;if(!t)return;
- const min=Math.round(timerElapsed()/60000);
+ const min=Math.min(600,Math.round(timerElapsed()/60000));
  if(min<1){if(!confirm('کمتر از یک دقیقه ثبت شده. دور ریخته شود؟'))return;data.timer=null;save();return}
  data.sessions.push({date:todayISO(),week:t.week,type:t.type,minutes:min,note:t.label||'',task:t.task||null});
  data.timer=null;save();toast(`جلسه ${min} دقیقه‌ای ثبت شد`);
@@ -1106,9 +661,9 @@ function discardTimer(){if(confirm('تایمر لغو شود؟ زمان ثبت �
 function renderTimer(){
  const t=data.timer,el=$('timerCard');if(!el)return;
  if(!t){
-  el.innerHTML=`<h2>تایمر مطالعه</h2><p class="muted small">نوع فعالیت را انتخاب کن و شروع بزن؛ با پایان، جلسه خودکار ثبت می‌شود.</p><div class="formgrid"><label>نوع فعالیت<select onchange="tSel.type=this.value">${TYPES.map(x=>`<option ${x===tSel.type?'selected':''}>${x}</option>`).join('')}</select></label><label>برچسب (اختیاری)<input value="${esc(tSel.label)}" oninput="tSel.label=this.value" placeholder="مثلاً Unit 2 Reading"></label></div><div class="btnrow"><button class="btn primary big" onclick="startTimerForm()">${ic('play')} شروع</button></div>`;
+  el.innerHTML=`<h2>تایمر مطالعه</h2><p class="muted small">نوع فعالیت را انتخاب کن و شروع بزن؛ با پایان، جلسه خودکار ثبت می‌شود.</p><div class="formgrid"><label>نوع فعالیت<select data-chg="tType">${TYPES.map(x=>`<option ${x===tSel.type?'selected':''}>${x}</option>`).join('')}</select></label><label>برچسب (اختیاری)<input value="${esc(tSel.label)}" data-inp="tLabel" placeholder="مثلاً Unit 2 Reading"></label></div><div class="btnrow"><button class="btn primary big" data-act="startTimerForm">${ic('play')} شروع</button></div>`;
  }else{
-  el.innerHTML=`<h2>${t.running?'<span class="recdot"></span>':''}تایمر در حال اجرا</h2><div class="clock timerClock ${t.running?'run':''}">00:00</div><div class="small muted" style="text-align:center">${esc(t.type)}${t.label?' · '+esc(t.label):''}</div><div class="btnrow" style="justify-content:center"><button class="btn pauseBtn" onclick="pauseResume()">${t.running?ic('pause')+' توقف موقت':ic('play')+' ادامه'}</button><button class="btn primary" onclick="stopTimer()">${ic('stop')} پایان و ثبت</button><button class="btn" onclick="discardTimer()">لغو</button></div>`;
+  el.innerHTML=`<h2>${t.running?'<span class="recdot"></span>':''}تایمر در حال اجرا</h2><div class="clock timerClock ${t.running?'run':''}">00:00</div><div class="small muted" style="text-align:center">${esc(t.type)}${t.label?' · '+esc(t.label):''}</div><div class="btnrow" style="justify-content:center"><button class="btn pauseBtn" data-act="pauseResume">${t.running?ic('pause')+' توقف موقت':ic('play')+' ادامه'}</button><button class="btn primary" data-act="stopTimer">${ic('stop')} پایان و ثبت</button><button class="btn" data-act="discardTimer">لغو</button></div>`;
  }
 }
 function updateClock(){
@@ -1151,7 +706,7 @@ function svgLine(pts,aria){
 /* ---------- نمای کلی ---------- */
 function renderHome(){
  const hours=sum(data.sessions.map(x=>+x.minutes||0))/60,pct=Math.round(totalDone()/totalTasks()*100);
- $('heroProgress').innerHTML=orbit(pct+'%','کل مسیر',osz());
+ $('heroProgress').innerHTML=orbit(pct+'%','کل مسیر',osz(),pct/100,`پیشرفت کل مسیر ${pct} درصد`);
  $('statWeek').textContent=pad(data.currentWeek)+' / 12';
  $('statHours').textContent=hours.toFixed(1)+'h';$('statTasks').textContent=pct+'%';$('statWords').textContent=data.vocab.length;
  const w=curriculum[data.currentWeek-1],p=weekPct(data.currentWeek),s0=((data.currentWeek-1)%4)*3+1;
@@ -1164,14 +719,14 @@ function renderHome(){
 function renderCurriculum(){
  const wn=data.currentWeek,w=curriculum[wn-1],start=((wn-1)%4)*3+1,phase=Math.floor((wn-1)/4);
  $('weekSelect').value=wn;
- $('weekList').innerHTML=curriculum.map((x,i)=>`<button class="week-pick ${i+1===wn?'active':''}" onclick="selectWeek(${i+1})"><span class="wkbadge">${pad(i+1)}</span><span>هفته ${i+1}<small class="muted" style="display:block">${x.book} · ${weekPct(i+1)}%</small></span></button>`).join('');
+ $('weekList').innerHTML=curriculum.map((x,i)=>`<button class="week-pick ${i+1===wn?'active':''}" data-act="selectWeek" data-a="${i+1}"><span class="wkbadge">${pad(i+1)}</span><span>هفته ${i+1}<small class="muted" style="display:block">${x.book} · ${weekPct(i+1)}%</small></span></button>`).join('');
  $('weekDetail').innerHTML=`<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><div><div class="eyebrow">WEEK ${pad(wn)} / 12</div><h2 style="font-size:25px;margin-top:5px">${w.book}</h2><p class="muted small">سه یونیت اصلی · حدود ۵ تا ۶ ساعت · اولویت با درک متن</p></div><span class="pill green">${weekPct(wn)}% تکمیل</span></div><div class="progressline"><span style="width:${weekPct(wn)}%"></span></div>
 <div class="unit-grid">${w.units.map((u,i)=>`<div class="unit"><div class="unitno">UNIT ${start+i}</div><h3>${esc(u[0])}</h3><p>${esc(u[1])}</p></div>`).join('')}</div>
 <div class="plan-block"><h3>Grammar in Use · درس‌های منتخب</h3><div class="tablewrap"><table class="grammar-table"><thead><tr><th>شماره درس</th><th>موضوع</th><th>اولویت</th></tr></thead><tbody>${w.grammar.map(g=>`<tr><td dir="ltr">${g[0]}</td><td>${esc(g[1])}</td><td class="${g[2]==='ضروری'?'tag-essential':g[2]==='تکمیلی'?'tag-optional':'tag-reference'}">${g[2]}</td></tr>`).join('')}</tbody></table></div><p class="small muted">ضروری = مطالعه و تمرین منتخب؛ تکمیلی = در صورت نیاز یا ضعف؛ مرجع = مراجعه هنگام برخورد با ساختار دشوار. شماره درس‌ها را با ویرایشی که داری تطبیق بده.</p></div>
-<div class="plan-block"><h3>برنامه اجرایی هفته</h3>${w.tasks.map((t,i)=>{const m=taskMinutes(wn,i);return `<div class="task ${taskDone(wn,i)?'done':''}"><input type="checkbox" aria-label="انجام شد" ${taskDone(wn,i)?'checked':''} onchange="toggleTask(${wn},${i},this.checked)"><div class="tasktext"><b>${esc(t[0])}</b><small>${esc(t[1])}</small>${m?`<span class="tmeta">${ic('clock')} ${m} دقیقه ثبت‌شده</span>`:''}</div><button class="btn sm" onclick="startTask(${wn},${i})" aria-label="شروع با تایمر">${ic('play')}</button></div>`}).join('')}</div>
-<div class="plan-block"><h3>منابع پیشنهادی Reading و Listening</h3><div class="links">${SOURCES[phase].map(s=>`<a href="${s[1]}" target="_blank" rel="noopener"><span>${s[0]}<small>${s[2]}</small></span>${ic('ext')}</a>`).join('')}</div><p class="small muted">اگر سایتی بدون VPN باز نشد، متن مشابه را از منبع دیگری انتخاب کن.</p></div>
+<div class="plan-block"><h3>برنامه اجرایی هفته</h3>${w.tasks.map((t,i)=>{const m=taskMinutes(wn,i);return `<div class="task ${taskDone(wn,i)?'done':''}"><input type="checkbox" aria-label="انجام شد" ${taskDone(wn,i)?'checked':''} data-chg="toggleTask" data-a="${wn},${i}"><div class="tasktext"><b>${esc(t[0])}</b><small>${esc(t[1])}</small>${m?`<span class="tmeta">${ic('clock')} ${m} دقیقه ثبت‌شده</span>`:''}</div><button class="btn sm" data-act="startTask" data-a="${wn},${i}" aria-label="شروع با تایمر">${ic('play')}</button></div>`}).join('')}</div>
+<div class="plan-block"><h3>منابع پیشنهادی Reading و Listening</h3><div class="links">${SOURCES[phase].map(s=>`<a href="${s[1]}" target="_blank" rel="noopener noreferrer"><span>${s[0]}<small>${s[2]}</small></span>${ic('ext')}</a>`).join('')}</div><p class="small muted">اگر سایتی بدون VPN باز نشد، متن مشابه را از منبع دیگری انتخاب کن.</p></div>
 <div class="plan-block"><h3>چیدمان پیشنهادی زمان</h3><div class="notice">Touchstone: حدود ۱۲۰ دقیقه · Grammar in Use: حدود ۵۵ · Independent Reading: حدود ۷۰ · Listening: حدود ۳۰ · مرور و ارزیابی: حدود ۵۵. ترتیب و روزهای مطالعه آزاد است.</div></div>
-<div style="display:flex;justify-content:space-between;margin-top:18px"><button class="btn" onclick="selectWeek(${Math.max(1,wn-1)})" ${wn===1?'disabled':''}>${ic('arrowR')} هفته قبل</button><button class="btn primary" onclick="selectWeek(${Math.min(12,wn+1)})" ${wn===12?'disabled':''}>هفته بعد ${ic('arrowL')}</button></div>`;
+<div style="display:flex;justify-content:space-between;margin-top:18px"><button class="btn" data-act="selectWeek" data-a="${Math.max(1,wn-1)}" ${wn===1?'disabled':''}>${ic('arrowR')} هفته قبل</button><button class="btn primary" data-act="selectWeek" data-a="${Math.min(12,wn+1)}" ${wn===12?'disabled':''}>هفته بعد ${ic('arrowL')}</button></div>`;
 }
 function toggleTask(w,i,v){data.tasks[taskKey(w,i)]=!!v;save()}
 
@@ -1180,9 +735,13 @@ function renderSessions(){
  const week=weekMinutes(data.currentWeek);
  $('sessionGoalBar').style.width=Math.min(100,week/GOAL*100)+'%';
  $('sessionGoalText').textContent=`${week} از ${GOAL} دقیقه · ${(week/60).toFixed(1)} ساعت (هفته ${data.currentWeek})`;
- $('sessionRows').innerHTML=data.sessions.length?data.sessions.map((x,i)=>({x,i})).reverse().map(({x,i})=>`<tr><td data-label="تاریخ">${jd(x.date)}</td><td data-label="هفته">${x.week}</td><td data-label="فعالیت">${esc(x.type)}</td><td data-label="مدت">${x.minutes} دقیقه</td><td data-label="یادداشت" class="wrap">${esc(x.note||'')}</td><td class="actions"><button class="btn sm" onclick="deleteItem('sessions',${i})">${ic('trash')} حذف</button></td></tr>`).join(''):'<tr><td colspan="6" class="empty">هنوز جلسه‌ای ثبت نشده است.</td></tr>';
+ $('sessionRows').innerHTML=data.sessions.length?data.sessions.map((x,i)=>({x,i})).reverse().map(({x,i})=>`<tr><td data-label="تاریخ">${jd(x.date)}</td><td data-label="هفته">${esc(x.week)}</td><td data-label="فعالیت">${esc(x.type)}</td><td data-label="مدت">${esc(x.minutes)} دقیقه</td><td data-label="یادداشت" class="wrap">${esc(x.note||'')}</td><td class="actions"><button class="btn sm" data-act="deleteItem" data-a="sessions,${i}">${ic('trash')} حذف</button></td></tr>`).join(''):'<tr><td colspan="6" class="empty">هنوز جلسه‌ای ثبت نشده است.</td></tr>';
 }
-$('sessionForm').onsubmit=e=>{e.preventDefault();data.sessions.push({date:$('sDate').value||todayISO(),week:+$('sWeek').value,type:$('sType').value,minutes:+$('sMinutes').value,note:$('sNote').value.trim(),task:null});$('sNote').value='';$('sMinutes').value='';save();toast('جلسه ثبت شد')};
+$('sessionForm').onsubmit=e=>{e.preventDefault();
+ const m=cNum($('sMinutes').value,1,600),dt=$('sDate').value,ty=$('sType').value;
+ if(m===null||!validDate(dt)||!TYPES.includes(ty)){toast('مدت باید بین ۱ تا ۶۰۰ دقیقه و تاریخ معتبر باشد');return}
+ data.sessions.push({date:dt,week:cInt($('sWeek').value,1,12,data.currentWeek),type:ty,minutes:Math.round(m),note:cStr($('sNote').value.trim(),1000),task:null});
+ $('sNote').value='';$('sMinutes').value='';save();toast('جلسه ثبت شد')};
 
 /* ---------- واژگان (SRS اصلاح‌شده) ---------- */
 let vDue=false;
@@ -1192,7 +751,7 @@ function renderVocab(){
  $('dueWords').textContent=dueList().length;
  $('dueBtn').textContent=vDue?'نمایش همه واژه‌ها':'فقط واژه‌های موعددار';
  const rows=data.vocab.map((x,i)=>({...x,i})).filter(x=>(!vDue||x.next<=t)&&(x.word+' '+x.meaning+' '+x.example+' '+x.source).toLowerCase().includes(q));
- $('vocabRows').innerHTML=rows.length?rows.map(x=>{const due=x.next<=t;return `<tr><td data-label="واژه" dir="ltr">${esc(x.word)}</td><td data-label="معنی">${esc(x.meaning)}</td><td data-label="مثال" dir="ltr" class="wrap">${esc(x.example)}</td><td data-label="منبع">${esc(x.source)}</td><td data-label="مرور بعدی">${due?'<span class="pill amber">امروز / موعد گذشته</span>':jd(x.next)}</td><td class="actions"><button class="btn sm primary" onclick="reviewWord(${x.i},true)">یادم بود</button><button class="btn sm" onclick="reviewWord(${x.i},false)">فراموش کردم</button><button class="btn sm" onclick="deleteItem('vocab',${x.i})">${ic('trash')} حذف</button></td></tr>`}).join(''):`<tr><td colspan="6" class="empty">${vDue?'واژه موعددار نداریم.':'واژه‌ای پیدا نشد.'}</td></tr>`;
+ $('vocabRows').innerHTML=rows.length?rows.map(x=>{const due=x.next<=t;return `<tr><td data-label="واژه" dir="ltr">${esc(x.word)}</td><td data-label="معنی">${esc(x.meaning)}</td><td data-label="مثال" dir="ltr" class="wrap">${esc(x.example)}</td><td data-label="منبع">${esc(x.source)}</td><td data-label="مرور بعدی">${due?'<span class="pill amber">امروز / موعد گذشته</span>':jd(x.next)}</td><td class="actions"><button class="btn sm primary" data-act="reviewWord" data-a="${x.i},true">یادم بود</button><button class="btn sm" data-act="reviewWord" data-a="${x.i},false">فراموش کردم</button><button class="btn sm" data-act="deleteItem" data-a="vocab,${x.i}">${ic('trash')} حذف</button></td></tr>`}).join(''):`<tr><td colspan="6" class="empty">${vDue?'واژه موعددار نداریم.':'واژه‌ای پیدا نشد.'}</td></tr>`;
 }
 function reviewWord(i,ok){
  const x=data.vocab[i];if(!x)return;
@@ -1202,9 +761,9 @@ function reviewWord(i,ok){
 }
 $('vocabForm').onsubmit=e=>{
  e.preventDefault();
- const w=$('vWord').value.trim();if(!w)return;
+ const w=cStr($('vWord').value.trim(),120);if(!w)return;
  if(data.vocab.some(x=>x.word.toLowerCase()===w.toLowerCase())){toast('این واژه قبلاً ثبت شده');return}
- data.vocab.push({word:w,meaning:$('vMeaning').value.trim(),example:$('vExample').value.trim(),source:$('vSource').value.trim(),next:addDays(todayISO(),SRS[0]),stage:0,added:todayISO()});
+ data.vocab.push({word:w,meaning:cStr($('vMeaning').value.trim(),300),example:cStr($('vExample').value.trim(),400),source:cStr($('vSource').value.trim(),80),next:addDays(todayISO(),SRS[0]),stage:0,added:todayISO()});
  e.target.reset();save();toast('واژه اضافه شد');
 };
 $('vSearch').oninput=renderVocab;
@@ -1212,10 +771,14 @@ $('vSearch').oninput=renderVocab;
 /* ---------- Reading ---------- */
 function renderReading(){
  const w=curriculum[data.currentWeek-1],ph=Math.floor((data.currentWeek-1)/4),rt=w.tasks.find(t=>t[0].startsWith('Independent'));
- $('readPick').innerHTML=`<p class="small muted">هفته ${data.currentWeek}</p><p style="font-size:13px;line-height:1.9;margin:4px 0 0">${esc(rt?rt[1]:'')}</p><div class="links">${SOURCES[ph].map(s=>`<a href="${s[1]}" target="_blank" rel="noopener"><span>${s[0]}<small>${s[2]}</small></span>${ic('ext')}</a>`).join('')}</div>`;
- $('readingRows').innerHTML=data.readings.length?data.readings.map((x,i)=>({x,i})).reverse().map(({x,i})=>`<tr><td data-label="تاریخ">${jd(x.date)}</td><td data-label="عنوان" dir="ltr" class="wrap">${esc(x.title)}</td><td data-label="کلمات">${x.words}</td><td data-label="دقیقه">${x.minutes}</td><td data-label="WPM">${wpmOf(x).toFixed(0)}</td><td data-label="درک">${x.comp}/5</td><td class="actions"><button class="btn sm" onclick="deleteItem('readings',${i})">${ic('trash')} حذف</button></td></tr>`).join(''):'<tr><td colspan="7" class="empty">هنوز متنی ثبت نشده است.</td></tr>';
+ $('readPick').innerHTML=`<p class="small muted">هفته ${data.currentWeek}</p><p style="font-size:13px;line-height:1.9;margin:4px 0 0">${esc(rt?rt[1]:'')}</p><div class="links">${SOURCES[ph].map(s=>`<a href="${s[1]}" target="_blank" rel="noopener noreferrer"><span>${s[0]}<small>${s[2]}</small></span>${ic('ext')}</a>`).join('')}</div>`;
+ $('readingRows').innerHTML=data.readings.length?data.readings.map((x,i)=>({x,i})).reverse().map(({x,i})=>`<tr><td data-label="تاریخ">${jd(x.date)}</td><td data-label="عنوان" dir="ltr" class="wrap">${esc(x.title)}</td><td data-label="کلمات">${esc(x.words)}</td><td data-label="دقیقه">${esc(x.minutes)}</td><td data-label="WPM">${wpmOf(x).toFixed(0)}</td><td data-label="درک">${esc(x.comp)}/5</td><td class="actions"><button class="btn sm" data-act="deleteItem" data-a="readings,${i}">${ic('trash')} حذف</button></td></tr>`).join(''):'<tr><td colspan="7" class="empty">هنوز متنی ثبت نشده است.</td></tr>';
 }
-$('readingForm').onsubmit=e=>{e.preventDefault();data.readings.push({date:$('rDate').value||todayISO(),week:+$('rWeek').value,title:$('rTitle').value.trim(),source:$('rSource').value.trim(),words:+$('rWords').value,minutes:+$('rMinutes').value,comp:+$('rComprehension').value,note:$('rNote').value.trim()});e.target.reset();$('rDate').value=todayISO();$('rWeek').value=data.currentWeek;updateDateLabels();save();toast('متن ثبت شد')};
+$('readingForm').onsubmit=e=>{e.preventDefault();
+ const wd=cNum($('rWords').value,1,1e6),mn=cNum($('rMinutes').value,0.1,1440),dt=$('rDate').value,t=cStr($('rTitle').value.trim(),200);
+ if(wd===null||mn===null||!validDate(dt)||!t){toast('عنوان، تعداد کلمات، زمان و تاریخ را درست وارد کن');return}
+ data.readings.push({date:dt,week:cInt($('rWeek').value,1,12,data.currentWeek),title:t,source:cStr($('rSource').value.trim(),80),words:Math.round(wd),minutes:mn,comp:cInt($('rComprehension').value,1,5,3),note:cStr($('rNote').value.trim(),1000)});
+ e.target.reset();$('rDate').value=todayISO();$('rWeek').value=data.currentWeek;updateDateLabels();save();toast('متن ثبت شد')};
 
 /* ---------- گزارش ---------- */
 function renderAnalytics(){
@@ -1242,15 +805,17 @@ function renderCheckpoints(){
   const r=data.checkpoints[cp.n]||{},m=cpMetrics(r);
   const prev=CPS.filter(c=>c.n<cp.n&&data.checkpoints[c.n]).pop(),pm=prev?cpMetrics(data.checkpoints[prev.n]):null;
   let res='';
-  if(m){res=`<div class="small" style="margin:8px 0">سرعت: <b>${m.wpm.toFixed(0)}</b> WPM · درک: <b>${m.comp}%</b> · خطای تکراری گرامر: <b>${m.err}</b></div>`;
+  if(m){res=`<div class="small" style="margin:8px 0">سرعت: <b>${m.wpm.toFixed(0)}</b> WPM · درک: <b>${esc(m.comp)}%</b> · خطای تکراری گرامر: <b>${esc(m.err)}</b></div>`;
    if(pm)res+=`<div style="margin-bottom:8px">${deltaChip(m.wpm-pm.wpm,'WPM',true)}${deltaChip(m.comp-pm.comp,'درصد درک',true)}${deltaChip(m.err-pm.err,'خطا',false)}<span class="small muted">نسبت به ${prev.title.split(' ·')[0]}</span></div>`}
   const id=k=>`cp${cp.n}_${k}`;
-  return `<div class="cpcard"><h3>${cp.title}</h3><p class="small muted" style="margin:0">${cp.desc}</p>${res}<form class="formgrid" onsubmit="saveCp(event,${cp.n})" style="margin-top:10px"><label>تاریخ<input type="date" id="${id('date')}" value="${r.date||todayISO()}"><span class="jlabel" id="${id('date')}J">${jd(r.date||todayISO())}</span></label><label>عنوان متن<input id="${id('title')}" dir="ltr" value="${esc(r.title||'')}"></label><label>تعداد کلمات<input id="${id('words')}" type="number" inputmode="numeric" min="1" required value="${r.words||''}"></label><label>زمان (دقیقه)<input id="${id('min')}" type="number" inputmode="decimal" step="any" min="1" required value="${r.minutes||''}"></label><label>درک مطلب (۰ تا ۱۰۰٪)<input id="${id('comp')}" type="number" inputmode="numeric" min="0" max="100" required value="${r.comp??''}"></label><label>تعداد خطای تکراری گرامر<input id="${id('err')}" type="number" inputmode="numeric" min="0" required value="${r.errors??''}"></label><label class="full">یادداشت<textarea id="${id('note')}">${esc(r.note||'')}</textarea></label><button class="btn primary" type="submit">${m?'به‌روزرسانی':'ثبت نتیجه'}</button></form></div>`;
+  return `<div class="cpcard"><h3>${cp.title}</h3><p class="small muted" style="margin:0">${cp.desc}</p>${res}<form class="formgrid" data-sub="saveCp" data-a="${cp.n}" style="margin-top:10px"><label>تاریخ<input type="date" id="${id('date')}" value="${esc(r.date||todayISO())}"><span class="jlabel" id="${id('date')}J">${jd(r.date||todayISO())}</span></label><label>عنوان متن<input id="${id('title')}" dir="ltr" value="${esc(r.title||'')}"></label><label>تعداد کلمات<input id="${id('words')}" type="number" inputmode="numeric" min="1" required value="${esc(r.words||'')}"></label><label>زمان (دقیقه)<input id="${id('min')}" type="number" inputmode="decimal" step="any" min="1" required value="${esc(r.minutes||'')}"></label><label>درک مطلب (۰ تا ۱۰۰٪)<input id="${id('comp')}" type="number" inputmode="numeric" min="0" max="100" required value="${esc(r.comp??'')}"></label><label>تعداد خطای تکراری گرامر<input id="${id('err')}" type="number" inputmode="numeric" min="0" required value="${esc(r.errors??'')}"></label><label class="full">یادداشت<textarea id="${id('note')}">${esc(r.note||'')}</textarea></label><button class="btn primary" type="submit">${m?'به‌روزرسانی':'ثبت نتیجه'}</button></form></div>`;
  }).join('');
 }
 function saveCp(e,n){
- e.preventDefault();const g=k=>$(`cp${n}_${k}`).value;
- data.checkpoints[n]={date:g('date')||todayISO(),title:g('title').trim(),words:+g('words'),minutes:+g('min'),comp:+g('comp'),errors:+g('err'),note:g('note').trim()};
+ e.preventDefault();n=String(n);if(!['4','8','12'].includes(n))return;
+ const g=k=>$(`cp${n}_${k}`).value,wd=cNum(g('words'),1,1e6),mn=cNum(g('min'),0.1,1440),cp=cNum(g('comp'),0,100),er=cNum(g('err'),0,1000),dt=g('date');
+ if(wd===null||mn===null||cp===null||er===null){toast('اعداد واردشده معتبر نیست (درک ۰ تا ۱۰۰)');return}
+ data.checkpoints[n]={date:validDate(dt)?dt:todayISO(),title:cStr(g('title').trim(),200),words:Math.round(wd),minutes:mn,comp:Math.round(cp),errors:Math.round(er),note:cStr(g('note').trim(),1000)};
  save();renderCheckpoints();toast('نتیجه Checkpoint ثبت شد');
 }
 
@@ -1263,7 +828,7 @@ function renderBanner(){
   if(days>=7){show=true;txt=data.lastBackup?`${days} روز از آخرین بکاپ گذشته.`:'هنوز هیچ بکاپی نگرفته‌ای.'}
  }
  b.classList.toggle('show',show);
- b.innerHTML=show?`<span>${ic('alert')} ${txt} اطلاعاتت فقط روی همین مرورگر است.</span><span class="btnrow" style="margin:0"><button class="btn sm primary" onclick="exportData()">دانلود بکاپ</button><button class="btn sm" onclick="sessionStorageSet('snooze','1');renderBanner()">بعداً</button></span>`:'';
+ b.innerHTML=show?`<span>${ic('alert')} ${txt} اطلاعاتت فقط روی همین مرورگر است.</span><span class="btnrow" style="margin:0"><button class="btn sm primary" data-act="exportData">دانلود بکاپ</button><button class="btn sm" data-act="snooze">بعداً</button></span>`:'';
 }
 function sessionStorageGet(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
 function sessionStorageSet(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
@@ -1278,11 +843,13 @@ function exportData(){
 $('importFile').onchange=async e=>{
  const f=e.target.files[0];if(!f)return;
  try{
+  if(f.size>3e6)throw Error('big');
   const x=JSON.parse(await f.text());
-  if(!x||!Array.isArray(x.sessions)||!Array.isArray(x.vocab)||!Array.isArray(x.readings))throw Error('invalid');
+  if(!isObj(x)||!Array.isArray(x.sessions)||!Array.isArray(x.vocab)||!Array.isArray(x.readings))throw Error('invalid');
+  const clean=sanitize(x),dr=dropped;
   if(hasData()&&!confirm('اطلاعات فعلی با فایل بکاپ جایگزین می‌شود. ادامه می‌دهی؟')){e.target.value='';return}
-  data=migrate(x);save();alert('اطلاعات با موفقیت بازیابی شد.');
- }catch(err){alert('فایل پشتیبان معتبر نیست.')}
+  data=clean;save();alert(dr?`اطلاعات بازیابی شد؛ ${dr} مورد نامعتبر نادیده گرفته شد.`:'اطلاعات با موفقیت بازیابی شد.');
+ }catch(err){alert('فایل پشتیبان معتبر نیست یا بیش از ۳ مگابایت است.')}
  e.target.value='';
 };
 function resetData(){
@@ -1290,51 +857,51 @@ function resetData(){
   const th=data.theme;data=defaults();data.theme=th;save();toast('بازنشانی شد');
  }
 }
-function deleteItem(key,i){if(confirm('این مورد حذف شود؟')){data[key].splice(i,1);save()}}
+function deleteItem(key,i){if(!['sessions','vocab','readings'].includes(key))return;i=+i;if(!Number.isInteger(i)||i<0||i>=data[key].length)return;if(confirm('این مورد حذف شود؟')){data[key].splice(i,1);save()}}
 
 /* ---------- برچسب تاریخ شمسی کنار ورودی‌های تاریخ ---------- */
 function updateDateLabels(){document.querySelectorAll('input[type=date]').forEach(i=>{const l=$(i.id+'J');if(l)l.textContent=i.value?jd(i.value,true):''})}
 document.addEventListener('input',e=>{if(e.target.type==='date'){const l=$(e.target.id+'J');if(l)l.textContent=e.target.value?jd(e.target.value,true):''}});
 
 /* ---------- رندر کلی ---------- */
-function renderAll(){
- applyTheme();$('topDate').textContent=jd(todayISO(),true);renderToday();renderHome();renderCurriculum();renderSessions();renderVocab();renderReading();renderAnalytics();renderBanner();updateClock();
+function renderSideFoot(){
+ const el=$('sideBackup');if(!el)return;
+ if(!hasData()){el.className='sf-backup';el.innerHTML='';return}
+ const d=data.lastBackup?daysBetween(data.lastBackup,todayISO()):null,warn=d===null||d>=7;
+ el.className='sf-backup'+(warn?' warn':'');
+ el.innerHTML=`<span>${d===null?'هنوز بکاپ نگرفته‌ای':d===0?'بکاپ امروز گرفته شد':`آخرین بکاپ: ${d} روز پیش`}</span><button class="btn sm" data-act="exportData">${ic('download')} بکاپ</button>`;
 }
+function renderAll(){
+ applyTheme();$('topDate').textContent=jd(todayISO(),true);renderToday();renderHome();renderCurriculum();renderSessions();renderVocab();renderReading();renderAnalytics();renderBanner();renderSideFoot();updateClock();
+}
+/* ---------- رویدادها: بدون هندلر inline (سازگار با CSP) ---------- */
+const ACT={
+ go:id=>go(id),
+ startTask:(w,i)=>startTask(+w,+i),
+ doneTask:(w,i)=>toggleTask(+w,+i,true),
+ selectWeek:n=>selectWeek(+n),
+ reviewDue:()=>{vDue=true;go('vocab');renderVocab()},
+ reviewWord:(i,ok)=>reviewWord(+i,ok==='true'),
+ deleteItem:(k,i)=>deleteItem(k,i),
+ snooze:()=>{sessionStorageSet('snooze','1');renderBanner()},
+ startTimerForm:()=>startTimerForm(),pauseResume:()=>pauseResume(),stopTimer:()=>stopTimer(),discardTimer:()=>discardTimer(),
+ toggleDue:()=>toggleDue(),toggleTheme:()=>toggleTheme(),exportData:()=>exportData(),resetData:()=>resetData()
+};
+const CHG={toggleTask:(el,w,i)=>toggleTask(+w,+i,el.checked),tType:el=>{if(TYPES.includes(el.value))tSel.type=el.value}};
+const INP={tLabel:el=>{tSel.label=cStr(el.value,200)}};
+const SUB={saveCp:(e,n)=>saveCp(e,n)};
+const argsOf=el=>el.dataset.a?el.dataset.a.split(','):[];
+document.addEventListener('click',e=>{const el=e.target.closest&&e.target.closest('[data-act]');if(el&&own(ACT,el.dataset.act))ACT[el.dataset.act](...argsOf(el))});
+document.addEventListener('change',e=>{const el=e.target;if(el.dataset&&own(CHG,el.dataset.chg||''))CHG[el.dataset.chg](el,...argsOf(el))});
+document.addEventListener('input',e=>{const el=e.target;if(el.dataset&&own(INP,el.dataset.inp||''))INP[el.dataset.inp](el)});
+document.addEventListener('submit',e=>{const el=e.target;if(el.dataset&&own(SUB,el.dataset.sub||''))SUB[el.dataset.sub](e,...argsOf(el))},true);
+
 load();initSelects();
 $('sDate').value=todayISO();$('rDate').value=todayISO();updateDateLabels();
+renderAll();
 setTimeout(()=>{orbitDone=true},1800);
-initCloudAuth();
 let rz;window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{renderToday();renderHome()},200)});
 showView(hid()||'today');
 try{if(navigator.storage&&navigator.storage.persist){navigator.storage.persist().then(ok=>{const p=$('persistState');if(p)p.textContent=ok?'ذخیره‌سازی پایدار فعال است.':''})}}catch(e){}
-
-
-/* V7 motion system: viewport reveals + subtle pointer light */
-(function initV7Motion(){
-  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealCurrent=()=>{
-    const root=document.querySelector('.view.active'); if(!root)return;
-    const items=root.querySelectorAll('.hero,.statstrip,.card,.section-head,.task-card,.cpcard');
-    items.forEach((el,i)=>{el.classList.add('reveal');el.style.transitionDelay=Math.min(i%5,4)*55+'ms'});
-    if(reduce){items.forEach(el=>el.classList.add('in-view'));return;}
-    if(!('IntersectionObserver' in window)){items.forEach(el=>el.classList.add('in-view'));return;}
-    const io=new IntersectionObserver(entries=>entries.forEach(entry=>{
-      if(entry.isIntersecting){entry.target.classList.add('in-view');io.unobserve(entry.target)}
-    }),{threshold:.08,rootMargin:'0px 0px -28px 0px'});
-    items.forEach(el=>{if(!el.classList.contains('in-view'))io.observe(el)});
-  };
-  document.documentElement.classList.add('reveal-ready');
-  const originalShowView=window.showView;
-  if(typeof originalShowView==='function'){
-    window.showView=function(id){originalShowView(id);requestAnimationFrame(()=>requestAnimationFrame(revealCurrent));};
-  }
-  requestAnimationFrame(()=>requestAnimationFrame(revealCurrent));
-  if(!reduce && window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
-    let raf=0;
-    document.addEventListener('pointermove',e=>{
-      if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const card=e.target.closest('.card');if(!card)return;const r=card.getBoundingClientRect();card.style.setProperty('--mx',(e.clientX-r.left)+'px');card.style.setProperty('--my',(e.clientY-r.top)+'px')});
-    },{passive:true});
-  }
-})();
 
 </script></body></html>
